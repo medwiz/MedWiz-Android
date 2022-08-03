@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/docHomeFragment"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/black"
+        android:title="@string/home"
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/doctorLabFragments"
+        android:icon="@drawable/ic_booking"
+        android:iconTint="@color/black"
+        android:title="@string/booking"
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/docSettingsFragment"
+        android:icon="@drawable/ic_notification"
+        android:iconTint="@color/black"
+        android:title="@string/notification"
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_notification"
+        android:iconTint="@color/black"
+        android:title="@string/profile"
+        tools:targetApi="o" />
+</menu>

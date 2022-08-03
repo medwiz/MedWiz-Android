@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="h1_sp_32">32sp</dimen>
+    <dimen name="h2_sp_24">24sp</dimen>
+    <dimen name="h3_sp_20">20sp</dimen>
+    <dimen name="h4_sp_16">16sp</dimen>
+    <dimen name="h5_sp_14">14sp</dimen>
+    <dimen name="h6_sp_12">12sp</dimen>
+
+    <dimen name="h1_dp_32">32dp</dimen>
+    <dimen name="h2_dp_24">24dp</dimen>
+    <dimen name="h3_dp_20">20dp</dimen>
+    <dimen name="h4_dp_16">16dp</dimen>
+    <dimen name="h5_dp_14">14dp</dimen>
+    <dimen name="h6_dp_12">12dp</dimen>
+</resources>

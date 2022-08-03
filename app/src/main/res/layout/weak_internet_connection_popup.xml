@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/layout_rounded_bg"
+        android:backgroundTint="#92969A"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="197dp"
+            android:layout_height="115dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:backgroundTint="@color/black">
+
+            <ImageView
+                android:id="@+id/imgPoup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_popup_weak_internet_connection_img" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPopup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_narrow"
+            android:gravity="center"
+            android:lineHeight="18.86dp"
+            android:padding="20dp"
+            android:text="@string/your_internet_connection_is_weak_please_check_your_network"
+            android:textColor="@color/white"
+            android:textFontWeight="700"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:layout_below="@+id/main">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="213dp"
+            android:layout_height="40dp"
+            android:id="@+id/btOk"
+            android:background="@drawable/confirm_btn"
+            android:backgroundTint="@color/green"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/archivo_narrow"
+            android:textFontWeight="700"
+            android:text="@string/ok"
+            android:textSize="14sp"
+            android:lineHeight="16dp"
+            android:letterSpacing="0.1"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#029AFF</item>
+<!--        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_splash</item>-->
+<!--        <item name="windowSplashScreenAnimationDuration">3000</item>-->
+        <item name="postSplashScreenTheme">@style/Theme.MedWiz</item>
+    </style>
+</resources>

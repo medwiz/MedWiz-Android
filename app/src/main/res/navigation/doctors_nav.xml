@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/doctors_nav"
+    app:startDestination="@id/docHomeFragment">
+
+    <fragment
+        android:id="@+id/docHomeFragment"
+        android:name="com.medwiz.medwiz.ui.docotor.home.DocHomeFragment"
+        android:label="DocHomeFragment" />
+    <fragment
+        android:id="@+id/docSettingsFragment"
+        android:name="com.medwiz.medwiz.ui.docotor.settings.DocSettingsFragment"
+        android:label="DocSettingsFragment" />
+</navigation>

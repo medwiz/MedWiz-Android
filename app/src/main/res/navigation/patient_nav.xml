@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/patient_nav"
+    app:startDestination="@id/doctorsFragment">
+
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="com.medwiz.medwiz.ui.patient.DoctorsFragment"
+        android:label="DoctorsFragment"
+        tools:layout="@layout/fragment_doctors">
+        <action
+            android:id="@+id/action_doctorsFragment_to_doctorBookingFragment"
+            app:destination="@id/doctorBookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/labFragments"
+        android:name="com.medwiz.medwiz.ui.patient.LabFragments"
+        android:label="LabFragments" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.medwiz.medwiz.ui.patient.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/doctorBookingFragment"
+        android:name="com.medwiz.medwiz.ui.patient.booking.DoctorBookingFragment"
+        android:label="DoctorBookingFragment" />
+
+</navigation>

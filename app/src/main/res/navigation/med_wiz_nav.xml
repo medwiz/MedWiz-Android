@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/med_wiz.xml"
+    app:startDestination="@id/selectAccountFragment">
+
+    <fragment
+        android:id="@+id/selectAccountFragment"
+        android:name="com.medwiz.medwiz.ui.selectAccountType.SelectAccountFragment"
+        android:label="SelectAccountFragment" >
+        <action
+            android:id="@+id/action_selectAccountFragment_to_accountSelection"
+            app:destination="@id/accountSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountSelection"
+        android:name="com.medwiz.medwiz.ui.selectAccountType.AccountSelection"
+        android:label="AccountSelection" >
+        <action
+            android:id="@+id/action_accountSelection_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_accountSelection_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.medwiz.medwiz.ui.auth.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_selectAccountFragment"
+            app:destination="@id/selectAccountFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.medwiz.medwiz.ui.auth.signUp.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_createPassword"
+            app:destination="@id/createPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPassword"
+        android:name="com.medwiz.medwiz.ui.auth.signUp.CreatePassword"
+        android:label="CreatePassword" >
+        <action
+            android:id="@+id/action_createPassword_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.medwiz.medwiz.ui.verification.VerificationFragment"
+        android:label="VerificationFragment" />
+</navigation>

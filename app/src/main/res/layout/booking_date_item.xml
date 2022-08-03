@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/rlMain">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDate"
+            android:textColor="@color/white"
+            android:text="SUN"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDay"
+            android:textColor="@color/black"
+            android:text="07"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

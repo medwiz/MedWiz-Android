@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginBottom="70dp"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvScreenName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/como"
+                android:gravity="center"
+                android:text="Booking Now"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgBack"
+                android:layout_below="@+id/tvScreenName"
+                android:src="@drawable/ic_back_arrow"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearProfile"
+                android:layout_below="@+id/imgBack"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/docPicture"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_doctor_blue"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dr. Sandipak Ray"
+                        android:textColor="@color/blue"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Eye Specialist"
+                        android:textColor="@color/blue"
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:scaleX=".2"
+                        android:scaleY=".2"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:isIndicator="true"
+                        android:progressBackgroundTint="@color/blue"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDocProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearProfile"
+                android:layout_marginTop="12dp"
+                android:text="@string/sample_text"
+                android:textColor="@color/black"
+                android:fontFamily="@font/archivo_narrow"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDocProfile"
+                android:id="@+id/tvMonth"
+                android:text="July 2022"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rcvDate"
+                android:layout_below="@+id/tvMonth" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linear1"
+                android:gravity="center"
+                android:layout_below="@+id/rcvDate"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv1"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:padding="10dp"
+                    android:text="9 am"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv2"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:padding="10dp"
+                    android:layout_marginStart="16dp"
+                    android:text="10 am"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv3"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:padding="10dp"
+                    android:layout_marginStart="16dp"
+                    android:text="11 am"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linear2"
+                android:gravity="center"
+                android:layout_below="@+id/linear1"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv4"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:padding="10dp"
+                    android:text="7 pm"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv5"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:padding="10dp"
+                    android:layout_marginStart="16dp"
+                    android:text="8 pm"/>
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear2"
+                android:layout_marginTop="10dp"
+                android:id="@+id/chkPayNow"
+                android:checked="true"
+                android:buttonTint="@color/blue"
+                android:textColor="@color/black"
+                android:fontFamily="@font/como"
+                android:text="Pay Now"/>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chkPayNow"
+                android:layout_marginTop="10dp"
+                android:id="@+id/chkPayLater"
+               android:buttonTint="@color/blue"
+                android:textColor="@color/black"
+                android:fontFamily="@font/como"
+                android:text="Cash"/>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btBook"
+        android:layout_alignParentBottom="true"
+        android:text="Book"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:letterSpacing="0.1"
+        android:textStyle="bold"
+        android:lineSpacingExtra="16sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:background="@drawable/confirm_btn"/>
+
+
+
+</RelativeLayout>

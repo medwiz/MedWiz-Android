@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="@dimen/h4_dp_16">
+    <TextView
+        android:id="@+id/tvVerification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/h3_sp_20"
+        android:layout_marginTop="209dp"
+        android:text="@string/verification"
+        android:lineSpacingExtra="1sp"
+        android:translationY="-0.27sp"
+        android:textColor="#303245"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center_horizontal|top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVerificationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/verification_title"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="-1sp"
+        android:gravity="start"
+        android:layout_marginTop="8dp"
+        android:textColor="#78789D"
+        android:textFontWeight="400"
+        android:lineHeight="@dimen/h3_dp_20"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerification"
+        />
+
+    <TextView
+        android:id="@+id/tvVerificationNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/demo_number"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="-1sp"
+        android:gravity="start"
+        android:textColor="#78789D"
+        android:textFontWeight="400"
+        android:lineHeight="@dimen/h3_dp_20"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerificationTitle"
+        />
+
+    <com.chaos.view.PinView
+        android:id="@+id/pvPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:itemCount="4"
+        android:inputType="number"
+        style="@style/PinWidget.PinView"
+        android:cursorVisible="true"
+        app:cursorColor="@color/black"
+        app:cursorWidth="2dp"
+        android:itemBackground="#DFE1E6"
+        android:textColor="@color/black"
+        app:lineColor="@color/white"
+        app:itemHeight="48dp"
+        app:itemRadius="5dp"
+        app:itemSpacing="10dp"
+        app:itemWidth="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerificationTitle"/>
+
+    <TextView
+        android:id="@+id/tvResendOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resend_otp"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.79sp"
+        android:textColor="@color/blue"
+        android:gravity="start"
+        android:textFontWeight="400"
+        android:lineHeight="@dimen/h3_dp_20"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pvPin"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/btVerify"
+        android:layout_marginTop="40dp"
+        android:text="@string/verify"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="15sp"
+        android:translationY="-7.5sp"
+        android:background="@drawable/ic_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResendOtp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
