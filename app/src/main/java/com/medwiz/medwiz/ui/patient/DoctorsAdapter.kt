@@ -2,8 +2,10 @@ package com.medwiz.medwiz.ui.patient
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.SingleDoctorRcvItemBinding
 import com.medwiz.medwiz.models.Doctors
 
@@ -30,8 +32,7 @@ class DoctorsAdapter(private val context: Context,
 
     inner class DoctorsViewHolder(val binding: SingleDoctorRcvItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(doctorItem: Doctors,position: Int){
-            binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
-            binding.cityTextView.text = doctorItem.city
+           // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
             binding.layMain.setOnClickListener {
                 listener.onClickConsult(position,doctorItem)
             }

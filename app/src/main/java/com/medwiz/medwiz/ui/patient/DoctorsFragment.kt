@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDoctorsBinding
 import com.medwiz.medwiz.models.Doctors
+import com.medwiz.medwiz.ui.patient.booking.HealthTypeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DoctorsFragment:Fragment(R.layout.fragment_doctors),HomeScreenListener {
     private var adapter: DoctorsAdapter?=null
+    private var healthTypeAdapter:HealthTypeAdapter?=null
     private lateinit var binding: FragmentDoctorsBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,9 +36,22 @@ class DoctorsFragment:Fragment(R.layout.fragment_doctors),HomeScreenListener {
         lis.add(d2)
 
         adapter = DoctorsAdapter(requireActivity(),lis,this)
-        binding.rcvDoctors.adapter = adapter
-        binding.rcvDoctors.layoutManager = LinearLayoutManager(requireActivity())
-       // binding.rcvDoctors.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        binding.rcvNearByDoc.adapter = adapter
+        binding.rcvNearByDoc.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
+        binding.rcvNearByDoc.smoothScrollBy(50,100)
+
+
+
+        healthTypeAdapter = HealthTypeAdapter(requireActivity(),lis,this)
+        binding.rcvHealthType.adapter = healthTypeAdapter
+        binding.rcvHealthType.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
+        binding.rcvHealthType.smoothScrollBy(50,100)
+
+
+
+        binding.rcvAllDoc.adapter = adapter
+        binding.rcvAllDoc.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
+        binding.rcvAllDoc.smoothScrollBy(100,100)
     }
 
     override fun onClickConsult(position: Int, doctor: Doctors) {

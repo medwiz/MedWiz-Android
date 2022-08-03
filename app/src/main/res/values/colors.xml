@@ -9,10 +9,14 @@
     <color name="white">#FFFFFF</color>
 
     <color name="yellow">#FFB800</color>
-    <color name="green">#00D32F</color>
+    <color name="green">#007D6E</color>
     <color name="colorPrimary">#252C33</color>
     <color name="colorPrimaryDark">#E5E5E5</color>
     <color name="grey">#92969A</color>
     <color name="blue">#029AFF</color>
     <color name="red">#FF0000</color>
+    <color name="textColor">#0D1B34</color>
+    <color name="textColorGrey">#78789D</color>
+    <color name="textColorBlue">#4894FE</color>
+    <color name="blue2">#3363B4FF</color>
 </resources>

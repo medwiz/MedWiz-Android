@@ -305,8 +305,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_patient_bg" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../resouces/ic_patient_bg.svg" />
+                            <entry key="outputName" value="ic_calander" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../resouces/ic_calander.svg" />
                           </map>
                         </option>
                       </PersistentState>

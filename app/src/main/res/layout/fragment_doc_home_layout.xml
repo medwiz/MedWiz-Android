@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:fontFamily="@font/como"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center_vertical"
         android:lineHeight="36sp"
-        android:text="List of patients"
-        android:textColor="@color/blue"
+        android:text="Hi Prithwi"
+        android:textColor="#303245"
         android:textFontWeight="700"
-        android:textSize="16sp"
+        android:textSize="@dimen/h3_sp_20"
         android:textStyle="normal" />
 
 
@@ -24,7 +24,7 @@
         android:id="@+id/rcvPatients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="18dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
