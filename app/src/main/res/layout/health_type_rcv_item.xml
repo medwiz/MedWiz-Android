@@ -4,14 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layMain"
     android:layout_width="wrap_content"
-
+    android:layout_marginStart="10dp"
     android:layout_height="wrap_content">
 
  <androidx.appcompat.widget.AppCompatButton
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
+     android:layout_width="100dp"
+     android:layout_height="40dp"
      android:id="@+id/btType"
-     android:text="Dental"
      android:layout_gravity="center"
      android:gravity="center"
      android:background="@drawable/oval_bg"/>

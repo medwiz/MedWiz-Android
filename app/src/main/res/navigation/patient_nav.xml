@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/patient_nav"
-    app:startDestination="@id/doctorsFragment">
+    app:startDestination="@id/patientHomeFragment">
 
-    <fragment
-        android:id="@+id/doctorsFragment"
-        android:name="com.medwiz.medwiz.ui.patient.DoctorsFragment"
-        android:label="DoctorsFragment"
-        tools:layout="@layout/fragment_doctors">
-        <action
-            android:id="@+id/action_doctorsFragment_to_doctorBookingFragment"
-            app:destination="@id/doctorBookingFragment" />
-    </fragment>
     <fragment
         android:id="@+id/labFragments"
         android:name="com.medwiz.medwiz.ui.patient.LabFragments"
@@ -23,8 +14,24 @@
         android:name="com.medwiz.medwiz.ui.patient.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
-        android:id="@+id/doctorBookingFragment"
-        android:name="com.medwiz.medwiz.ui.patient.booking.DoctorBookingFragment"
-        android:label="DoctorBookingFragment" />
+        android:id="@+id/viewAllDoctorsFragment"
+        android:name="com.medwiz.medwiz.ui.patient.home.ViewAllDoctorsFragment"
+        android:label="ViewAllDoctorsFragment" >
+        <action
+            android:id="@+id/action_viewAllDoctorsFragment_to_doctorDetails"
+            app:destination="@id/doctorDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientHomeFragment"
+        android:name="com.medwiz.medwiz.ui.patient.home.PatientHomeFragment"
+        android:label="PatientHomeFragment" >
+        <action
+            android:id="@+id/action_patientHomeFragment_to_viewAllDoctorsFragment"
+            app:destination="@id/viewAllDoctorsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorDetails"
+        android:name="com.medwiz.medwiz.ui.patient.doctorDetails.DoctorDetails"
+        android:label="DoctorDetails" />
 
 </navigation>

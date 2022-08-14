@@ -1,16 +1,12 @@
 package com.medwiz.medwiz.ui.patient.booking
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.HealthTypeRcvItemBinding
-import com.medwiz.medwiz.databinding.SingleDoctorRcvItemBinding
 import com.medwiz.medwiz.models.Doctors
-import com.medwiz.medwiz.ui.patient.HomeScreenListener
+import com.medwiz.medwiz.ui.patient.home.HomeScreenListener
 
 class HealthTypeAdapter(private val context: Context,
                         private val itemList:MutableList<Doctors>, private val listener: HomeScreenListener
@@ -36,6 +32,15 @@ class HealthTypeAdapter(private val context: Context,
 
     inner class DoctorsViewHolder(val binding: HealthTypeRcvItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(doctorItem: Doctors,position: Int){
+            if(position==0){
+                binding.btType.text="Dental"
+            }
+            else if(position==1){
+                binding.btType.text="Optometrist"
+            }
+            else{
+                binding.btType.text="General"
+            }
            // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
 
             binding.layMain.setOnClickListener {

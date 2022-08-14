@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.medwiz.medwiz.databinding.SinglePatientRcvItemBinding
 import com.medwiz.medwiz.models.Patient
-import com.medwiz.medwiz.ui.patient.HomeScreenListener
+import com.medwiz.medwiz.ui.patient.home.HomeScreenListener
 
 class DocHomeAdapter(private val context: Context,
                      private val itemList:MutableList<Patient>, private val listener: HomeScreenListener

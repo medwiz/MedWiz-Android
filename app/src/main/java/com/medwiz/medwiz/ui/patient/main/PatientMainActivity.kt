@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.ui.patient
+package com.medwiz.medwiz.ui.patient.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,8 +23,30 @@ class PatientMainActivity : AppCompatActivity() {
 
         binding.bottomBar.setupWithNavController(navHostFragment.navController)
 
+        navController
+            .addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.viewAllDoctorsFragment -> {
+                        hideBottomLayout()
+                    }
+                    R.id.doctorDetails -> {
+                        hideBottomLayout()
+                    }
+
+
+                     else -> showBottomLayout()
+                }
+            }
+
 
             }
+
+    private fun hideBottomLayout() {
+         binding.bottomBar.visibility = View.GONE
+    }
+    private fun showBottomLayout() {
+        binding.bottomBar.visibility  = View.VISIBLE
+    }
     }
 
 

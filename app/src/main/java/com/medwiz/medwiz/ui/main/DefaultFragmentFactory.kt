@@ -4,9 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.medwiz.medwiz.ui.auth.login.LoginFragment
 import com.medwiz.medwiz.ui.auth.signUp.SignUpFragment
-import com.medwiz.medwiz.ui.patient.DoctorsFragment
-import com.medwiz.medwiz.ui.patient.LabFragments
-import com.medwiz.medwiz.ui.patient.PatientMainActivity
 import com.medwiz.medwiz.ui.selectAccountType.AccountSelection
 import com.medwiz.medwiz.ui.selectAccountType.SelectAccountFragment
 

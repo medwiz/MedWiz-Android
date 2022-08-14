@@ -8,7 +8,7 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDocHomeLayoutBinding
 import com.medwiz.medwiz.models.Doctors
 import com.medwiz.medwiz.models.Patient
-import com.medwiz.medwiz.ui.patient.HomeScreenListener
+import com.medwiz.medwiz.ui.patient.home.HomeScreenListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

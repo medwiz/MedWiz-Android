@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center_vertical"
+            android:lineHeight="36sp"
+            android:text="Hi Prithwi"
+            android:textColor="#303245"
+            android:textFontWeight="700"
+            android:textSize="@dimen/h3_sp_20"
+            android:textStyle="normal" />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:animateLayoutChanges="true"
+            android:backgroundTint="#029AFF"
+            android:background="@drawable/layout_rounded_bg"
+            android:id="@+id/layMain"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iconImageView"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:src="@drawable/ic_doc_avatar"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toEndOf="@+id/iconImageView"
+                    android:layout_toRightOf="@+id/iconImageView"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/h3_dp_20"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="top"
+                        android:lineHeight="8dp"
+                        android:lineSpacingExtra="2sp"
+                        android:text="Dr. Arun Kumar"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/h5_sp_14"
+                        android:textStyle="bold"
+                        android:translationY="-0.79sp" />
+
+                    <TextView
+                        android:id="@+id/tvSpecialization"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="General Doctor"
+                        android:textColor="#CBE1FF"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/h5_dp_16"
+                android:layout_below="@id/rl1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src ="@drawable/ic_calander"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="9dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="11:00 - 12:00 AM"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textFontWeight="400"
+                        android:lineHeight="21dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_regular"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/h5_dp_14"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="9dp"
+                        android:src="@drawable/ic_clock_white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:lineHeight="21dp"
+                        android:text="11:00 - 12:00 AM"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="17dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="146dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Reschedule"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="146dp"
+                    android:layout_height="38dp"
+                    android:text="Cancel"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:backgroundTint="#029AFF"
+                    android:layout_alignParentEnd="true"/>
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Near by doctors"
+                android:textSize="@dimen/h3_sp_20"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/black" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:id="@+id/btNearByViewAll"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/rounded_bg_black_border"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="View all"
+                android:textColor="@color/black"
+                android:textSize="@dimen/h5_sp_14" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvNearByDoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="18dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top doctors"
+                android:textSize="@dimen/h3_sp_20"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/black" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:id="@+id/btTopViewAll"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/rounded_bg_black_border"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="View all"
+                android:textColor="@color/black"
+                android:textSize="@dimen/h5_sp_14" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvHealthType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvAllDoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

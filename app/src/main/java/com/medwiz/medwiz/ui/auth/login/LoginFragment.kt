@@ -1,17 +1,12 @@
 package com.medwiz.medwiz.ui.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentLoginBinding
-import com.medwiz.medwiz.ui.lab.LabActivity
-import com.medwiz.medwiz.ui.patient.PatientMainActivity
-import com.medwiz.medwiz.ui.docotor.DoctorsActivity
 import com.medwiz.medwiz.util.MedWizConstants
-import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,9 +44,9 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 //        }
         binding.btContinue.setOnClickListener {
 
-            if(binding.etPhoneNumber.text.toString().isEmpty()){
-                return@setOnClickListener
-            }
+//            if(binding.etPhoneNumber.text.toString().isEmpty()){
+//                return@setOnClickListener
+//            }
             val bundle=Bundle()
             bundle.putString(MedWizConstants.AppValue.PHONE_NUMBER,binding.etPhoneNumber.text.toString())
                findNavController().navigate(R.id.action_loginFragment_to_verificationFragment,bundle)

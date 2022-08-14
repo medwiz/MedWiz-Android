@@ -15,7 +15,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.medwiz.medwiz.ui.patient.PatientMainActivity"
+            android:name="com.medwiz.medwiz.ui.patient.main.PatientMainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity

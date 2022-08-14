@@ -53,4 +53,11 @@
     <string name="notification">Notification</string>
     <string name="booking">Booking</string>
     <string name="home">Home</string>
+    <string name="near_by_doctors">Near by doctors</string>
+    <string name="top_docs">Top doctors</string>
+    <string name="about_me">About Me</string>
+    <string name="long_text_ex">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="working_time">Working Time</string>
+    <string name="review">Review</string>
+    <string name="book_appoinment">Book an appointment</string>
 </resources>

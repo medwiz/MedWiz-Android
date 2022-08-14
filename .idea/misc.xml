@@ -6,20 +6,30 @@
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_clock_white.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_doc_avatar.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/ic_frame1.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/layout_rounded_bg.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/oval_bg.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/rounded_bg_black_border.xml" value="0.1455" />
         <entry key="app/src/main/res/layout/activity_doctors.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16742654508611957" />
+        <entry key="app/src/main/res/layout/activity_patient.xml" value="0.16742654508611957" />
+        <entry key="app/src/main/res/layout/booking_date_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/fragment_account_selection.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_doc_home_layout.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/fragment_doc_setting_layout.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/fragment_doctor_booking.xml" value="0.16742654508611957" />
+        <entry key="app/src/main/res/layout/fragment_doctor_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_doctors.xml" value="0.24489795918367346" />
         <entry key="app/src/main/res/layout/fragment_home_patient.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16742654508611957" />
+        <entry key="app/src/main/res/layout/fragment_patient_home.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_view_all_doctors.xml" value="0.16198933919270833" />
         <entry key="app/src/main/res/layout/health_type_rcv_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/single_doctor_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_lab_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/single_patient_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/menu/bottom_patient_nav_menu.xml" value="0.22870370370370371" />
       </map>
     </option>
   </component>
