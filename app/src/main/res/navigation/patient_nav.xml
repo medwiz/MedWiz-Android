@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_patientHomeFragment_to_viewAllDoctorsFragment"
             app:destination="@id/viewAllDoctorsFragment" />
+        <action
+            android:id="@+id/action_patientHomeFragment_to_doctorDetails"
+            app:destination="@id/doctorDetails" />
     </fragment>
     <fragment
         android:id="@+id/doctorDetails"

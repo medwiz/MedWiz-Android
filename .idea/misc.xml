@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/ic_clock_gray.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_clock_white.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_doc_avatar.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_frame1.xml" value="0.1455" />
@@ -18,7 +19,7 @@
         <entry key="app/src/main/res/layout/fragment_doc_home_layout.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/fragment_doc_setting_layout.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/fragment_doctor_booking.xml" value="0.16742654508611957" />
-        <entry key="app/src/main/res/layout/fragment_doctor_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_doctor_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_doctors.xml" value="0.24489795918367346" />
         <entry key="app/src/main/res/layout/fragment_home_patient.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16742654508611957" />
@@ -29,6 +30,7 @@
         <entry key="app/src/main/res/layout/single_doctor_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_lab_rcv_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/single_patient_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/single_working_time.xml" value="0.335" />
         <entry key="app/src/main/res/menu/bottom_patient_nav_menu.xml" value="0.22870370370370371" />
       </map>
     </option>

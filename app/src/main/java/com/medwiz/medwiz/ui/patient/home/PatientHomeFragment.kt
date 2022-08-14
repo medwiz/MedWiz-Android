@@ -69,6 +69,6 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
     override fun onClickConsult(position: Int, doctor: Doctors) {
         val bundle=Bundle()
         bundle.putBoolean(UtilConstants.nearbyDocs,true)
-        findNavController().navigate(R.id.action_viewAllDoctorsFragment_to_doctorDetails,bundle)
+        findNavController().navigate(R.id.action_patientHomeFragment_to_doctorDetails,bundle)
     }
 }
