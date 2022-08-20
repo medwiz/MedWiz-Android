@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentVerificationBinding
 import com.medwiz.medwiz.ui.docotor.DoctorsActivity
@@ -23,6 +24,11 @@ class VerificationFragment:Fragment(R.layout.fragment_verification) {
         binding = FragmentVerificationBinding.bind(view)
         phoneNumber=arguments?.getString(MedWizConstants.AppValue.PHONE_NUMBER)!!
         binding.tvVerificationNumber.text=phoneNumber
+        binding.imgBack.setOnClickListener{
+
+            findNavController().navigateUp()
+
+        }
 
         binding.btVerify.setOnClickListener{
             when(accountType){

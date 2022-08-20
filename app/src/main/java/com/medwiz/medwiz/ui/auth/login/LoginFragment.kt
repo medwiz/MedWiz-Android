@@ -52,6 +52,12 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                findNavController().navigate(R.id.action_loginFragment_to_verificationFragment,bundle)
         }
 
+        binding.liSignUp.setOnClickListener {
+            val bundle=Bundle()
+            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment,bundle)
+        }
+
 //        binding.btContinue.setOnClickListener{
 //            when(accountType){
 //                MedWizConstants.Auth.ACCOUNT_DOCTOR->{

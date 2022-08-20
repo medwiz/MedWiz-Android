@@ -42,32 +42,6 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="accountSelection">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-6628" />
-                            <option name="y" value="-4181" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_accountSelection_to_loginFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_accountSelection_to_signUpFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="createPassword">
                     <value>
                       <LayoutPositions>
@@ -94,13 +68,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6416" />
-                            <option name="y" value="-4184" />
+                            <option name="x" value="-6582" />
+                            <option name="y" value="-4190" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_loginFragment_to_selectAccountFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_loginFragment_to_signUpFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_loginFragment_to_verificationFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -121,7 +105,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_selectAccountFragment_to_accountSelection">
+                            <entry key="action_selectAccountFragment_to_loginFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

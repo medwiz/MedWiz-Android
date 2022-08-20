@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.medwiz.medwiz.ui.auth.login.LoginFragment
 import com.medwiz.medwiz.ui.auth.signUp.SignUpFragment
-import com.medwiz.medwiz.ui.selectAccountType.AccountSelection
 import com.medwiz.medwiz.ui.selectAccountType.SelectAccountFragment
 
 
@@ -19,7 +18,6 @@ class DefaultFragmentFactory @Inject constructor() : FragmentFactory() {
         return when (className) {
             SelectAccountFragment::class.java.name-> SelectAccountFragment()
             LoginFragment::class.java.name-> LoginFragment()
-            AccountSelection::class.java.name-> AccountSelection()
             SignUpFragment::class.java.name-> SignUpFragment()
             else -> super.instantiate(classLoader, className)
         }

@@ -8,19 +8,8 @@
         android:name="com.medwiz.medwiz.ui.selectAccountType.SelectAccountFragment"
         android:label="SelectAccountFragment" >
         <action
-            android:id="@+id/action_selectAccountFragment_to_accountSelection"
-            app:destination="@id/accountSelection" />
-    </fragment>
-    <fragment
-        android:id="@+id/accountSelection"
-        android:name="com.medwiz.medwiz.ui.selectAccountType.AccountSelection"
-        android:label="AccountSelection" >
-        <action
-            android:id="@+id/action_accountSelection_to_loginFragment"
+            android:id="@+id/action_selectAccountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_accountSelection_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -32,6 +21,9 @@
         <action
             android:id="@+id/action_loginFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"

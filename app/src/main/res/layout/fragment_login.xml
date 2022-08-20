@@ -95,6 +95,49 @@
         app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber"
         />
 
+    <LinearLayout
+        android:id="@+id/liSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btContinue">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have account? "
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="60dp"
+            android:textFontWeight="400"
+            android:lineHeight="@dimen/h3_dp_20"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btContinue"/>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signup"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="@color/blue"
+            android:layout_marginTop="60dp"
+            android:textFontWeight="400"
+            android:lineHeight="@dimen/h3_dp_20"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btContinue"/>
+    </LinearLayout>
+
 
 
 

@@ -18,18 +18,18 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         binding.rlDoctor.setOnClickListener{
             val bundle = Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_DOCTOR)
-            findNavController().navigate(R.id.action_selectAccountFragment_to_accountSelection,bundle)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
         }
 
         binding.rlPatient.setOnClickListener{
             val bundle = Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_PATIENT)
-            findNavController().navigate(R.id.action_selectAccountFragment_to_accountSelection,bundle)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
         }
         binding.rlLab.setOnClickListener{
             val bundle = Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_LAB)
-            findNavController().navigate(R.id.action_selectAccountFragment_to_accountSelection,bundle)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
         }
     }
 }
