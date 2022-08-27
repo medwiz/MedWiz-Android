@@ -71,4 +71,7 @@
     <string name="pay">Pay</string>
     <string name="go_to_home">Go to homepage</string>
     <string name="completed">Completed</string>
+    <string name="my_booking">My Bookings</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
 </resources>

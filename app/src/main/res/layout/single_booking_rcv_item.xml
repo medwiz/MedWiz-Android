@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="#DFE1E6"
+        android:id="@+id/layMain"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iconImageView"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/ic_doc_avatar"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/iconImageView"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/iconImageView">
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dr. Joseph Brostito"
+                    android:layout_marginTop="@dimen/h3_dp_20"
+                    android:textColor="@color/textColor"
+                   android:textSize="@dimen/h5_sp_14"
+                    android:textStyle="bold"
+                    android:textFontWeight="400"
+                    android:lineHeight="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:lineSpacingExtra="2sp"
+                    android:translationY="-0.79sp"
+                    android:gravity="top"/>
+                <TextView
+                    android:id="@+id/tvSpecialization"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Dental Specialist"
+                    android:textColor="@color/textColorGrey"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:backgroundTint="@color/green"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="4.8"
+                    android:drawableEnd="@drawable/ic_star"
+                    android:drawablePadding="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/h6_dp_12"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_location"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="1.2 KM from your location"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textFontWeight="400"
+                        android:lineHeight="21dp"
+                        android:textColor="@color/textColorGrey"
+                        android:fontFamily="@font/poppins_regular"/>
+
+
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="09:00 AM - 10:00 AM"
+                    android:layout_gravity="center"
+                    android:gravity="start"
+                    android:textSize="14sp"
+                    android:textColor="@color/textColorGrey"
+                    android:fontFamily="@font/poppins_regular"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
