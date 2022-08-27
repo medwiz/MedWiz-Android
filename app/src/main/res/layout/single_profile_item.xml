@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rlMain"
+    android:background="@color/white"
+    android:layout_marginTop="10dp"
+    android:padding="@dimen/h6_dp_12">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imgProfileItem"
+        android:foregroundGravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvItemName"
+        android:textColor="@color/textColorGrey"
+        android:layout_toEndOf="@+id/imgProfileItem"
+        android:layout_marginStart="@dimen/h6_dp_12"
+        android:layout_marginTop="12dp"
+        android:text="@string/book_appoinment"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"/>
+
+</RelativeLayout>

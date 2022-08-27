@@ -28,7 +28,7 @@
         tools:targetApi="o" />
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/profileFragments"
         android:icon="@drawable/ic_profile"
         android:iconTint="@color/black"
         android:title="@string/profile"

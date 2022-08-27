@@ -172,16 +172,16 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chkPayNow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linear2"
                 android:layout_marginTop="10dp"
-                android:id="@+id/chkPayNow"
-                android:checked="true"
                 android:buttonTint="@color/blue"
-                android:textColor="@color/black"
+                android:checked="true"
                 android:fontFamily="@font/como"
-                android:text="Pay Now"/>
+                android:text="Pay Now"
+                android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:layout_width="match_parent"

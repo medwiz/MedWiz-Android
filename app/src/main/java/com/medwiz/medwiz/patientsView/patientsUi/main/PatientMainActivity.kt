@@ -31,6 +31,12 @@ class PatientMainActivity : AppCompatActivity() {
                     R.id.doctorDetails -> {
                         hideBottomLayout()
                     }
+                    R.id.bookAppointmentFragment -> {
+                        hideBottomLayout()
+                    }
+                    R.id.paymentFragment -> {
+                        hideBottomLayout()
+                    }
 
 
                      else -> showBottomLayout()

@@ -45,6 +45,12 @@ object UtilConstants {
     const val ERROR_INVALID_USER="MSG_INVALID_USER_CREDENTIALS"
     const val ERROR_ACCOUNT_SETUP:String="MSG_ACCOUNT_IS_NOT_FULLY_SET_UP"
 
+    //Profile Items
+    const val ITEM_PROFILE=1
+    const val ITEM_EDIT_PROFILE=2
+    const val ITEM_SETTING=3
+    const val ITEM_TERMS=4
+
 
 
 }

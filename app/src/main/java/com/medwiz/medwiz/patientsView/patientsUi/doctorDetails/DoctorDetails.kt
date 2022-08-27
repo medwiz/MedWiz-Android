@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDoctorDetailsBinding
 import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
+import com.medwiz.medwiz.util.UtilConstants
 import java.util.*
 
 class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
@@ -43,7 +44,9 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
 
 
         binding.btBookAppoinment.setOnClickListener{
-
+            val bundle=Bundle()
+            bundle.putBoolean(UtilConstants.nearbyDocs,true)
+            findNavController().navigate(R.id.action_doctorDetails_to_bookAppointmentFragment,bundle)
         }
     }
 
