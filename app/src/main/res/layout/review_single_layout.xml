@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/h6_dp_12"
+    android:layout_marginTop="@dimen/h6_dp_12"
+    android:backgroundTint="#F2F3F7"
+    android:background="@drawable/layout_rounded_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0052CC"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/awesome"/>
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/layout_rounded_bg"
+                android:fontFamily="@font/poppins_regular"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/_4_8"
+                android:drawableEnd="@drawable/ic_star"
+                android:drawablePadding="6dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvReviewComment"
+            android:layout_marginTop="@dimen/h6_dp_12"
+            android:text="@string/long_text_ex"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h6_dp_12"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imgReviewerAvatar"
+                android:src="@drawable/ic_doctor_blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvReviewerName"
+                android:textColor="#000000"
+                android:layout_marginStart="@dimen/h6_dp_12"
+                android:layout_gravity="center"
+                android:text="@string/top_docs"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

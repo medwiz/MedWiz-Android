@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/labFragments"
-        android:name="com.medwiz.medwiz.ui.patient.LabFragments"
+        android:name="com.medwiz.medwiz.patientsView.booking.patient.LabFragments"
         android:label="LabFragments" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.medwiz.medwiz.ui.patient.SettingsFragment"
+        android:name="com.medwiz.medwiz.patientsView.patientsUi.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/viewAllDoctorsFragment"
-        android:name="com.medwiz.medwiz.ui.patient.home.ViewAllDoctorsFragment"
+        android:name="com.medwiz.medwiz.patientsView.booking.patient.home.ViewAllDoctorsFragment"
         android:label="ViewAllDoctorsFragment" >
         <action
             android:id="@+id/action_viewAllDoctorsFragment_to_doctorDetails"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientHomeFragment"
-        android:name="com.medwiz.medwiz.ui.patient.home.PatientHomeFragment"
+        android:name="com.medwiz.medwiz.patientsView.booking.patient.home.PatientHomeFragment"
         android:label="PatientHomeFragment" >
         <action
             android:id="@+id/action_patientHomeFragment_to_viewAllDoctorsFragment"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorDetails"
-        android:name="com.medwiz.medwiz.ui.patient.doctorDetails.DoctorDetails"
+        android:name="com.medwiz.medwiz.patientsView.booking.doctorDetails.DoctorDetails"
         android:label="DoctorDetails" />
 
 </navigation>

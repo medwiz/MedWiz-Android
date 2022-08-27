@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.11481481481481481" />
         <entry key="app/src/main/res/layout/fragment_view_all_doctors.xml" value="0.16198933919270833" />
         <entry key="app/src/main/res/layout/health_type_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/review_single_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/select_account_fragment.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/single_doctor_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_lab_rcv_item.xml" value="0.34427083333333336" />

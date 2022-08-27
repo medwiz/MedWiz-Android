@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name="com.medwiz.medwiz.ui.lab.LabActivity"
+            android:name="com.medwiz.medwiz.LabView.ui.LabActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
-            android:name="com.medwiz.medwiz.ui.patient.main.PatientMainActivity"
+            android:name="com.medwiz.medwiz.patientsView.booking.patient.main.PatientMainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
@@ -23,7 +23,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.medwiz.medwiz.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

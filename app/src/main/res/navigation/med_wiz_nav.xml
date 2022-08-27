@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/selectAccountFragment"
-        android:name="com.medwiz.medwiz.ui.selectAccountType.SelectAccountFragment"
+        android:name="com.medwiz.medwiz.auth.SelectAccountFragment"
         android:label="SelectAccountFragment" >
         <action
             android:id="@+id/action_selectAccountFragment_to_loginFragment"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.medwiz.medwiz.ui.auth.login.LoginFragment"
+        android:name="com.medwiz.medwiz.auth.login.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_selectAccountFragment"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.medwiz.medwiz.ui.auth.signUp.SignUpFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.SignUpFragment"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_createPassword"
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/createPassword"
-        android:name="com.medwiz.medwiz.ui.auth.signUp.CreatePassword"
+        android:name="com.medwiz.medwiz.auth.signUp.CreatePassword"
         android:label="CreatePassword" >
         <action
             android:id="@+id/action_createPassword_to_loginFragment"
@@ -43,6 +43,6 @@
     </fragment>
     <fragment
         android:id="@+id/verificationFragment"
-        android:name="com.medwiz.medwiz.ui.verification.VerificationFragment"
+        android:name="com.medwiz.medwiz.main.VerificationFragment"
         android:label="VerificationFragment" />
 </navigation>

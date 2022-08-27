@@ -217,18 +217,18 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fab"
+        android:id="@+id/btBookAppoinment"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="end|bottom"
+        android:background="@drawable/confirm_btn"
         android:contentDescription="@string/book_appoinment"
-        android:text="@string/book_appoinment"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textSize="@dimen/h5_sp_14"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:background="@drawable/confirm_btn"/>
+        android:text="@string/book_appoinment"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/h5_sp_14" />
 
 </RelativeLayout>
