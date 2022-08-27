@@ -33,8 +33,6 @@ class DocHomeAdapter(private val context: Context,
 
     inner class PatientViewHolder(val binding: SinglePatientRcvItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(patientItem: Patient, position: Int){
-            binding.nameTextView.text = patientItem.firstName+" "+patientItem.lastName
-            binding.cityTextView.text = patientItem.city
             binding.layMain.setOnClickListener {
                // listener.onClickConsult(position,patientItem)
             }

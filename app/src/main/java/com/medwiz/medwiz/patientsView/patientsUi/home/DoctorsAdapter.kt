@@ -1,10 +1,11 @@
-package com.medwiz.medwiz.patientsView.booking.patient.home
+package com.medwiz.medwiz.patientsView.patientsUi.home
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleDoctorRcvItemBinding
+import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 
 class DoctorsAdapter(private val context: Context,

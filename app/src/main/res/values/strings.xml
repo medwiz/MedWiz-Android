@@ -74,4 +74,7 @@
     <string name="my_booking">My Bookings</string>
     <string name="upcoming">Upcoming</string>
     <string name="past">Past</string>
+    <string name="no_image">No Image</string>
+    <string name="canceled">Canceled</string>
+    <string name="appointments">Appointments</string>
 </resources>

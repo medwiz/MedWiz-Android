@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentVerificationBinding
-import com.medwiz.medwiz.ui.docotor.DoctorsActivity
+import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.LabView.ui.LabActivity
 import com.medwiz.medwiz.patientsView.booking.patient.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants

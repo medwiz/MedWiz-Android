@@ -1,7 +1,8 @@
-package com.medwiz.medwiz.ui.docotor
+package com.medwiz.medwiz.doctorsView.docotorUi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.medwiz.medwiz.R
@@ -22,5 +23,38 @@ class DoctorsActivity : AppCompatActivity() {
         binding.bottomDoctorBar.setupWithNavController(
             navHostFragment.navController
         )
+
+        navController
+            .addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.viewAllDoctorsFragment -> {
+                        hideBottomLayout()
+                    }
+                    R.id.doctorDetails -> {
+                        hideBottomLayout()
+                    }
+                    R.id.bookAppointmentFragment -> {
+                        hideBottomLayout()
+                    }
+                    R.id.paymentFragment -> {
+                        hideBottomLayout()
+                    }
+
+
+                    else -> showBottomLayout()
+                }
+            }
+
+
     }
+
+    private fun hideBottomLayout() {
+        binding.bottomDoctorBar.visibility = View.GONE
+    }
+    private fun showBottomLayout() {
+        binding.bottomDoctorBar.visibility  = View.VISIBLE
+    }
+
+
+
 }

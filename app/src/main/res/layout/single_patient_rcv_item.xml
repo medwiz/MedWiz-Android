@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="162dp"
         android:animateLayoutChanges="true"
         android:background="@color/white"
         android:id="@+id/layMain"
@@ -19,82 +20,124 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="6dp">
+            android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iconImageView"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_patient_blue" />
+                android:src="@drawable/ic_doc_avatar"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/iconImageView"
                 android:orientation="vertical"
                 android:layout_marginLeft="4dp"
                 android:layout_toRightOf="@+id/iconImageView">
                 <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvPatientName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:fontFamily="@font/como"
-                    android:text="Dr.Sandipak Ray"
-                    android:textColor="@color/blue"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="Joseph Brostito"
+                    android:layout_marginTop="@dimen/h3_dp_20"
+                    android:textColor="@color/textColor"
+                   android:textSize="@dimen/h5_sp_14"
+                    android:textStyle="bold"
+                    android:textFontWeight="400"
+                    android:lineHeight="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:lineSpacingExtra="2sp"
+                    android:translationY="-0.79sp"
+                    android:gravity="top"/>
                 <TextView
-                    android:id="@+id/tvGender"
+                    android:id="@+id/tvPatientGenderAndMobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/como"
-                    android:text="Male"
-                    android:textColor="@color/blue"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Male | 8010513971"
+                    android:textColor="@color/textColorGrey"
                     android:textSize="14sp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imgStatus"
+                    android:visibility="visible"
+                    android:src="@drawable/ic_completed_appointment"/>
                 <TextView
-                    android:id="@+id/tvAge"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvAppointmentDateAndTme"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_narrow"
-                    android:text="Age: 22"
-                    android:textColor="@color/blue"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="Appointment date and time"
+                    android:textColor="@color/textColorGrey"
                     android:textSize="14sp"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginTop="@dimen/h6_dp_12"
+                android:layout_marginStart="@dimen/h5_dp_16"
+                android:layout_marginEnd="@dimen/h4_dp_16"
+                android:gravity="center"
+                android:padding="2dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:src="@drawable/ic_clock_gray"/>
+
                 <TextView
-                    android:id="@+id/cityTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/como"
-                    android:text="Dharmanagar"
-                    android:textColor="@color/blue"
-                    android:textSize="14sp"/>
+                    android:id="@+id/tvDayAndDate"
+                    android:layout_marginStart="8dp"
+                    android:text="15 Aug Monday"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textFontWeight="400"
+                    android:lineHeight="21dp"
+                    android:textColor="@color/textColorGrey"
+                    android:fontFamily="@font/poppins_regular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="8:00am - 10:00pm"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textFontWeight="400"
+                    android:lineHeight="21dp"
+                    android:textColor="@color/textColorBlue"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/detailsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
-                android:fontFamily="@font/como"
-                android:text="Start"
-                android:textColor="@color/blue"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+
+
+
 
         </RelativeLayout>
     </LinearLayout>

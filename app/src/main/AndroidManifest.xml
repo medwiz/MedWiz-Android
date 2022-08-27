@@ -19,7 +19,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".ui.docotor.DoctorsActivity"
+            android:name=".doctorsView.docotorUi.DoctorsActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity

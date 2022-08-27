@@ -9,6 +9,7 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPatientHomeBinding
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
+import com.medwiz.medwiz.patientsView.patientsUi.home.DoctorsAdapter
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*

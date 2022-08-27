@@ -33,6 +33,9 @@ object UtilConstants {
 
     const val USERNAME = "username"
     const val PASSWORD ="password"
+    const val TYPE_UPCOMING="upcoming"
+    const val TYPE_COMPLETED="completed"
+    const val TYPE_CANCELLED="cancelled"
     const val GRANT_TYPE="grant_type"
     const val CLIENT_ID="client_id"
     const val CLIENT_SECRET="client_secret"
