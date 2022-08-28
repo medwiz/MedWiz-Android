@@ -77,4 +77,11 @@
     <string name="no_image">No Image</string>
     <string name="canceled">Canceled</string>
     <string name="appointments">Appointments</string>
+    <string name="add_prescription">Add Prescription</string>
+    <string name="medicine">Medicines</string>
+    <string name="test">Test</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="medicine_name">Medicine Name</string>
+    <string name="medicine_no_of_days">No of days</string>
+    <string name="no_of_times">No of times</string>
 </resources>

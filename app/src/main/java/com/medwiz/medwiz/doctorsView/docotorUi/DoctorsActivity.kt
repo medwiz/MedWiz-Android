@@ -27,9 +27,6 @@ class DoctorsActivity : AppCompatActivity() {
         navController
             .addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.viewAllDoctorsFragment -> {
-                        hideBottomLayout()
-                    }
                     R.id.doctorDetails -> {
                         hideBottomLayout()
                     }

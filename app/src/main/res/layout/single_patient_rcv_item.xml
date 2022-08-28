@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imgStatus"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:src="@drawable/ic_completed_appointment"/>
                 <TextView
                     android:id="@+id/tvAppointmentDateAndTme"

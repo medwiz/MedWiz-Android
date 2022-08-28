@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/h6_dp_12">
+
+    <TextView
+        android:id="@+id/tvMedicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/add_medicine"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvMedicineName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/medicine_name"
+        android:textColor="@color/textColorGrey" />
+
+    <EditText
+        android:id="@+id/etMedicineName"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/layout_rounded_bg"
+        android:fontFamily="@font/poppins_regular"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h6_dp_12">
+
+        <LinearLayout
+            android:id="@+id/liNoOfDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNoOfDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h6_dp_12"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/medicine_no_of_days"
+                android:textColor="@color/textColorGrey" />
+
+            <EditText
+                android:id="@+id/etNoOfDays"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:fontFamily="@font/poppins_regular"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/h2_dp_24"
+            android:layout_toEndOf="@+id/liNoOfDays"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNoOfTimes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h6_dp_12"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/no_of_times"
+                android:textColor="@color/textColorGrey" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:id="@+id/btMorning"
+                    android:layout_width="80dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:gravity="center"
+                    android:textOff="Select"
+                    android:textOn="Morning"/>
+
+                <ToggleButton
+                    android:id="@+id/btAfterNoon"
+                    android:layout_width="80dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:gravity="center"
+                    android:textOff="Select"
+                    android:textOn="Noon"/>
+
+                <ToggleButton
+                    android:id="@+id/btNight"
+                    android:layout_width="80dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:gravity="center"
+                    android:textOn="Night"
+                    android:textOff="Select" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgAddMedicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h2_dp_24"
+        android:src="@drawable/ic_add" />
+</LinearLayout>

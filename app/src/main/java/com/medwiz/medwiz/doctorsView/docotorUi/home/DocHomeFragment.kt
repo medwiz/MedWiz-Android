@@ -18,7 +18,7 @@ import com.medwiz.medwiz.ui.docotor.home.DocHomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), HomeScreenListener {
+class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerListener {
     private val tabNameArray = arrayOf(
         "Upcoming",
         "Completed",
@@ -32,7 +32,7 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), HomeScreenLis
         val viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
 
-        val adapter = ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle)
+        val adapter = ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle,this)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -41,11 +41,9 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), HomeScreenLis
 
     }
 
-    override fun onClickConsult(position: Int, doctor: Doctors) {
-        val i=0
+    override fun onClickFragment(position: Int) {
+        val i=position
     }
-
-
 
 
 }

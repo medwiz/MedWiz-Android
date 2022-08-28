@@ -12,5 +12,6 @@ class DocAppointmentFragment:Fragment(R.layout.fragment_doc_appointment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDocAppointmentBinding.bind(view)
+
     }
 }

@@ -11,23 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name="com.medwiz.medwiz.LabView.ui.LabActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false" />
+            android:name=".doctorsView.docotorUi.consult.AddPrescriptionsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name="com.medwiz.medwiz.patientsView.booking.patient.main.PatientMainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false" />
+            android:name=".LabView.ui.LabActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".patientsView.booking.patient.main.PatientMainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".doctorsView.docotorUi.DoctorsActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name="com.medwiz.medwiz.main.MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

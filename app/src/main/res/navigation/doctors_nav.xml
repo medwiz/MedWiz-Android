@@ -20,4 +20,8 @@
         android:id="@+id/docNotificationFragment"
         android:name="com.medwiz.medwiz.doctorsView.docotorUi.notification.DocNotificationFragment"
         android:label="DocNotificationFragment" />
+    <fragment
+        android:id="@+id/upcomingFragment"
+        android:name="com.medwiz.medwiz.doctorsView.docotorUi.UpcomingFragment"
+        android:label="UpcomingFragment" />
 </navigation>

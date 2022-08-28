@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doctorsView.docotorUi.consult.AddPrescriptionsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgBackLinearLayout"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/h6_dp_12"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitle"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/h6_dp_12"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:text="@string/add_prescription"/>
+    </LinearLayout>
+
+
+
+    <include
+        android:id="@+id/layMainInclude"
+        layout="@layout/single_patient_rcv_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackLinearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imgAddPrescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_prescription"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layMainInclude"
+        />
+
+    <TextView
+        android:id="@+id/tvMedicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medicine"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/h6_dp_12"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAddPrescription"
+        />
+    <ImageView
+        android:id="@+id/imgMedicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_medicine"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMedicine"
+        />
+
+
+    <TextView
+        android:id="@+id/tvTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/h6_dp_12"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMedicine"
+        />
+    <ImageView
+        android:id="@+id/imgTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_test"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/h6_dp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTest"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

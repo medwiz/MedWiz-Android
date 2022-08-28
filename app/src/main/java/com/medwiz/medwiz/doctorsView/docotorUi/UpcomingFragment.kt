@@ -1,12 +1,15 @@
 package com.medwiz.medwiz.doctorsView.docotorUi
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDocHomeLayoutBinding
 import com.medwiz.medwiz.databinding.FragmentUpcomingBinding
+import com.medwiz.medwiz.doctorsView.docotorUi.consult.AddPrescriptionsActivity
 import com.medwiz.medwiz.doctorsView.docotorUi.home.PatientAdapter
 import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
@@ -42,6 +45,9 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), HomeScreenListener 
     }
 
     override fun onClickConsult(position: Int, doctor: Doctors) {
-
+        val intent = Intent (requireActivity(), AddPrescriptionsActivity::class.java)
+        requireActivity().startActivity(intent)
+        //requireActivity().finish()
     }
+
 }
