@@ -6,7 +6,7 @@
     android:padding="@dimen/h6_dp_12">
 
     <TextView
-        android:id="@+id/tvMedicine"
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h6_dp_12"
@@ -15,12 +15,11 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/tvMedicineName"
+        android:id="@+id/tvTypeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h6_dp_12"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/medicine_name"
         android:textColor="@color/textColorGrey" />
 
     <EditText
@@ -38,6 +37,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/rlMedicine"
+        android:visibility="visible"
         android:layout_marginTop="@dimen/h6_dp_12">
 
         <LinearLayout
@@ -94,35 +95,34 @@
 
                 <ToggleButton
                     android:id="@+id/btMorning"
-                    android:layout_width="80dp"
+                    android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
                     android:background="@drawable/layout_rounded_bg"
                     android:gravity="center"
-                    android:textOff="Select"
-                    android:textOn="Morning"/>
+                    android:textOff="-"
+                    android:textOn="M"/>
 
                 <ToggleButton
                     android:id="@+id/btAfterNoon"
-                    android:layout_width="80dp"
+                    android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/layout_rounded_bg"
                     android:gravity="center"
-                    android:textOff="Select"
-                    android:textOn="Noon"/>
+                    android:textOff="-"
+                    android:textOn="A"/>
 
                 <ToggleButton
                     android:id="@+id/btNight"
-                    android:layout_width="80dp"
+                    android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/layout_rounded_bg"
-                    android:gravity="center"
-                    android:textOn="Night"
-                    android:textOff="Select" />
+                    android:textOn="N"
+                    android:textOff="-" />
 
             </LinearLayout>
         </LinearLayout>

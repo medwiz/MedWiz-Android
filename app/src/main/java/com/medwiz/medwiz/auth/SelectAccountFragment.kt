@@ -20,31 +20,26 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         binding = SelectAccountFragmentBinding.bind(view)
 
         binding.rlDoctor.setOnClickListener{
-//            val bundle = Bundle()
-//            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_DOCTOR)
-//            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
+            val bundle = Bundle()
+            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_DOCTOR)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
 
-            val intent = Intent (requireActivity(), DoctorsActivity::class.java)
-            requireActivity().startActivity(intent)
-            requireActivity().finish()
+
         }
 
         binding.rlPatient.setOnClickListener{
-//            val bundle = Bundle()
-//            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_PATIENT)
-//            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
-            val intent = Intent (requireActivity(), PatientMainActivity::class.java)
-            requireActivity().startActivity(intent)
-            requireActivity().finish()
+            val bundle = Bundle()
+            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_PATIENT)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
+
+
         }
         binding.rlLab.setOnClickListener{
-//            val bundle = Bundle()
-//            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_LAB)
-//            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
+            val bundle = Bundle()
+            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_LAB)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
 
-            val intent = Intent (requireActivity(), LabActivity::class.java)
-            requireActivity().startActivity(intent)
-            requireActivity().finish()
+
         }
     }
 }

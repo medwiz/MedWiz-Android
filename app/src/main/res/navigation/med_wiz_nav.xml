@@ -43,6 +43,6 @@
     </fragment>
     <fragment
         android:id="@+id/verificationFragment"
-        android:name="com.medwiz.medwiz.main.VerificationFragment"
+        android:name="com.medwiz.medwiz.auth.login.VerificationFragment"
         android:label="VerificationFragment" />
 </navigation>

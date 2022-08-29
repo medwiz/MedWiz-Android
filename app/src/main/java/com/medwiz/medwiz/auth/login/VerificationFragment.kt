@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.main
+package com.medwiz.medwiz.auth.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -23,6 +23,7 @@ class VerificationFragment:Fragment(R.layout.fragment_verification) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentVerificationBinding.bind(view)
         phoneNumber=arguments?.getString(MedWizConstants.AppValue.PHONE_NUMBER)!!
+        accountType = arguments?.getString(MedWizConstants.Auth.ACCOUNT_TYPE)!!
         binding.tvVerificationNumber.text=phoneNumber
         binding.imgBack.setOnClickListener{
 

@@ -12,11 +12,12 @@
         <entry key="app/src/main/res/drawable/layout_rounded_bg.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/oval_bg.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/rounded_bg_black_border.xml" value="0.1455" />
-        <entry key="app/src/main/res/layout/activity_add_prescriptions.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_add_prescriptions.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_doctors.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_lab.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/activity_patient.xml" value="0.16742654508611957" />
+        <entry key="app/src/main/res/layout/activity_send_prescription.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_medicine_popup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/booking_date_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/enter_otp_popup.xml" value="0.3451086956521739" />
@@ -48,6 +49,7 @@
         <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.11481481481481481" />
         <entry key="app/src/main/res/layout/fragment_view_all_doctors.xml" value="0.16198933919270833" />
         <entry key="app/src/main/res/layout/health_type_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/prescription_single_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/review_single_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/select_account_fragment.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/select_date_single_layout.xml" value="0.3451086956521739" />

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
 }
 
@@ -91,6 +92,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation "com.google.android.material:material:1.7.0-alpha03"
+
+
 
 
 
