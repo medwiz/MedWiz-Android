@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".doctorsView.docotorUi.consult.AddPrescriptionsActivity">
+    tools:context=".doctorsView.docotorUi.consult.FragmentAddPrescriptions">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/frameLayout"
-    tools:context=".doctorsView.docotorUi.consult.AddPrescriptionsActivity">
+    tools:context=".doctorsView.docotorUi.consult.FragmentAddPrescriptions">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -129,8 +129,6 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_bold"
                 android:textSize="@dimen/h5_sp_14"
-                android:lineSpacingExtra="15sp"
-                android:translationY="-7.5sp"
                 />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -142,8 +140,6 @@
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="@dimen/h5_sp_14"
-                android:lineSpacingExtra="15sp"
-                android:translationY="-7.5sp"
                 android:background="@drawable/ic_rectangle"
                 />
 

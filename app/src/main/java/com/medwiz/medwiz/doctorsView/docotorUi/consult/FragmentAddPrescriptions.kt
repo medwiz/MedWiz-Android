@@ -6,27 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.databinding.ActivityAddPrescriptionsBinding
 import com.medwiz.medwiz.databinding.AddMedicinePopupBinding
+import com.medwiz.medwiz.databinding.FragmentAddPrescriptionBinding
 import com.medwiz.medwiz.doctorsView.model.Medicine
 import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class AddPrescriptionsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAddPrescriptionsBinding
+class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
+    private lateinit var binding: FragmentAddPrescriptionBinding
     private var adapter: PrescriptionAdapter?=null
     private var medicineList=ArrayList<Medicine>()
     private var labTestList=ArrayList<Medicine>()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAddPrescriptionsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentAddPrescriptionBinding.bind(view)
+
         binding.imgBack.setOnClickListener{
-            finish()
+
         }
         binding.imgAddPrescription.setOnClickListener{
             hideViews()
@@ -46,16 +49,10 @@ class AddPrescriptionsActivity : AppCompatActivity() {
 
         }
         binding.btAdd.setOnClickListener {
-            val intent = Intent (this, SendPrescriptionActivity::class.java)
-            val bundle = Bundle()
-            bundle.putParcelableArrayList("med",medicineList)
-            bundle.putParcelableArrayList("lab",labTestList)
-            intent.putExtra("myBundle",bundle)
-            startActivity(intent)
-
-
-
-
+            if(medicineList.size>0 ||labTestList.size>0) {
+                (activity as PrescriptionMainActivity).setPrescriptionData(medicineList,labTestList)
+                (activity as PrescriptionMainActivity).openSendPrescription()
+            }
         }
 
 
@@ -75,8 +72,8 @@ class AddPrescriptionsActivity : AppCompatActivity() {
 
     private fun showAlertFilter(type:String) {
         lateinit var mAlert : AlertDialog
-        val alertBinding = AddMedicinePopupBinding.inflate(LayoutInflater.from(this))
-        val builder = AlertDialog.Builder(this)
+        val alertBinding = AddMedicinePopupBinding.inflate(LayoutInflater.from(requireContext()))
+        val builder = AlertDialog.Builder(requireContext())
         mAlert = builder.setView(alertBinding.root)
             .setCancelable(false)
             .create()
@@ -129,14 +126,14 @@ class AddPrescriptionsActivity : AppCompatActivity() {
                 medicine.isNight=true
             }
             medicineList.add(medicine)
-            adapter = PrescriptionAdapter(this,getString(R.string.add_medicine_title))
+            adapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title))
             binding.rcvMedicine.adapter = adapter
-            binding.rcvMedicine.layoutManager = LinearLayoutManager(this)
+            binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
 
             createList(mAlert,medicineList)
 
         }else{
-           MedWizUtils.showErrorPopup(this,"Please Add values")
+           MedWizUtils.showErrorPopup(requireContext(),"Please Add values")
         }
     }
 
@@ -146,14 +143,14 @@ class AddPrescriptionsActivity : AppCompatActivity() {
             val labTest=Medicine((medicineList.size+1),"",alertBinding.etMedicineName.text.toString(),0,
                 false,false,false)
             labTestList.add(labTest)
-            adapter = PrescriptionAdapter(this,getString(R.string.add_test_title))
+            adapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title))
             binding.rcvTest.adapter = adapter
-            binding.rcvTest.layoutManager = LinearLayoutManager(this)
+            binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
 
             createList(mAlert,labTestList)
 
         }else{
-            MedWizUtils.showErrorPopup(this,"Please Add values")
+            MedWizUtils.showErrorPopup(requireContext(),"Please Add values")
         }
     }
 

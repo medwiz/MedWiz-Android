@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
@@ -101,7 +101,7 @@
                         android:id="@+id/tvPrescriptionId"
                         android:textColor="@color/black"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Prescription No: 123457677"/>
+                        android:text="Id: 123457677"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
                 android:id="@+id/tvContactUs"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Dr.Prithwiraj Nath"
+                android:text="contact us: 8010513971"
                 android:layout_marginStart="@dimen/h5_dp_14"
                 android:layout_marginTop="@dimen/h6_dp_12"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -183,13 +183,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvEmail"
-                android:text="Specilization"
+                android:text="Email id: hello@medwiz.com"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="@dimen/h5_dp_14"
                 android:layout_marginTop="@dimen/h6_dp_12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view1"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvContactUs"/>
 
 
 
@@ -209,14 +209,12 @@
                     android:layout_height="50dp"
                     android:id="@+id/tvPreview"
                     android:layout_weight="1"
-                    android:text="@string/preview"
+                    android:text="@string/download_pdf"
                     android:textColor="@color/blue"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="@dimen/h5_sp_14"
-                    android:lineSpacingExtra="15sp"
-                    android:translationY="-7.5sp"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -228,8 +226,6 @@
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="@dimen/h5_sp_14"
-                    android:lineSpacingExtra="15sp"
-                    android:translationY="-7.5sp"
                     android:background="@drawable/ic_rectangle"
                     />
 
