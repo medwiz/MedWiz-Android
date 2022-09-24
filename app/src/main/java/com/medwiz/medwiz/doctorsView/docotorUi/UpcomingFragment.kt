@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentUpcomingBinding
@@ -44,7 +45,9 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), HomeScreenListener 
     override fun onClickConsult(position: Int, doctor: Doctors) {
         val intent = Intent (requireActivity(), PrescriptionMainActivity::class.java)
         requireActivity().startActivity(intent)
-        //requireActivity().finish()
+        requireActivity().finish()
+
+
     }
 
 }

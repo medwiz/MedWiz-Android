@@ -24,7 +24,7 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         medicineList =  (activity as PrescriptionMainActivity).getMedicineList()
         labTestList= (activity as PrescriptionMainActivity).getTestList()
         binding.imgBack.setOnClickListener{
-
+             goBack()
         }
         binding.btSend.setOnClickListener{
         }
@@ -42,6 +42,13 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         binding.rcvTest.adapter = labAdapter
         binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
         labAdapter!!.setData(labTestList)
+    }
+
+    private fun goBack(){
+
+        val fm=requireActivity().supportFragmentManager
+        fm.popBackStack()
+        (activity as PrescriptionMainActivity).openAddPrescriptionFragment()
     }
 
 

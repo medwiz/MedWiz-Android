@@ -24,10 +24,16 @@ class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview) {
         labTestList= (activity as PrescriptionMainActivity).getTestList()
         createMedicineAdapter()
         createLabAdapter()
+        binding.imgBack.setOnClickListener {
+            goBack()
+        }
 
 
 
+    }
 
+    private fun goBack(){
+        (activity as PrescriptionMainActivity).openSendPrescription()
     }
 
     private fun createMedicineAdapter(){

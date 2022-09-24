@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="addPrescriptionsFragment">
+                  <entry key="blankFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-1296" />
-                            <option name="y" value="-782" />
+                            <option name="x" value="-1854" />
+                            <option name="y" value="-840" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -63,6 +63,18 @@
                           <Point>
                             <option name="x" value="-1031" />
                             <option name="y" value="-449" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentSendPrescription">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1854" />
+                            <option name="y" value="-840" />
                           </Point>
                         </option>
                       </LayoutPositions>

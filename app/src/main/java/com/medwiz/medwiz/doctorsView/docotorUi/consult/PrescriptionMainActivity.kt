@@ -2,7 +2,7 @@ package com.medwiz.medwiz.doctorsView.docotorUi.consult
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.transaction
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.ActivityPrescriptionMainBinding
 import com.medwiz.medwiz.doctorsView.model.Medicine
@@ -21,13 +21,14 @@ class PrescriptionMainActivity : AppCompatActivity() {
         openAddPrescriptionFragment()
     }
 
-    private fun openAddPrescriptionFragment() {
+     fun openAddPrescriptionFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view, FragmentAddPrescriptions()).commit()
 
     }
 
      fun openPreviewPrescription() {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view, PreviewPrescriptionFragment()).commit()
+         
 
     }
 
@@ -48,6 +49,16 @@ class PrescriptionMainActivity : AppCompatActivity() {
 
     fun getTestList():ArrayList<Medicine>{
         return labTestList
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+           // Log.i(TAG, "=============onBackPressed - Popping backstack====")
+            supportFragmentManager.popBackStack()
+        } else {
+           // Log.i(TAG, "=============onBackPressed called because nothing on backstack====")
+            super.onBackPressed()
+        }
     }
 
 

@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
     android:padding="@dimen/h6_dp_12"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"
+   android:fillViewport="true"
     android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
             android:padding="8dp"
             android:paddingBottom="32dp">
@@ -186,52 +189,50 @@
                 android:text="Email id: hello@medwiz.com"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="@dimen/h5_dp_14"
-                android:layout_marginTop="@dimen/h6_dp_12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvContactUs"/>
 
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_marginStart="@dimen/h6_dp_12"
-                android:layout_marginEnd="@dimen/h6_dp_12"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/tvPreview"
-                    android:layout_weight="1"
-                    android:text="@string/download_pdf"
-                    android:textColor="@color/blue"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textSize="@dimen/h5_sp_14"
-                    />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/btSend"
-                    android:layout_weight="1"
-                    android:text="@string/send_prescription"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:textSize="@dimen/h5_sp_14"
-                    android:background="@drawable/ic_rectangle"
-                    />
-
-            </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:id="@+id/tvPreview"
+                android:layout_weight="1"
+                android:text="@string/download_pdf"
+                android:textColor="@color/blue"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/h5_sp_14"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:id="@+id/btSend"
+                android:layout_weight="1"
+                android:text="@string/send_prescription"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/h5_sp_14"
+                android:background="@drawable/ic_rectangle"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
 
 
 

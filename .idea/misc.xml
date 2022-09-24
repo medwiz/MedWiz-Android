@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../../layout/custom_preview.xml" value="0.26944444444444443" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_clock_gray.xml" value="0.1455" />

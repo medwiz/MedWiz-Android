@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     private lateinit var binding: FragmentAddPrescriptionBinding
-    private var adapter: PrescriptionAdapter?=null
+    private var medicineAdapter: PrescriptionAdapter?=null
+    private var labTestAdapter: LabTestAdapter?=null
     private var medicineList=ArrayList<Medicine>()
     private var labTestList=ArrayList<Medicine>()
 
@@ -27,9 +28,10 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddPrescriptionBinding.bind(view)
-
+        medicineList= (activity as PrescriptionMainActivity).getMedicineList()
+        labTestList= (activity as PrescriptionMainActivity).getTestList()
         binding.imgBack.setOnClickListener{
-
+              goBack()
         }
         binding.imgAddPrescription.setOnClickListener{
             hideViews()
@@ -38,13 +40,13 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
 
         binding.imgMedicine.setOnClickListener {
 
-            adapter=null
+            medicineAdapter=null
              showAlertFilter(getString(R.string.add_medicine_title))
 
         }
 
         binding.imgTest.setOnClickListener {
-            adapter=null
+            labTestAdapter=null
             showAlertFilter(getString(R.string.add_test_title))
 
         }
@@ -54,9 +56,30 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
                 (activity as PrescriptionMainActivity).openSendPrescription()
             }
         }
+        if(medicineList.isNotEmpty()){
+            hideViews()
+            unHidePrescriptionView()
+            createMedicineAdapter()
+            medicineAdapter!!.setData(medicineList)
+        }
+        if(labTestList.isNotEmpty()){
+            createLabtestAdapter()
+            labTestAdapter!!.setData(labTestList)
+        }
 
 
+    }
 
+    private fun createMedicineAdapter() {
+        medicineAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title))
+        binding.rcvMedicine.adapter = medicineAdapter
+        binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
+
+    }
+    private fun createLabtestAdapter() {
+        labTestAdapter = LabTestAdapter(requireContext(),getString(R.string.add_test_title))
+        binding.rcvTest.adapter = labTestAdapter
+        binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun unHidePrescriptionView() {
@@ -126,11 +149,8 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
                 medicine.isNight=true
             }
             medicineList.add(medicine)
-            adapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title))
-            binding.rcvMedicine.adapter = adapter
-            binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
-
-            createList(mAlert,medicineList)
+            createMedicineAdapter()
+            createMedicineList(mAlert,medicineList)
 
         }else{
            MedWizUtils.showErrorPopup(requireContext(),"Please Add values")
@@ -143,20 +163,30 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
             val labTest=Medicine((medicineList.size+1),"",alertBinding.etMedicineName.text.toString(),0,
                 false,false,false)
             labTestList.add(labTest)
-            adapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title))
-            binding.rcvTest.adapter = adapter
-            binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
+            createLabtestAdapter()
 
-            createList(mAlert,labTestList)
+            createLabList(mAlert,labTestList)
 
         }else{
             MedWizUtils.showErrorPopup(requireContext(),"Please Add values")
         }
     }
 
-    private fun createList(mAlert:AlertDialog,list:ArrayList<Medicine>) {
-        mAlert.dismiss()
-        adapter!!.setData(list)
 
+
+    private fun createMedicineList(mAlert:AlertDialog,list:ArrayList<Medicine>) {
+        mAlert.dismiss()
+        medicineAdapter!!.setData(list)
+
+    }
+
+    private fun createLabList(mAlert:AlertDialog,list:ArrayList<Medicine>) {
+        mAlert.dismiss()
+        labTestAdapter!!.setData(list)
+
+    }
+
+    private fun goBack(){
+        requireActivity().finish()
     }
 }

@@ -94,4 +94,6 @@
     <string name="send_prescription">Send Prescription</string>
     <string name="preview">Preview</string>
     <string name="download_pdf">Download PDF</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
