@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/h3_sp_20"
-        android:layout_marginTop="209dp"
+        android:layout_marginTop="120dp"
         android:text="@string/login"
         android:lineSpacingExtra="1sp"
         android:translationY="-0.27sp"
@@ -46,13 +46,13 @@
         android:id="@+id/tvPhoneTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/phone_number"
+        android:text="@string/user_name"
         android:textSize="@dimen/h5_sp_14"
         android:lineSpacingExtra="4sp"
         android:translationY="-1.79sp"
         android:textColor="#303245"
         android:gravity="start"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:textFontWeight="400"
         android:lineHeight="@dimen/h3_dp_20"
         android:fontFamily="@font/poppins_regular"
@@ -64,19 +64,54 @@
 
 
     <EditText
-        android:id="@+id/etPhoneNumber"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:background="@drawable/layout_rounded_bg"
-        android:inputType="phone"
+        android:inputType="textEmailAddress"
         android:padding="5dp"
-        android:maxLength="10"
+        android:maxLength="50"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneTitle" />
+
+    <TextView
+        android:id="@+id/tvPasswordTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.79sp"
+        android:textColor="#303245"
+        android:gravity="start"
+        android:layout_marginTop="20dp"
+        android:textFontWeight="400"
+        android:lineHeight="@dimen/h3_dp_20"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/layout_rounded_bg"
+        android:inputType="textWebPassword"
+        android:padding="5dp"
+
+        android:maxLength="10"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPasswordTitle" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
@@ -92,7 +127,7 @@
         android:background="@drawable/ic_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         />
 
     <LinearLayout

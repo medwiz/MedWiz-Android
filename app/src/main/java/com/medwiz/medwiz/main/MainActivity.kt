@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.ActivityMainBinding
 import com.medwiz.medwiz.main.mainViewModels.MainViewModel
+import com.medwiz.medwiz.util.CustomLoaderDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
-
+    private var mCustomLoader: CustomLoaderDialog? = null
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBottomLayout() {
         // binding.botomNavView.visibility = View.VISIBLE
+    }
+
+    fun showLoading() {
+        if (mCustomLoader?.window != null) {
+            (mCustomLoader?.window)!!.setBackgroundDrawableResource(android.R.color.transparent)
+            mCustomLoader?.show()
+        }
+    }
+
+    fun hideLoading() {
+        if (mCustomLoader != null) mCustomLoader?.cancel()
     }
 
 }

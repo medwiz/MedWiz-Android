@@ -96,4 +96,15 @@
     <string name="download_pdf">Download PDF</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Sign up</string>
+    <string name="signup_title">Please enter your detail to sign up and \ncreate an account</string>
+    <string name="pin_code">Pincode/Locality</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="user_name">Username</string>
+    <string name="paasword_length_error">Minimum password length should be 6 !</string>
+    <string name="invalid_username">Username field cannot be left blank!</string>
+    <string name="invalid_password">Password field cannot be left blank!</string>
+    <string name="password_error">Please enter one capital latter, small letter and number for password!</string>
+    <string name="something_went_wrong">Something went wrong !</string>
+    <string name="INVALID_USER_CREDENTIALS">Invalid username or password</string>
 </resources>

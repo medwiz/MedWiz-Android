@@ -4,6 +4,7 @@ object UtilConstants {
 
     const val fileName = "medwizFile"
     const val name = "userName"
+    const val unauthorized="Unauthorized"
     const val loggedin = "loggedin"
     const val userId = "userId"
     const val userImage = "profilePic"
@@ -11,10 +12,10 @@ object UtilConstants {
     const val refreshToken = "medwizRefreshToken"
     const val nearbyDocs="NEAR_BY_DOCS"
     const val nearbyDocsValue=10
-    const val baseurl = "https://eto-api-dev.azure-api.net/"
+    const val baseurl = "http://10.0.2.2:8080/api/v1/"
 
     const val register = "/auth/register/"
-    const val login = "identity-int/api/caritag/Users/Login"
+    const val login = "auth/login"
     const val refresh = "identity-int/api/caritag/protocol/openid-connect/token"
 
     const val trending = "/api/posts/?ordering=likes&limit=6"
