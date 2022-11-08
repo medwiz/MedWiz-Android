@@ -3,20 +3,33 @@ package com.medwiz.medwiz.doctorsView.docotorUi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
+import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.ActivityDoctorsBinding
 import com.medwiz.medwiz.databinding.ActivityPatientBinding
+import com.medwiz.medwiz.main.DefaultFragmentFactory
+import com.medwiz.medwiz.util.CustomLoaderDialog
+import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DoctorsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDoctorsBinding
+    private var userDetails:LoginResponse?=null
+    @Inject
+    lateinit var fragmentFactory: DefaultFragmentFactory
+    private var mCustomLoader: CustomLoaderDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_doctor_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
@@ -50,6 +63,16 @@ class DoctorsActivity : AppCompatActivity() {
     }
     private fun showBottomLayout() {
         binding.bottomDoctorBar.visibility  = View.VISIBLE
+    }
+    fun showLoading() {
+        if (mCustomLoader?.window != null) {
+            (mCustomLoader?.window)!!.setBackgroundDrawableResource(android.R.color.transparent)
+            mCustomLoader?.show()
+        }
+    }
+
+    fun hideLoading() {
+        if (mCustomLoader != null) mCustomLoader?.cancel()
     }
 
 

@@ -63,10 +63,10 @@
 
 
             <TextView
-                android:id="@+id/tvNameTitle"
+                android:id="@+id/tvFNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/name"
+                android:text="@string/first_name"
                 android:textSize="@dimen/h5_sp_14"
                 android:lineSpacingExtra="4sp"
                 android:translationY="-1.79sp"
@@ -80,11 +80,11 @@
                 />
 
             <EditText
-                android:id="@+id/etName"
+                android:id="@+id/etFName"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:background="@drawable/layout_rounded_bg"
-                android:inputType="phone"
+                android:inputType="textPersonName"
                 android:padding="5dp"
                 android:maxLength="10"
                 android:fontFamily="@font/poppins_regular"
@@ -92,8 +92,43 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNameTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvFNameTitle"
               />
+
+
+            <TextView
+                android:id="@+id/tvLNameTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/last_name"
+                android:textSize="@dimen/h5_sp_14"
+                android:lineSpacingExtra="4sp"
+                android:translationY="-1.79sp"
+                android:textColor="#303245"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/h5_dp_14"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFName"
+                />
+
+
+            <EditText
+                android:id="@+id/etLName"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:maxLength="10"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLNameTitle"
+                />
 
             <TextView
                 android:id="@+id/tvPhoneTitle"
@@ -109,7 +144,7 @@
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etName"
+                app:layout_constraintTop_toBottomOf="@+id/etLName"
                 />
 
             <EditText
@@ -150,9 +185,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:background="@drawable/layout_rounded_bg"
-                android:inputType="phone"
+                android:inputType="textEmailAddress"
                 android:padding="5dp"
-                android:maxLength="10"
+                android:maxLength="40"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -191,11 +226,8 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPincode"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/tvPincode"/>
 
-
-          
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btNextStep"

@@ -18,7 +18,6 @@
         android:layout_marginTop="@dimen/h4_dp_16"
         android:layout_marginEnd="@dimen/h4_dp_16"
         android:lineHeight="36sp"
-        android:text="Hi Dr.Prithwi"
         android:textColor="#303245"
         android:textFontWeight="700"
         android:textSize="@dimen/h3_sp_20"

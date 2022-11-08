@@ -9,7 +9,7 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentVerificationBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.LabView.ui.LabActivity
-import com.medwiz.medwiz.patientsView.booking.patient.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants
 import dagger.hilt.android.AndroidEntryPoint
 

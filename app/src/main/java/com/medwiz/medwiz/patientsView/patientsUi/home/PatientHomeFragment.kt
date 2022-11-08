@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentPatientHomeBinding
+import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
 import com.medwiz.medwiz.patientsView.patientsUi.home.DoctorsAdapter
+import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -18,11 +21,14 @@ import java.util.*
 class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenListener {
     private var adapter: DoctorsAdapter?=null
     private var healthTypeAdapter:HealthTypeAdapter?=null
+    private var userDetails: LoginResponse?=null
     private lateinit var binding: FragmentPatientHomeBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPatientHomeBinding.bind(view)
-
+        this.userDetails=(activity as PatientMainActivity).getUserDetails()
+        val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
+        binding.tvName.text= name
         val d= Doctors("1","Dr Sandipak",
             "Ray","","","","","","Dharnamanagar",
             "","")

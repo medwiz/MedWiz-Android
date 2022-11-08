@@ -22,7 +22,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".patientsView.booking.patient.main.PatientMainActivity"
+            android:name=".patientsView.patientsUi.main.PatientMainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity

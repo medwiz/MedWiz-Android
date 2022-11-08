@@ -1,25 +1,24 @@
-package com.medwiz.medwiz.data.reponse
+package com.medwiz.medwiz.model
 
-import android.os.Parcel
 import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class LoginResponse(
+data class RegisterRequest(
     var address: String,
+    var age: String,
     var credit: String,
     var email: String,
-    var mobile: String,
     var firstname: String,
-    var lastname:String,
+    var lastname: String,
+    var mobile: String,
+    var password: String,
     var pinCode: String,
-    var token: String,
-    var id: Long,
     var userType: String
-):Parcelable{
+): Parcelable {
     constructor() : this("", "",
         "", "", "",
         "", "", "",
-        0, ""
+        "", ""
     )
 }

@@ -1,11 +1,21 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
-
+    const val address: String="address"
+    const val age: String="age"
+    const val credit: String="credit"
+    const val email: String="email"
+    const val firstname: String="firstname"
+    const val lastname: String="lastname"
+    const val mobile: String="mobile"
+    const val password: String="password"
+    const val pinCode: String="pinCode"
+    const val userType: String="userType"
+    val request: String="request"
     const val fileName = "medwizFile"
     const val name = "userName"
     const val unauthorized="Unauthorized"
-    const val loggedin = "loggedin"
+    const val login_response = "loginResponse"
     const val userId = "userId"
     const val userImage = "profilePic"
     const val accessToken = "medwizAccessToken"
@@ -14,8 +24,10 @@ object UtilConstants {
     const val nearbyDocsValue=10
     const val baseurl = "http://10.0.2.2:8080/api/v1/"
 
-    const val register = "/auth/register/"
+    const val register = "auth/register"
     const val login = "auth/login"
+    const val getUserById="user"
+    const val doctor="doctor/"
     const val refresh = "identity-int/api/caritag/protocol/openid-connect/token"
 
     const val trending = "/api/posts/?ordering=likes&limit=6"

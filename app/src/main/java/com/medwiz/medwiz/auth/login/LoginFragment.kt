@@ -10,10 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.LabView.ui.LabActivity
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
+import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentLoginBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.main.MainActivity
-import com.medwiz.medwiz.patientsView.booking.patient.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
@@ -53,8 +54,12 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                 }
 
                 is Resource.Success->{
-
-                    goToNextScreen()
+                   accountType=it.data!!.userType
+                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,it.data.token,true)
+                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,it.data.id.toString(),true)
+                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.data.email,true)
+                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.data.userType,true)
+                    goToNextScreen(it.data)
 
                 }
                 is Resource.Error->{
@@ -81,10 +86,28 @@ class LoginFragment :Fragment(R.layout.fragment_login){
         binding.etPassword.setText("s12345")
     }
 
-    private fun goToNextScreen() {
+    private fun goToNextScreen(loginResponse: LoginResponse) {
         val bundle=Bundle()
-        bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)
-        bundle.putString(MedWizConstants.AppValue.PHONE_NUMBER,binding.etEmail.text.toString())
-        findNavController().navigate(R.id.action_loginFragment_to_verificationFragment,bundle)
+//        bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)
+//        bundle.putString(MedWizConstants.AppValue.PHONE_NUMBER,binding.etEmail.text.toString())
+//        findNavController().navigate(R.id.action_loginFragment_to_verificationFragment,bundle)
+
+        when(accountType){
+            MedWizConstants.Auth.ACCOUNT_DOCTOR->{
+                val intent = Intent (requireActivity(), DoctorsActivity::class.java)
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+            }
+            MedWizConstants.Auth.ACCOUNT_PATIENT->{
+                val intent = Intent (requireActivity(), PatientMainActivity::class.java)
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+            }
+            MedWizConstants.Auth.ACCOUNT_LAB->{
+                val intent = Intent (requireActivity(), LabActivity::class.java)
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+            }
+        }
     }
 }
