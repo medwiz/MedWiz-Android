@@ -10,9 +10,9 @@ import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import java.util.ArrayList
 
-class DoctorsAdapter(private val context: Context,
-                     private val listener: HomeScreenListener
-):RecyclerView.Adapter<DoctorsAdapter.DoctorsViewHolder>(){
+class TopDoctorsAdapter(private val context: Context,
+                        private val listener: HomeScreenListener
+):RecyclerView.Adapter<TopDoctorsAdapter.DoctorsViewHolder>(){
 
     private var doctorList:ArrayList<DoctorResponse> = ArrayList()
 

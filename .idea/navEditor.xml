@@ -293,6 +293,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_patientHomeFragment_to_viewAllDoctorsFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -348,8 +353,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-2147" />
-                            <option name="y" value="183" />
+                            <option name="x" value="-2203" />
+                            <option name="y" value="541" />
                           </Point>
                         </option>
                         <option name="myPositions">

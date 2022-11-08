@@ -3,6 +3,7 @@ package com.medwiz.medwiz.auth.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -54,12 +55,17 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                 }
 
                 is Resource.Success->{
-                   accountType=it.data!!.userType
+                  if(accountType==it.data!!.userType){
                     MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,it.data.token,true)
                     MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,it.data.id.toString(),true)
                     MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.data.email,true)
                     MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.data.userType,true)
                     goToNextScreen(it.data)
+                  }else{
+                     // MedWizUtils.showErrorPopup(requireContext(),"You have chosen wrong account type")
+                      Toast.makeText(requireContext(),"You have chosen wrong account type",Toast.LENGTH_SHORT).show()
+                      goBack()
+                  }
 
                 }
                 is Resource.Error->{
@@ -84,6 +90,10 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
         binding.etEmail.setText("s@gmail.com")
         binding.etPassword.setText("s12345")
+    }
+
+    private fun goBack() {
+        requireActivity().finish()
     }
 
     private fun goToNextScreen(loginResponse: LoginResponse) {

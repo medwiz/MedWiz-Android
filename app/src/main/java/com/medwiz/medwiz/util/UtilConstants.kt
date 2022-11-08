@@ -29,6 +29,8 @@ object UtilConstants {
     const val getUserById="user"
     const val doctor="doctor/"
     const val getDoctorByEmail="doctor/email/"
+    const val getPatientByEmail="user/email/"
+    const val getNearByDoctors="doctor/"
     const val refresh = "identity-int/api/caritag/protocol/openid-connect/token"
 
     const val trending = "/api/posts/?ordering=likes&limit=6"

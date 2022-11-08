@@ -2,11 +2,14 @@ package com.medwiz.medwiz.di
 
 import com.medwiz.medwiz.data.network.AuthApi
 import com.medwiz.medwiz.data.network.DoctorApi
+import com.medwiz.medwiz.data.network.PatientApi
 import com.medwiz.medwiz.repository.auth.AuthRepoInterface
 import com.medwiz.medwiz.repository.auth.AuthRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepoInterface
 import com.medwiz.medwiz.repository.doctor.DoctorRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepository_Factory
+import com.medwiz.medwiz.repository.patient.PatientRepoInterface
+import com.medwiz.medwiz.repository.patient.PatientRepository
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.Module
 import dagger.Provides
@@ -68,5 +71,15 @@ object ApiModule {
     @Provides
     fun provideDoctorRepository( api: DoctorApi) =
         DoctorRepository(api) as DoctorRepoInterface
+
+    @Provides
+    @Singleton
+    fun providePatient(retrofit: Retrofit): PatientApi {
+        return retrofit.create(PatientApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun providePatientRepository( api: PatientApi) =
+        PatientRepository(api) as PatientRepoInterface
 
 }

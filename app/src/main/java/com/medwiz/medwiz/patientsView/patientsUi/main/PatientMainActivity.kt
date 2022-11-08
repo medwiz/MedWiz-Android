@@ -8,18 +8,22 @@ import androidx.navigation.ui.setupWithNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.ActivityPatientBinding
+import com.medwiz.medwiz.main.DefaultFragmentFactory
+import com.medwiz.medwiz.util.CustomLoaderDialog
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class PatientMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPatientBinding
-    private var userDetails: LoginResponse?=null
+    @Inject
+    lateinit var fragmentFactory: DefaultFragmentFactory
+    private var mCustomLoader: CustomLoaderDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPatientBinding.inflate(layoutInflater)
-        userDetails = intent.getParcelableExtra<LoginResponse>(UtilConstants.login_response)!!
         setContentView(binding.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_patient_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -57,8 +61,17 @@ class PatientMainActivity : AppCompatActivity() {
         binding.bottomBar.visibility  = View.VISIBLE
     }
 
-    public fun getUserDetails():LoginResponse{
-        return this.userDetails!!
+
+
+    fun showLoading() {
+        if (mCustomLoader?.window != null) {
+            (mCustomLoader?.window)!!.setBackgroundDrawableResource(android.R.color.transparent)
+            mCustomLoader?.show()
+        }
+    }
+
+    fun hideLoading() {
+        if (mCustomLoader != null) mCustomLoader?.cancel()
     }
     }
 

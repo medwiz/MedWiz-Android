@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentViewAllDoctorsBinding
+import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.patientModels.BookingDate
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import com.medwiz.medwiz.patientsView.patientsUi.home.DoctorsAdapter
@@ -19,6 +20,7 @@ class ViewAllDoctorsFragment: Fragment(R.layout.fragment_view_all_doctors), Home
     private lateinit var binding: FragmentViewAllDoctorsBinding
     private var doctorAdapter: DoctorsAdapter?=null
     private var isNearByDocs=false
+    private var allDoctors:ArrayList<DoctorResponse> = ArrayList()
    // private var adapter: DatePickerAdapter?=null
     val lis= ArrayList<BookingDate>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,29 +30,22 @@ class ViewAllDoctorsFragment: Fragment(R.layout.fragment_view_all_doctors), Home
 
             findNavController().navigateUp()
         }
+        allDoctors= arguments?.getParcelableArrayList<DoctorResponse>(UtilConstants.doctor)!!
         isNearByDocs = arguments?.getBoolean(UtilConstants.nearbyDocs)!!
         if(!isNearByDocs){
             binding.tvBack.text=getString(R.string.top_docs)
         }
 
 
-        val d= Doctors("1","Dr Sandipak",
-            "Ray","","","","","","Dharnamanagar",
-            "","")
-        val d1= Doctors("1","Dr Sandipak",
-            "Ray","","","","","","Dharnamanagar",
-            "","")
-        val d2= Doctors("1","Dr Sandipak",
-            "Ray","","","","","","Dharnamanagar",
-            "","")
-        val lis=ArrayList<Doctors>()
-        lis.add(d)
-        lis.add(d1)
-        lis.add(d2)
 
-        doctorAdapter = DoctorsAdapter(requireActivity(),lis,this)
+//
+        doctorAdapter = DoctorsAdapter(requireActivity(),this)
         binding.rcvAllDocs.adapter = doctorAdapter
         binding.rcvAllDocs.layoutManager = LinearLayoutManager(requireActivity())
+
+        if(allDoctors.isNotEmpty()){
+            doctorAdapter!!.setData(allDoctors)
+        }
 
 
 //        binding.tv1.setOnClickListener {
@@ -222,7 +217,7 @@ class ViewAllDoctorsFragment: Fragment(R.layout.fragment_view_all_doctors), Home
 
     }
 
-    override fun onClickConsult(position: Int, doctor: Doctors) {
+    override fun onClickConsult(position: Int, doctor: DoctorResponse) {
         val bundle=Bundle()
         bundle.putBoolean(UtilConstants.nearbyDocs,true)
         findNavController().navigate(R.id.action_viewAllDoctorsFragment_to_doctorDetails,bundle)

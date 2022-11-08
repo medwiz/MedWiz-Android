@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.SinglePatientRcvItemBinding
+import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import com.medwiz.medwiz.util.UtilConstants
 
 class PatientAdapter(private val context: Context,
                      private val type:String,
-                     private val itemList:MutableList<Doctors>,
+                     private val itemList:MutableList<DoctorResponse>,
                      private val listener: HomeScreenListener
 ):RecyclerView.Adapter<PatientAdapter.PatientViewHolder>(){
 
@@ -36,7 +37,7 @@ class PatientAdapter(private val context: Context,
     }
 
     inner class PatientViewHolder(val binding: SinglePatientRcvItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(doctorItem: Doctors, position: Int){
+        fun bind(doctorItem: DoctorResponse, position: Int){
            // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
             binding.layMain.setOnClickListener {
                 listener.onClickConsult(position,doctorItem)

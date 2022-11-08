@@ -21,7 +21,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class DoctorsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDoctorsBinding
-    private var userDetails:LoginResponse?=null
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
     private var mCustomLoader: CustomLoaderDialog? = null

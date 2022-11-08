@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientHomeFragment"
-        android:name="com.medwiz.medwiz.patientsView.booking.patient.home.PatientHomeFragment"
+        android:name="com.medwiz.medwiz.patientsView.patientsUi.home.PatientHomeFragment"
         android:label="PatientHomeFragment" >
         <action
             android:id="@+id/action_patientHomeFragment_to_viewAllDoctorsFragment"
