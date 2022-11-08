@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentCreatePasswordBinding
+import com.medwiz.medwiz.doctorsView.viewModels.DoctorViewModel
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.main.mainViewModels.CreateAccountViewModel
 import com.medwiz.medwiz.model.RegisterRequest
@@ -30,6 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
+    private val doctorViewModel:DoctorViewModel by viewModels()
     var password:String=""
     var confirmPassword:String=""
     var request:RegisterRequest= RegisterRequest()
@@ -87,9 +89,6 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                 }
 
                 is Resource.Success->{
-                     if(accountType==UtilConstants.doctor){
-                         updateDocsDb()
-                     }
 
                     goToLoginScreen(it.data!!.message)
 

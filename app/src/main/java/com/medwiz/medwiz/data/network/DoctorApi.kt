@@ -10,7 +10,7 @@ import retrofit2.http.*
 
 interface DoctorApi {
 
-    @GET(UtilConstants.getUserById+"{email}")
+    @GET(UtilConstants.getDoctorByEmail+"{email}")
     suspend fun getDoctorByEmail(@Header("Authorization") accessToken: String,
                             @Path("email")email:String):Response<LoginResponse>
 }

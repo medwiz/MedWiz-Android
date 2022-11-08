@@ -59,7 +59,7 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerList
             UtilConstants.userId,"0",false)
         val email= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.email,"",false)
-        viewModel.getDoctorByEmail(token,userId)
+        viewModel.getDoctorByEmail(token,email)
         viewModel.getUser.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Loading->{

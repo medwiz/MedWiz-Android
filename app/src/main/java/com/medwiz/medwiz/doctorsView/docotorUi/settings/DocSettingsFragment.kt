@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.ui.docotor.settings
+package com.medwiz.medwiz.doctorsView.docotorUi.settings
 
 import android.os.Bundle
 import android.view.View
