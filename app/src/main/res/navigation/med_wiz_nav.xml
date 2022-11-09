@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_signUpFragment_to_createPassword"
             app:destination="@id/createPassword" />
+        <action
+            android:id="@+id/action_signUpFragment_to_addDocInfoFragment"
+            app:destination="@id/addDocInfoFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_addLabInfoFragment"
+            app:destination="@id/addLabInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPassword"
@@ -48,4 +54,20 @@
         android:id="@+id/verificationFragment"
         android:name="com.medwiz.medwiz.auth.login.VerificationFragment"
         android:label="VerificationFragment" />
+    <fragment
+        android:id="@+id/addDocInfoFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.AddDocInfoFragment"
+        android:label="AddDocInfoFragment" >
+        <action
+            android:id="@+id/action_addDocInfoFragment_to_createPassword"
+            app:destination="@id/createPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLabInfoFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.AddLabInfoFragment"
+        android:label="AddLabInfoFragment" >
+        <action
+            android:id="@+id/action_addLabInfoFragment_to_createPassword"
+            app:destination="@id/createPassword" />
+    </fragment>
 </navigation>

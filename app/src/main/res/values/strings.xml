@@ -107,4 +107,13 @@
     <string name="password_error">Please enter one capital latter, small letter and number for password!</string>
     <string name="something_went_wrong">Something went wrong !</string>
     <string name="INVALID_USER_CREDENTIALS">Invalid username or password</string>
+    <string name="add_info">Add Info</string>
+    <string name="add_info_title">Please add all information to complete the regostration process</string>
+    <string name="specialization">Specialization</string>
+    <string name="years_of_experience">Years OF Experience</string>
+    <string name="upload_file">Upload file</string>
+    <string name="select_your_timings">Select your timings</string>
+    <string name="tap_here_to_select">Tap here to select</string>
+    <string name="select_timings">Select Timings</string>
+    <string name="age">Age</string>
 </resources>

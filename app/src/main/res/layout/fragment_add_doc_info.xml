@@ -1,0 +1,282 @@
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:scrollbars="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="32dp"
+                android:clipToPadding="false">
+
+                <ImageView
+                    android:id="@+id/imgBackAddInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvAddInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:lineSpacingExtra="1sp"
+                    android:translationY="-0.27sp"
+                    android:textColor="#303245"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center_vertical"
+                    android:text="@string/add_info"
+                    android:textSize="@dimen/h3_sp_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBackAddInfo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvSignupDetails"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/add_info_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddInfo"/>
+
+
+                <TextView
+                    android:id="@+id/tvSpecializationTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/specialization"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSignupDetails"
+                    />
+
+                <EditText
+                    android:id="@+id/etSpecialization"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:maxLength="10"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSpecializationTitle"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvYearsOfExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/years_of_experience"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etSpecialization"
+                    />
+
+
+                <EditText
+                    android:id="@+id/etYearsOfExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:inputType="numberDecimal"
+                    android:padding="5dp"
+                    android:maxLength="10"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvYearsOfExperience"
+                    />
+
+                <TextView
+                    android:id="@+id/tvAboutYou"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Something About yourself"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etYearsOfExperience"/>
+
+                <EditText
+                    android:id="@+id/etAboutYou"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:inputType="textMultiLine"
+                    android:padding="5dp"
+                    android:maxLength="150"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAboutYou"
+                    />
+
+                <TextView
+                    android:id="@+id/tvCertificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upload_your_highest_qualification_certificate"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etAboutYou"
+                    />
+
+                <Button
+                    android:id="@+id/btUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:padding="5dp"
+                    android:text="@string/upload_file"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCertificate"
+                    />
+
+                <TextView
+                    android:id="@+id/tvWorkTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_your_timings"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btUpload"
+                    />
+
+                <Button
+                    android:id="@+id/btSelectWorkingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:padding="5dp"
+                    android:text="@string/tap_here_to_select"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWorkTime"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btNextStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/confirm_btn"
+                    android:lineSpacingExtra="16sp"
+                    android:text="@string/cont"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btSelectWorkingTime" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/liLogin"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_marginTop="@dimen/h3_dp_20"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/btNextStep">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/already_have_account"-->
+<!--                        android:textSize="@dimen/h5_sp_14"-->
+<!--                        android:lineSpacingExtra="4sp"-->
+<!--                        android:translationY="-1.79sp"-->
+<!--                        android:fontFamily="@font/poppins_regular"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="6dp"-->
+<!--                        android:text="@string/login"-->
+<!--                        android:textSize="@dimen/h5_sp_14"-->
+<!--                        android:lineSpacingExtra="4sp"-->
+<!--                        android:translationY="-1.79sp"-->
+<!--                        android:textColor="@color/blue"-->
+<!--                        android:fontFamily="@font/poppins_bold"/>-->
+
+<!--                </LinearLayout>-->
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

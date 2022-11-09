@@ -2,6 +2,8 @@ package com.medwiz.medwiz.auth.signUp
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
@@ -15,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
     private lateinit var binding: FragmentSignUpBinding
     private var accountType:String= MedWizConstants.Auth.ACCOUNT_DOCTOR
+    var genderList = arrayOf("Select Gender","Male", "Female", "Others")
+    private var strGender:String="Male"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpBinding.bind(view)
@@ -38,6 +42,27 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
 
 
         }
+        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genderList)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Set Adapter to Spinner
+        binding.spinnerGender.adapter = aa
+
+        binding.spinnerGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                   if(position>0){
+                       strGender=genderList[position]
+                   }
+
+            }
+
+        }
 
         binding.btNextStep.setOnClickListener {
             val firstName=binding.etFName.text.toString()
@@ -45,6 +70,7 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
             val mobile=binding.etPhoneNumber.text.toString()
             val email=binding.etMail.text.toString()
             val pinCode=binding.etPincode.text.toString()
+            val age=binding.etAge.text.toString()
 
             if(firstName.isNotEmpty()||lastName.isNotEmpty()||mobile.isNotEmpty()||email.isNotEmpty()||pinCode.isNotEmpty()){
                 val register= RegisterRequest()
@@ -54,9 +80,24 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
                 register.email=email
                 register.pinCode=pinCode
                 register.userType=accountType
+                register.age=age
+                register.gender=strGender
                 val bundle = Bundle()
                 bundle.putParcelable(UtilConstants.request,register)
-                findNavController().navigate(R.id.action_signUpFragment_to_createPassword,bundle)
+
+                when(accountType){
+                    MedWizConstants.Auth.ACCOUNT_DOCTOR->{
+                        findNavController().navigate(R.id.action_signUpFragment_to_addDocInfoFragment,bundle)
+                    }
+                    MedWizConstants.Auth.ACCOUNT_PATIENT->{
+                        findNavController().navigate(R.id.action_signUpFragment_to_createPassword,bundle)
+                    }
+                    MedWizConstants.Auth.ACCOUNT_LAB->{
+                        findNavController().navigate(R.id.action_signUpFragment_to_addDocInfoFragment,bundle)
+                    }
+                }
+//                findNavController().navigate(R.id.action_signUpFragment_to_createPassword,bundle)
+
             }
 
         }

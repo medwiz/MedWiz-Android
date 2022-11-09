@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDoctorDetailsBinding
+import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
 import com.medwiz.medwiz.util.UtilConstants
 import java.util.*
@@ -15,9 +16,11 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
     private lateinit var binding: FragmentDoctorDetailsBinding
     private var reviewAdapter: ReviewAdapter?=null
     private var workingTimeAdapter:WorkingTimeAdapter?=null
+    private var selectedDoctor:DoctorResponse?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDoctorDetailsBinding.bind(view)
+        selectedDoctor=arguments?.getParcelable<DoctorResponse>(UtilConstants.doctor)!!
         binding.imgBack.setOnClickListener{
             findNavController().navigateUp()
         }
@@ -33,7 +36,16 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
         lis.add(d1)
         lis.add(d2)
 
-        workingTimeAdapter = WorkingTimeAdapter(requireActivity(),lis)
+        val workingTimeList=ArrayList<String>()
+        workingTimeList.add("Monday")
+        workingTimeList.add("Tuesday")
+        workingTimeList.add("Wednesday")
+        workingTimeList.add("Thursday")
+        workingTimeList.add("Friday")
+        workingTimeList.add("Saturday")
+        workingTimeList.add("Sunday")
+
+        workingTimeAdapter = WorkingTimeAdapter(requireActivity(),workingTimeList)
         binding.rcvWorkingTime.adapter = workingTimeAdapter
         binding.rcvWorkingTime.layoutManager = LinearLayoutManager(requireActivity())
 

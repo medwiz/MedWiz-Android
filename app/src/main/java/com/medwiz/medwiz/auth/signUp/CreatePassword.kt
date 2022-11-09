@@ -6,10 +6,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.Window
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -32,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
     private val doctorViewModel:DoctorViewModel by viewModels()
+
     var password:String=""
     var confirmPassword:String=""
     var request:RegisterRequest= RegisterRequest()
@@ -46,6 +44,8 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
 
             findNavController().navigateUp()
         }
+
+
         when(accountType){
             MedWizConstants.Auth.ACCOUNT_DOCTOR->{
                 binding.tvQualification.visibility=View.VISIBLE

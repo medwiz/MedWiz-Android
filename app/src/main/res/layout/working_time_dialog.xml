@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="1sp"
+        android:translationY="-0.27sp"
+        android:textColor="#303245"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/select_timings"
+        android:textSize="@dimen/h3_sp_20"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rcvWorkingTime"/>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/tvDay"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:lineSpacingExtra="1sp"-->
+<!--            android:translationY="-0.27sp"-->
+<!--            android:textColor="#303245"-->
+<!--            android:fontFamily="@font/poppins_bold"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="@dimen/h3_sp_20"-->
+<!--            android:text="Monday"/>-->
+
+<!--        <TimePicker-->
+<!--            android:id="@+id/timePickerFrom"-->
+<!--            android:layout_width="120dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:scaleY="0.30"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:scaleX="0.30"/>-->
+
+<!--        <TimePicker-->
+<!--            android:id="@+id/timePickerTo"-->
+<!--            android:layout_width="120dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:scaleY="0.30"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:scaleX="0.30"/>-->
+
+<!--    </RelativeLayout>-->
+
+
+
+
+
+
+
+</LinearLayout>

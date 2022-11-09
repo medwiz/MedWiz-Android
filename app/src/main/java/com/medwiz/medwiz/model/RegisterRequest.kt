@@ -14,11 +14,12 @@ data class RegisterRequest(
     var mobile: String,
     var password: String,
     var pinCode: String,
-    var userType: String
+    var userType: String,
+    var gender: String
 ): Parcelable {
     constructor() : this("", "",
         "", "", "",
         "", "", "",
-        "", ""
+        "", "",""
     )
 }

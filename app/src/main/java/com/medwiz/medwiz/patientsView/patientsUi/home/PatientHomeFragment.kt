@@ -98,6 +98,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
         }
         binding.btTopViewAll.setOnClickListener{
             val bundle=Bundle()
+            bundle.putParcelableArrayList(UtilConstants.doctor,allDoctors)
             bundle.putBoolean(UtilConstants.nearbyDocs,false)
             findNavController().navigate(R.id.action_patientHomeFragment_to_viewAllDoctorsFragment,bundle)
         }
@@ -129,6 +130,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
 
     override fun onClickConsult(position: Int, doctor: DoctorResponse) {
         val bundle=Bundle()
+        bundle.putParcelable(UtilConstants.doctor,doctor)
         bundle.putBoolean(UtilConstants.nearbyDocs,true)
         findNavController().navigate(R.id.action_patientHomeFragment_to_doctorDetails,bundle)
     }

@@ -102,18 +102,47 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="addDocInfoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-6457" />
+                            <option name="y" value="-4345" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="addLabInfoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-6206" />
+                            <option name="y" value="-4338" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="createPassword">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6322" />
-                            <option name="y" value="-3835" />
+                            <option name="x" value="-6444" />
+                            <option name="y" value="-3842" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_createPassword_to_loginFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_createPassword_to_selectAccountFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -128,8 +157,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6582" />
-                            <option name="y" value="-4190" />
+                            <option name="x" value="-6702" />
+                            <option name="y" value="-4178" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -159,8 +188,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6813" />
-                            <option name="y" value="-4182" />
+                            <option name="x" value="-6970" />
+                            <option name="y" value="-4175" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -180,8 +209,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6544" />
-                            <option name="y" value="-3837" />
+                            <option name="x" value="-6700" />
+                            <option name="y" value="-3799" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -201,8 +230,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6220" />
-                            <option name="y" value="-4190" />
+                            <option name="x" value="-6205" />
+                            <option name="y" value="-4014" />
                           </Point>
                         </option>
                       </LayoutPositions>
