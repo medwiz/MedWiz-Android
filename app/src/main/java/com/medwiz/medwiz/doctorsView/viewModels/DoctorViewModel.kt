@@ -29,6 +29,10 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
     val getDoctor: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     var getDoctorResponse: LoginResponse? = null
 
+    val registerDoctor: MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
+    var registerDoctorResponse: CommonResponse? = null
+
+
 
 
     public fun getDoctorByEmail(token:String,email:String)=viewModelScope.launch {
@@ -69,34 +73,34 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
     }
 
 
-    public fun updateDoctor(token:String,email:String)=viewModelScope.launch {
-        callGetUserApi(token,email)
+    public fun updateDoctor(jsonObj:JsonObject,email:String)=viewModelScope.launch {
+        callRegisterDoctorApi(jsonObj,email)
     }
-    private suspend fun callUpdateDoctorApi(token:String,email:String){
-        getDoctor.postValue(Resource.Loading())
+    private suspend fun callRegisterDoctorApi(jsonObj:JsonObject,email:String){
+        registerDoctor.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.getDoctorByEmail(token,email)
-                getDoctor.postValue(handleGetUserResponse(response))
+                val response = repository.registerDoctor(jsonObj,email)
+                registerDoctor.postValue(handleRegisterDoctorResponse(response))
             }
             else
-                getDoctor.postValue(Resource.Error("No Internet Connection"))
+                registerDoctor.postValue(Resource.Error("No Internet Connection"))
         }
         catch (ex: Exception){
             when(ex){
-                is IOException -> getDoctor.postValue(Resource.Error("Network Failure"))
-                else -> getDoctor.postValue(Resource.Error("Conversion Error"))
+                is IOException -> registerDoctor.postValue(Resource.Error("Network Failure"))
+                else -> registerDoctor.postValue(Resource.Error("Conversion Error"))
             }
         }
     }
 
-    private fun handleUpdateDoctorResponse(response: Response<LoginResponse>): Resource<LoginResponse> {
+    private fun handleRegisterDoctorResponse(response: Response<CommonResponse>): Resource<CommonResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.id>0) {
-                    getDoctorResponse = resultResponse
-                    return Resource.Success(getDoctorResponse ?: resultResponse)
-                }
+               // if(resultResponse.id>0) {
+                    registerDoctorResponse = resultResponse
+                    return Resource.Success(registerDoctorResponse ?: resultResponse)
+               // }
             }
         }
         else{

@@ -87,7 +87,7 @@
                     android:background="@drawable/layout_rounded_bg"
                     android:inputType="textPersonName"
                     android:padding="5dp"
-                    android:maxLength="10"
+                    android:maxLength="80"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/black"
                     android:textSize="14sp"

@@ -66,6 +66,7 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
         requestObj.addProperty(UtilConstants.userType, request.userType)
         requestObj.addProperty(UtilConstants.credit, request.credit)
         requestObj.addProperty(UtilConstants.address,request.pinCode)
+        requestObj.addProperty(UtilConstants.gender,request.gender)
 
         callRegisterApi(requestObj)
     }

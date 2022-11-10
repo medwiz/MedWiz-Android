@@ -1,6 +1,15 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
+    const val gender: String="gender"
+    const val about: String="about"
+    const val specialization: String="specialization"
+    const val licencePath: String="licencePath"
+    const val experience: String="experience"
+    const val reviewList:String="reviewList"
+    const val workingTimeList:String="workingTimeList"
+    const val isActivated: String="isActivated"
+    const val doctorInfo: String="doctorInfo"
     const val address: String="address"
     const val age: String="age"
     const val credit: String="credit"

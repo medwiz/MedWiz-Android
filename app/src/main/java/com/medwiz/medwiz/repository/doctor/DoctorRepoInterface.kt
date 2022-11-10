@@ -11,4 +11,5 @@ interface DoctorRepoInterface {
 
 
     suspend fun getDoctorByEmail(token:String,email:String):Response<LoginResponse>
+    suspend fun registerDoctor(jsonObject: JsonObject,email: String):Response<CommonResponse>
 }

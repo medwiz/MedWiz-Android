@@ -1,35 +1,23 @@
 package com.medwiz.medwiz.auth.signUp
 import android.app.Dialog
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentAddDocInfoBinding
 import com.medwiz.medwiz.databinding.WorkingTimeDialogBinding
-import com.medwiz.medwiz.doctorsView.viewModels.DoctorViewModel
-import com.medwiz.medwiz.model.RegisterRequest
-import com.medwiz.medwiz.model.WorkTimings
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectDateAdapter
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectTimeAdapter
+import com.medwiz.medwiz.model.*
 import com.medwiz.medwiz.patientsView.booking.doctorDetails.WorkingTimeAdapter
 import com.medwiz.medwiz.util.MedWizConstants
 import com.medwiz.medwiz.util.UtilConstants
-
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.ArrayList
 
 
 @AndroidEntryPoint
 class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
-    private val viewModel: AuthViewModel by viewModels()
-    private val doctorViewModel:DoctorViewModel by viewModels()
     private var workingTimeAdapter: WorkingTimeAdapter?=null
     lateinit var dialog: Dialog
     var password:String=""
@@ -50,28 +38,38 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
             val specialization=binding.etSpecialization.text.toString()
             val experience=binding.etYearsOfExperience.text.toString()
             val about=binding.etAboutYou.text.toString()
+            val licencePath=binding.btUpload.text.toString()
             val workTimeList=getWorkTime()
-            if(specialization.isNotEmpty()||experience.isNotEmpty()||about.isNotEmpty()){
-                val requestObj=JsonObject()
-                requestObj.addProperty(UtilConstants.firstname, request.firstname)
-                requestObj.addProperty(UtilConstants.lastname, request.lastname)
-                requestObj.addProperty(UtilConstants.email, request.email)
-                requestObj.addProperty(UtilConstants.mobile, request.mobile)
-                requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
-                requestObj.addProperty(UtilConstants.age, request.age)
-                requestObj.addProperty(UtilConstants.userType, request.userType)
-                requestObj.addProperty(UtilConstants.credit, request.credit)
-                requestObj.addProperty(UtilConstants.address,request.pinCode)
+            val reviewList=getReviewList()
+
+            if(specialization.isNotEmpty()||experience.isNotEmpty()||about.isNotEmpty()||workTimeList.size>0||reviewList.size>0){
+                val doctorInfo=DoctorInfo()
+                 doctorInfo.experience=experience
+                  doctorInfo.specialization=specialization
+                 doctorInfo.licencePath=licencePath
+                 doctorInfo.about=about
+                val bundle = Bundle()
+                bundle.putParcelableArrayList(UtilConstants.reviewList,reviewList)
+                bundle.putParcelable(UtilConstants.doctorInfo,doctorInfo)
+                bundle.putParcelableArrayList(UtilConstants.workingTimeList,workTimeList)
+                bundle.putParcelable(UtilConstants.request,request)
+                findNavController().navigate(R.id.action_addDocInfoFragment_to_createPassword,bundle)
             }
            // if(TextUtils.isEmpty(specialization))
 
-            val bundle = Bundle()
-            bundle.putParcelable(UtilConstants.request,request)
-            findNavController().navigate(R.id.action_addDocInfoFragment_to_createPassword,bundle)
+
         }
 
     }
-
+    private fun getReviewList(): ArrayList<Review> {
+        val list=java.util.ArrayList<Review>()
+        val review=Review()
+        review.username=""
+        review.comments=""
+        review.rating=0
+         list.add(review)
+        return list
+    }
     private fun getWorkTime(): ArrayList<WorkTimings> {
         val list=ArrayList<WorkTimings>()
         val worTimeMonday=WorkTimings()

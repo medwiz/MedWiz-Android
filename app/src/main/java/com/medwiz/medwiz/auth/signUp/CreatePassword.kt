@@ -1,37 +1,48 @@
 package com.medwiz.medwiz.auth.signUp
+
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent.getIntent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.Window
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentCreatePasswordBinding
 import com.medwiz.medwiz.doctorsView.viewModels.DoctorViewModel
 import com.medwiz.medwiz.main.MainActivity
-import com.medwiz.medwiz.main.mainViewModels.CreateAccountViewModel
+import com.medwiz.medwiz.model.DoctorInfo
 import com.medwiz.medwiz.model.RegisterRequest
+import com.medwiz.medwiz.model.Review
+import com.medwiz.medwiz.model.WorkTimings
 import com.medwiz.medwiz.util.MedWizConstants
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
+import org.json.JSONObject
 
 
 @AndroidEntryPoint
 class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
     private val doctorViewModel:DoctorViewModel by viewModels()
-
-    var password:String=""
-    var confirmPassword:String=""
+    private var doctorInfOJsonObject=JSONObject()
+    private var password:String=""
+    private var confirmPassword:String=""
+    private var registeredEmail:String=""
     var request:RegisterRequest= RegisterRequest()
     private var accountType:String=MedWizConstants.Auth.ACCOUNT_DOCTOR
     private lateinit var binding: FragmentCreatePasswordBinding
@@ -50,6 +61,8 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
             MedWizConstants.Auth.ACCOUNT_DOCTOR->{
                 binding.tvQualification.visibility=View.VISIBLE
                 binding.etExperience.visibility=View.VISIBLE
+               val i= getJsonObject();
+                val k=0
             }
             MedWizConstants.Auth.ACCOUNT_PATIENT->{
                 binding.tvQualification.visibility=View.GONE
@@ -64,9 +77,11 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         binding.btCreateAccount.setOnClickListener {
             val password=binding.etPassword.text.toString()
             val repeatPassword=binding.etRepeatPassword.text.toString()
+
             if(password.isNotEmpty()){
                     request.password=password
-                   viewModel.signUp(request)
+                    this.registeredEmail=request.email
+                    viewModel.signUp(request)
             }
 
 
@@ -89,26 +104,41 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                 }
 
                 is Resource.Success->{
+                    if(it.data!!.success){
+                        if(accountType== MedWizConstants.Auth.ACCOUNT_DOCTOR){
+                        registerDoctor()
+                        }else{
+                        goToLoginScreen(it.data.message)
+                         }
+                    }
 
-                    goToLoginScreen(it.data!!.message)
 
                 }
                 is Resource.Error->{
                     (activity as MainActivity).hideLoading()
-//                    if(it.message==UtilConstants.unauthorized){
-//                        MedWizUtils.showErrorPopup(
-//                            requireActivity(),
-//                            requireActivity().getString(R.string.INVALID_USER_CREDENTIALS))
-//
-//                    }
-//                    else{
-//                        MedWizUtils.showErrorPopup(
-//                            requireActivity(),
-//                            requireActivity().getString(R.string.something_went_wrong))
-//                    }
                     MedWizUtils.showErrorPopup(
                         requireActivity(),
                         it.message.toString())
+                }
+            }
+        })
+
+        doctorViewModel.registerDoctor.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success->{
+                    (activity as MainActivity).hideLoading()
+                    if(it.data!!.success){
+                        goToLoginScreen(it.data.message)
+                    }
+
+
+                }
+                is Resource.Error->{
+                    (activity as MainActivity).hideLoading()
                 }
             }
         })
@@ -196,5 +226,50 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
             editText.transformationMethod = PasswordTransformationMethod.getInstance()
         }
 
+    }
+
+    private fun getJsonObject():JsonObject{
+        val doctorInfo=arguments?.getParcelable<DoctorInfo>(UtilConstants.doctorInfo)!!
+        val workTimeList=arguments?.getParcelableArrayList<WorkTimings>(UtilConstants.workingTimeList)!!
+        val reviewList=arguments?.getParcelableArrayList<Review>(UtilConstants.reviewList)!!
+        val requestObj=JsonObject()
+        requestObj.addProperty(UtilConstants.firstname, request.firstname)
+        requestObj.addProperty(UtilConstants.lastname, request.lastname)
+        requestObj.addProperty(UtilConstants.email, request.email)
+        requestObj.addProperty(UtilConstants.mobile, request.mobile)
+        requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
+        requestObj.addProperty(UtilConstants.age, request.age)
+        requestObj.addProperty(UtilConstants.userType, request.userType)
+        requestObj.addProperty(UtilConstants.credit, request.credit)
+        requestObj.addProperty(UtilConstants.address,request.pinCode)
+        requestObj.addProperty(UtilConstants.experience,doctorInfo.experience)
+        requestObj.addProperty(UtilConstants.licencePath,doctorInfo.licencePath)
+        requestObj.addProperty(UtilConstants.specialization,doctorInfo.specialization)
+        requestObj.addProperty(UtilConstants.about,doctorInfo.about)
+        requestObj.addProperty(UtilConstants.isActivated,request.isActivated)
+
+        val workTimeArray= JsonArray()
+        val reviewArray= JsonArray()
+        for (i in 0 until workTimeList.size) {
+            val workTimeObj=JsonObject()
+            workTimeObj.addProperty("day",workTimeList[i].day)
+            workTimeObj.addProperty("time",workTimeList[i].time)
+            workTimeArray.add(workTimeObj)
+        }
+        for (i in 0 until reviewList.size) {
+            val reviewObj=JsonObject()
+            reviewObj.addProperty("username",reviewList[i].username)
+            reviewObj.addProperty("comments",reviewList[i].comments)
+            reviewObj.addProperty("rating",reviewList[i].rating)
+            reviewArray.add(reviewObj)
+        }
+        requestObj.add("workingTime",workTimeArray)
+        requestObj.add("reviews",reviewArray)
+
+        return requestObj
+    }
+
+    private fun registerDoctor(){
+        doctorViewModel.updateDoctor(getJsonObject(),registeredEmail)
     }
 }

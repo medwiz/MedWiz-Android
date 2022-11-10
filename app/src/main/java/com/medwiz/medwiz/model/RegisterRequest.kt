@@ -15,11 +15,13 @@ data class RegisterRequest(
     var password: String,
     var pinCode: String,
     var userType: String,
-    var gender: String
+    var gender: String,
+    var isActivated:Boolean,
+    var licencePath:String
 ): Parcelable {
     constructor() : this("", "",
         "", "", "",
         "", "", "",
-        "", "",""
+        "", "","",false,""
     )
 }
