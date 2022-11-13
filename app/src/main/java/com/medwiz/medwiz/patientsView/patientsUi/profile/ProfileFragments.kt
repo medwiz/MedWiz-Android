@@ -5,13 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.databinding.FragmentBookingBinding
 import com.medwiz.medwiz.databinding.FragmentProfileBinding
 import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectDateAdapter
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectTimeAdapter
 import com.medwiz.medwiz.patientsView.patientModels.ProfileItemModel
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList

@@ -12,12 +12,13 @@ import com.medwiz.medwiz.databinding.FragmentPatientHomeBinding
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
 import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
-import com.medwiz.medwiz.patientsView.patientViewModels.PatientViewModel
+import com.medwiz.medwiz.viewmodels.PatientViewModel
 import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.NullPointerException
 import java.util.*
 
 @AndroidEntryPoint
@@ -129,9 +130,14 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
 
 
     override fun onClickConsult(position: Int, doctor: DoctorResponse) {
-        val bundle=Bundle()
-        bundle.putParcelable(UtilConstants.doctor,doctor)
-        bundle.putBoolean(UtilConstants.nearbyDocs,true)
-        findNavController().navigate(R.id.action_patientHomeFragment_to_doctorDetails,bundle)
+        try {
+            val bundle=Bundle()
+            bundle.putParcelable(UtilConstants.doctor,doctor)
+            bundle.putBoolean(UtilConstants.nearbyDocs,true)
+            findNavController().navigate(R.id.action_patientHomeFragment_to_doctorDetails,bundle)
+        }catch (e:NullPointerException){
+            findNavController().navigate(R.id.action_patientHomeFragment_to_doctorDetails)
+        }
+
     }
 }

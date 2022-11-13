@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleBookingRcvItemBinding
 import com.medwiz.medwiz.patientsView.patientModels.BookingModel
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
 
 class PatientBookingAdapter(private val context: Context,
                             private val itemList:MutableList<BookingModel>,

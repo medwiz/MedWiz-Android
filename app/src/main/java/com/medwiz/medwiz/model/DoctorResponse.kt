@@ -1,20 +1,25 @@
 package com.medwiz.medwiz.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.util.ArrayList
 
 @Parcelize
 data class DoctorResponse(
-    var activated: Boolean,
-    var address: String,
-    var age: Int,
-    var credit: String,
-    var email: String,
-    var experience: String,
-    var firstname: String,
-    var id: Int,
-    var lastname: String,
-    var licencePath: String,
-    var mobile: String,
-    var pinCode: String,
-    var specialization: String
-): Parcelable
+    val about: String,
+    val activated: Boolean,
+    val address: String,
+    val age: Int,
+    val credit: String,
+    val email: String,
+    val experience: String,
+    val firstname: String,
+    val id: Int,
+    val lastname: String,
+    val licencePath: String,
+    val mobile: String,
+    val pinCode: String,
+   // val reviews: ArrayList<Review>,
+    val workingTimes:ArrayList<WorkTimings>,
+    val specialization: String
+):Parcelable
+

@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientViewModels
+package com.medwiz.medwiz.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData

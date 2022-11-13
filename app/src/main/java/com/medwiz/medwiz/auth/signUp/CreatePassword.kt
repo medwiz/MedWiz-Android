@@ -2,7 +2,6 @@ package com.medwiz.medwiz.auth.signUp
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Intent.getIntent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -21,7 +20,7 @@ import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentCreatePasswordBinding
-import com.medwiz.medwiz.doctorsView.viewModels.DoctorViewModel
+import com.medwiz.medwiz.viewmodels.DoctorViewModel
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.model.DoctorInfo
 import com.medwiz.medwiz.model.RegisterRequest
@@ -38,7 +37,7 @@ import org.json.JSONObject
 @AndroidEntryPoint
 class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
-    private val doctorViewModel:DoctorViewModel by viewModels()
+    private val doctorViewModel: DoctorViewModel by viewModels()
     private var doctorInfOJsonObject=JSONObject()
     private var password:String=""
     private var confirmPassword:String=""
@@ -108,7 +107,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                         if(accountType== MedWizConstants.Auth.ACCOUNT_DOCTOR){
                         registerDoctor()
                         }else{
-                        goToLoginScreen(it.data.message)
+                          goToLoginScreen(it.data.message)
                          }
                     }
 
@@ -253,17 +252,22 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         for (i in 0 until workTimeList.size) {
             val workTimeObj=JsonObject()
             workTimeObj.addProperty("day",workTimeList[i].day)
-            workTimeObj.addProperty("time",workTimeList[i].time)
+            workTimeObj.addProperty("startTime",workTimeList[i].startTime)
+            workTimeObj.addProperty("endTime",workTimeList[i].endTime)
             workTimeArray.add(workTimeObj)
         }
         for (i in 0 until reviewList.size) {
             val reviewObj=JsonObject()
-            reviewObj.addProperty("username",reviewList[i].username)
-            reviewObj.addProperty("comments",reviewList[i].comments)
-            reviewObj.addProperty("rating",reviewList[i].rating)
+            reviewObj.addProperty("reviewerName","MedWiz")
+            reviewObj.addProperty("comments","")
+            reviewObj.addProperty("rating",5)
+            reviewObj.addProperty("docEmail",request.email)
+            reviewObj.addProperty("avatar","")
+            reviewObj.addProperty("heading","")
+            requestObj.addProperty("addedDate","")
             reviewArray.add(reviewObj)
         }
-        requestObj.add("workingTime",workTimeArray)
+        requestObj.add("workingTimes",workTimeArray)
         requestObj.add("reviews",reviewArray)
 
         return requestObj

@@ -4,17 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.databinding.FragmentBookAppointmentBinding
 import com.medwiz.medwiz.databinding.FragmentPaymentBinding
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.ReviewAdapter
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectDateAdapter
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.SelectTimeAdapter
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.WorkingTimeAdapter
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
-import com.medwiz.medwiz.util.UtilConstants
-import java.util.*
 
 class PaymentFragment : Fragment(R.layout.fragment_payment) {
     private lateinit var binding: FragmentPaymentBinding

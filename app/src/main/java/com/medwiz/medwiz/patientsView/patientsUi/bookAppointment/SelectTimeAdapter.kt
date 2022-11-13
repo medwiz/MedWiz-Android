@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.medwiz.medwiz.databinding.ReviewSingleLayoutBinding
 import com.medwiz.medwiz.databinding.SelectTimeSingleLayoutBinding
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
+import com.medwiz.medwiz.patientsView.patientsUi.doctorDetails.ReviewAdapter
 
 class SelectTimeAdapter(private val context: Context,
-                        private val itemList:MutableList<ReviewModel>
+                        private val itemList:MutableList<ReviewAdapter>
 ):RecyclerView.Adapter<SelectTimeAdapter.SelectTimeViewHolder>(){
 
 
@@ -31,7 +30,7 @@ class SelectTimeAdapter(private val context: Context,
     }
 
     inner class SelectTimeViewHolder(val binding: SelectTimeSingleLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(reviewItem: ReviewModel, position: Int){
+        fun bind(reviewItem: ReviewAdapter, position: Int){
            // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
            
         }

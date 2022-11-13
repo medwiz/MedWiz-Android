@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SelectDateSingleLayoutBinding
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
+import com.medwiz.medwiz.model.Review
 
 class SelectDateAdapter(private val context: Context,
-                        private val itemList:MutableList<ReviewModel>
+                        private val itemList:MutableList<Review>
 ):RecyclerView.Adapter<SelectDateAdapter.SelectDateViewHolder>(){
 
 
@@ -30,7 +30,7 @@ class SelectDateAdapter(private val context: Context,
     }
 
     inner class SelectDateViewHolder(val binding: SelectDateSingleLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(reviewItem: ReviewModel, position: Int){
+        fun bind(reviewItem: Review, position: Int){
            // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
            
         }

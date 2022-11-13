@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleWorkingTimeBinding
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
+import com.medwiz.medwiz.model.WorkTimings
 import java.util.ArrayList
 
 
-class WorkingTimeAdapter (private val context: Context,
-                          private val itemList:ArrayList<String>
+class WorkingTimeAdapter (private val context: Context
 ): RecyclerView.Adapter<WorkingTimeAdapter.WorkingTimeViewHolder>(){
 
+    private var itemList:ArrayList<WorkTimings> = ArrayList()
+   public fun setData(list:ArrayList<WorkTimings>){
 
+       this.itemList=list
+       notifyDataSetChanged()
+   }
 
 
 
@@ -32,8 +36,10 @@ class WorkingTimeAdapter (private val context: Context,
     }
 
     inner class WorkingTimeViewHolder(val binding: SingleWorkingTimeBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(workingTimeItem: String, position: Int){
-            binding.tvDayOfWeek.text=workingTimeItem
+        fun bind(workingTimeItem: WorkTimings, position: Int){
+            binding.tvDayOfWeek.text=workingTimeItem.day
+            binding.tvStartTime.text=workingTimeItem.startTime+ "-" +workingTimeItem.endTime
+           // binding.tvEndTime.text=workingTimeItem.endTime
 //            when(position){
 //                0->{ binding.tvDayOfWeek.text="Monday"}
 //                1->{ binding.tvDayOfWeek.text="Tuesday"}

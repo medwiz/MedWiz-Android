@@ -1,18 +1,21 @@
-package com.medwiz.medwiz.patientsView.booking.doctorDetails
+package com.medwiz.medwiz.patientsView.patientsUi.doctorDetails
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.ReviewSingleLayoutBinding
-import com.medwiz.medwiz.patientsView.patientModels.ReviewModel
+import com.medwiz.medwiz.model.Review
+import java.util.ArrayList
 
-class ReviewAdapter(private val context: Context,
-                    private val itemList:MutableList<ReviewModel>
-):RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>(){
+class ReviewAdapter(private val context: Context):RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>(){
 
+    private var itemList:ArrayList<Review> = ArrayList()
 
-
+    public fun setData(list:ArrayList<Review>){
+          this.itemList=list
+          notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -30,8 +33,11 @@ class ReviewAdapter(private val context: Context,
     }
 
     inner class ReviewViewHolder(val binding: ReviewSingleLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(reviewItem: ReviewModel, position: Int){
-           // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
+        fun bind(reviewItem: Review, position: Int){
+            binding.tvHeading.text= reviewItem.heading
+            binding.rbRating.rating = reviewItem.rating.toFloat()
+            binding.tvReviewComment.text=reviewItem.reviewerName
+            binding.tvReviewerName.text=reviewItem.reviewerName
            
         }
     }

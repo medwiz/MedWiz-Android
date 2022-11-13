@@ -7,26 +7,22 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
+import android.os.Build
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.annotation.RequiresApi
 import androidx.core.content.edit
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
-import org.json.JSONArray
 import org.json.JSONObject
-import retrofit2.Response
+import java.time.LocalDateTime
 
 
 object MedWizUtils {
@@ -173,6 +169,12 @@ object MedWizUtils {
             sharedPreferences.getString(key, value).toString()
         }
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentDate():String{
+        val dtm: LocalDateTime = LocalDateTime.now()
+        return ""+dtm
     }
 
 

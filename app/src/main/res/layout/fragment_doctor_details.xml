@@ -179,6 +179,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:id="@+id/tvAboutDoctor"
               android:text="@string/long_text_ex"
               android:layout_marginTop="@dimen/h6_dp_12"
               android:textSize="@dimen/h5_sp_14"

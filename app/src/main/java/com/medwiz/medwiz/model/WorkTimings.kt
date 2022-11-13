@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class WorkTimings(
     var day: String,
-    var time: String,
+    var startTime: String,
+    var endTime: String
 ): Parcelable{
-    constructor() : this("", "")
+    constructor() : this("", "","")
 }

@@ -64,7 +64,7 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
     private fun getReviewList(): ArrayList<Review> {
         val list=java.util.ArrayList<Review>()
         val review=Review()
-        review.username=""
+        review.reviewerName=""
         review.comments=""
         review.rating=0
          list.add(review)
@@ -74,37 +74,44 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
         val list=ArrayList<WorkTimings>()
         val worTimeMonday=WorkTimings()
         worTimeMonday.day="Monday"
-        worTimeMonday.time="8:00 am to 8:00 pm"
+        worTimeMonday.startTime="8:00 am"
+        worTimeMonday.endTime="8:00 pm"
         list.add(worTimeMonday)
 
         val worTimeTuesday=WorkTimings()
         worTimeTuesday.day="Tuesday"
-        worTimeTuesday.time="8:00 am to 8:00 pm"
+        worTimeTuesday.startTime="8:00 am"
+        worTimeTuesday.endTime="8:00 pm"
         list.add(worTimeTuesday)
 
         val worTimeWednesday=WorkTimings()
         worTimeWednesday.day="Wednesday"
-        worTimeWednesday.time="8:00 am to 8:00 pm"
+        worTimeWednesday.startTime="8:00 am"
+        worTimeWednesday.endTime="8:00 pm"
         list.add(worTimeWednesday)
 
         val worTimeThursDay=WorkTimings()
         worTimeThursDay.day="Thursday"
-        worTimeThursDay.time="8:00 am to 8:00 pm"
+        worTimeThursDay.startTime="8:00 am"
+        worTimeThursDay.endTime="8:00 pm"
         list.add(worTimeThursDay)
 
         val worTimeFriday=WorkTimings()
         worTimeFriday.day="Friday"
-        worTimeFriday.time="8:00 am to 8:00 pm"
+        worTimeFriday.startTime="8:00 am"
+        worTimeFriday.endTime="8:00 pm"
         list.add(worTimeFriday)
 
         val worTimeSaturday=WorkTimings()
         worTimeSaturday.day="Saturday"
-        worTimeSaturday.time="8:00 am to 8:00 pm"
+        worTimeSaturday.startTime="8:00 am"
+        worTimeSaturday.endTime="8:00 pm"
         list.add(worTimeSaturday)
 
         val worTimeSunday=WorkTimings()
         worTimeSunday.day="Sunday"
-        worTimeSunday.time="8:00 am to 8:00 pm"
+        worTimeSunday.startTime="8:00 am"
+        worTimeSunday.endTime="8:00 pm"
         list.add(worTimeSunday)
 
 
@@ -112,22 +119,15 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
 
     }
 
-    fun openDialog(view: View) {
+    private fun openDialog(view: View) {
          dialog = Dialog(requireContext())
         val dialogAlertCommonBinding = WorkingTimeDialogBinding
             .inflate(LayoutInflater.from(context));
         dialog.setContentView(dialogAlertCommonBinding.root)
-        val lis=ArrayList<String>()
-        lis.add("Monday")
-        lis.add("Tuesday")
-        lis.add("Wednesday")
-        lis.add("Thursday")
-        lis.add("Friday")
-        lis.add("Saturday")
-        lis.add("Sunday")
-        workingTimeAdapter = WorkingTimeAdapter(requireActivity(),lis)
+        workingTimeAdapter = WorkingTimeAdapter(requireActivity())
         dialogAlertCommonBinding.rcvWorkingTime.adapter = workingTimeAdapter
         dialogAlertCommonBinding.rcvWorkingTime.layoutManager = LinearLayoutManager(requireActivity())
+        workingTimeAdapter!!.setData(getWorkTime())
         dialog.show()
     }
     fun closeDialog(view: View) {

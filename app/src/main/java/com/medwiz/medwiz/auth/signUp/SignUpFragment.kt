@@ -72,7 +72,7 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
             val pinCode=binding.etPincode.text.toString()
             val age=binding.etAge.text.toString()
              val gender=strGender
-            if(firstName.isNotEmpty()||lastName.isNotEmpty()||mobile.isNotEmpty()||email.isNotEmpty()||pinCode.isNotEmpty()){
+            if(firstName.isNotEmpty()||lastName.isNotEmpty()||mobile.isNotEmpty()||email.isNotEmpty()||pinCode.isNotEmpty()||gender.isNotEmpty()){
                 val register= RegisterRequest()
                 register.firstname=firstName
                 register.lastname=lastName
@@ -84,7 +84,6 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
                 register.gender=gender
                 val bundle = Bundle()
                 bundle.putParcelable(UtilConstants.request,register)
-
                 when(accountType){
                     MedWizConstants.Auth.ACCOUNT_DOCTOR->{
                         findNavController().navigate(R.id.action_signUpFragment_to_addDocInfoFragment,bundle)
@@ -96,7 +95,7 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
                         findNavController().navigate(R.id.action_signUpFragment_to_addDocInfoFragment,bundle)
                     }
                 }
-//                findNavController().navigate(R.id.action_signUpFragment_to_createPassword,bundle)
+
 
             }
 

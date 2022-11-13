@@ -37,6 +37,7 @@ object UtilConstants {
     const val login = "auth/login"
     const val getUserById="user"
     const val doctor="doctor/"
+    const val review="review/doctor/"
     const val getDoctorByEmail="doctor/email/"
     const val getPatientByEmail="user/email/"
     const val getNearByDoctors="doctor/"

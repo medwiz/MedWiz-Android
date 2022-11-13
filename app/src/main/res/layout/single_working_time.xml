@@ -39,16 +39,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvStartTime"
                 android:textColor="@color/blue"
                 android:layout_marginStart="@dimen/h6_dp_12"
-                android:text="8:00 am -"/>
+                android:text="8:00 am"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/h6_dp_12"
-                android:textColor="@color/blue"
-                android:text="8:00 pm"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:id="@+id/tvEndTime"-->
+<!--                android:layout_marginStart="@dimen/h6_dp_12"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:text="8:00 pm"/>-->
 
         </LinearLayout>
 
