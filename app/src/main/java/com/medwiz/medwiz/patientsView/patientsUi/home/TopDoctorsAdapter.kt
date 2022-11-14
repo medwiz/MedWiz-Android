@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleDoctorRcvItemBinding
 import com.medwiz.medwiz.model.DoctorResponse
-import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
-import com.medwiz.medwiz.patientsView.patientModels.Doctors
 import java.util.ArrayList
 
 class TopDoctorsAdapter(private val context: Context,

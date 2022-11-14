@@ -6,12 +6,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPaymentBinding
+import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.model.DoctorResponse
+import com.medwiz.medwiz.util.UtilConstants
 
 class PaymentFragment : Fragment(R.layout.fragment_payment) {
     private lateinit var binding: FragmentPaymentBinding
+    private var newConsultation:Consultation?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPaymentBinding.bind(view)
+
+       this.newConsultation= arguments?.getParcelable<Consultation>(UtilConstants.consultation)!!
         binding.imgBack.setOnClickListener{
             findNavController().navigateUp()
         }

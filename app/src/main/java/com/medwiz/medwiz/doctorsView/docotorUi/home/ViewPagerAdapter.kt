@@ -1,13 +1,11 @@
 package com.medwiz.medwiz.doctorsView.docotorUi.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentOnAttachListener
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.medwiz.medwiz.doctorsView.docotorUi.CanceledFragment
 import com.medwiz.medwiz.doctorsView.docotorUi.CompletedFragment
 import com.medwiz.medwiz.doctorsView.docotorUi.UpcomingFragment
-import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 
 
 private const val NUM_TABS = 3

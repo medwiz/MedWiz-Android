@@ -77,6 +77,7 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
 
         binding.btBookAppoinment.setOnClickListener{
             val bundle=Bundle()
+            bundle.putParcelable(UtilConstants.doctor,selectedDoctor!!)
             bundle.putBoolean(UtilConstants.nearbyDocs,true)
             findNavController().navigate(R.id.action_doctorDetails_to_bookAppointmentFragment,bundle)
         }

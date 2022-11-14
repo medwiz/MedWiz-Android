@@ -65,7 +65,7 @@
     <string name="select_date">Select Date</string>
     <string name="select_time">Select time</string>
     <string name="fees">Fees</string>
-    <string name="rs_200">Rs.200</string>
+    <string name="rs_200">Rs.00</string>
     <string name="payment">Payment</string>
     <string name="payment_gateway">Payment gateway</string>
     <string name="pay">Pay</string>

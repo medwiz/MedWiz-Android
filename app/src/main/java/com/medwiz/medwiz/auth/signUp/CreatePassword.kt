@@ -1,5 +1,4 @@
 package com.medwiz.medwiz.auth.signUp
-
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -243,6 +242,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         requestObj.addProperty(UtilConstants.address,request.pinCode)
         requestObj.addProperty(UtilConstants.experience,doctorInfo.experience)
         requestObj.addProperty(UtilConstants.licencePath,doctorInfo.licencePath)
+        requestObj.addProperty(UtilConstants.fees,doctorInfo.fees)
         requestObj.addProperty(UtilConstants.specialization,doctorInfo.specialization)
         requestObj.addProperty(UtilConstants.about,doctorInfo.about)
         requestObj.addProperty(UtilConstants.isActivated,request.isActivated)

@@ -216,6 +216,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/rlFees"
         android:background="@drawable/layout_rounded_bg"
         android:layout_marginTop="23dp"
         android:padding="@dimen/h4_dp_16"
@@ -245,6 +246,20 @@
 
 
     </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/spinnerPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/h5_sp_14"
+        android:textColor="#303245"
+        android:gravity="start"
+        android:layout_marginTop="@dimen/h5_dp_14"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlFees"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"

@@ -13,11 +13,12 @@ data class DoctorResponse(
     val email: String,
     val experience: String,
     val firstname: String,
-    val id: Int,
+    val id: Long,
     val lastname: String,
     val licencePath: String,
     val mobile: String,
     val pinCode: String,
+    val fees:Int,
    // val reviews: ArrayList<Review>,
     val workingTimes:ArrayList<WorkTimings>,
     val specialization: String

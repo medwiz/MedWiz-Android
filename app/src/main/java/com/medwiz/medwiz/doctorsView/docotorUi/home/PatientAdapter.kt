@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.SinglePatientRcvItemBinding
 import com.medwiz.medwiz.model.DoctorResponse
-import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
-import com.medwiz.medwiz.patientsView.patientModels.Doctors
+import com.medwiz.medwiz.patientsView.patientsUi.home.HomeScreenListener
 import com.medwiz.medwiz.util.UtilConstants
 
 class PatientAdapter(private val context: Context,

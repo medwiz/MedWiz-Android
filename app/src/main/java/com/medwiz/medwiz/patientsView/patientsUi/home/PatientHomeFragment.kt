@@ -11,7 +11,6 @@ import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentPatientHomeBinding
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
-import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
 import com.medwiz.medwiz.viewmodels.PatientViewModel
 import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizUtils

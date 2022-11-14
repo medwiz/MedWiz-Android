@@ -39,15 +39,17 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
             val experience=binding.etYearsOfExperience.text.toString()
             val about=binding.etAboutYou.text.toString()
             val licencePath=binding.btUpload.text.toString()
+            val fees=binding.etFees.text.toString()
             val workTimeList=getWorkTime()
             val reviewList=getReviewList()
 
-            if(specialization.isNotEmpty()||experience.isNotEmpty()||about.isNotEmpty()||workTimeList.size>0||reviewList.size>0){
+            if(specialization.isNotEmpty()||experience.isNotEmpty()||about.isNotEmpty()||workTimeList.size>0||reviewList.size>0||fees.isNotEmpty()){
                 val doctorInfo=DoctorInfo()
-                 doctorInfo.experience=experience
-                  doctorInfo.specialization=specialization
-                 doctorInfo.licencePath=licencePath
-                 doctorInfo.about=about
+                doctorInfo.experience=experience
+                doctorInfo.specialization=specialization
+                doctorInfo.licencePath=licencePath
+                doctorInfo.about=about
+                doctorInfo.fees=fees.toInt()
                 val bundle = Bundle()
                 bundle.putParcelableArrayList(UtilConstants.reviewList,reviewList)
                 bundle.putParcelable(UtilConstants.doctorInfo,doctorInfo)

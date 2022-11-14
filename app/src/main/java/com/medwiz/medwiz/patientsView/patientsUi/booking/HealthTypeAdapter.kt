@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.HealthTypeRcvItemBinding
 import com.medwiz.medwiz.model.DoctorResponse
-import com.medwiz.medwiz.patientsView.patientModels.Doctors
-import com.medwiz.medwiz.patientsView.booking.patient.home.HomeScreenListener
+import com.medwiz.medwiz.patientsView.patientsUi.home.HomeScreenListener
 import java.util.ArrayList
 
 class HealthTypeAdapter(private val context: Context,

@@ -83,7 +83,7 @@
                 <EditText
                     android:id="@+id/etSpecialization"
                     android:layout_width="match_parent"
-                    android:layout_height="46dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/layout_rounded_bg"
                     android:inputType="textPersonName"
                     android:padding="5dp"
@@ -118,7 +118,7 @@
                 <EditText
                     android:id="@+id/etYearsOfExperience"
                     android:layout_width="match_parent"
-                    android:layout_height="46dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/layout_rounded_bg"
                     android:inputType="numberDecimal"
                     android:padding="5dp"
@@ -130,6 +130,37 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvYearsOfExperience"
                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvFees"
+                    android:text="@string/fees"
+                    android:textSize="@dimen/h5_sp_14"
+                    android:lineSpacingExtra="4sp"
+                    android:translationY="-1.79sp"
+                    android:textColor="#303245"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/h5_dp_14"
+                    android:fontFamily="@font/poppins_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etYearsOfExperience"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/etFees"
+                    android:background="@drawable/layout_rounded_bg"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:maxLength="10"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFees"/>
 
                 <TextView
                     android:id="@+id/tvAboutYou"
@@ -145,7 +176,7 @@
                     android:fontFamily="@font/poppins_regular"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etYearsOfExperience"/>
+                    app:layout_constraintTop_toBottomOf="@+id/etFees"/>
 
                 <EditText
                     android:id="@+id/etAboutYou"
@@ -242,35 +273,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btSelectWorkingTime" />
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/liLogin"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:layout_marginTop="@dimen/h3_dp_20"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/btNextStep">-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/already_have_account"-->
-<!--                        android:textSize="@dimen/h5_sp_14"-->
-<!--                        android:lineSpacingExtra="4sp"-->
-<!--                        android:translationY="-1.79sp"-->
-<!--                        android:fontFamily="@font/poppins_regular"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="6dp"-->
-<!--                        android:text="@string/login"-->
-<!--                        android:textSize="@dimen/h5_sp_14"-->
-<!--                        android:lineSpacingExtra="4sp"-->
-<!--                        android:translationY="-1.79sp"-->
-<!--                        android:textColor="@color/blue"-->
-<!--                        android:fontFamily="@font/poppins_bold"/>-->
 
-<!--                </LinearLayout>-->
 
 
 

@@ -1,11 +1,10 @@
 package com.medwiz.medwiz.di
 
-import com.medwiz.medwiz.data.network.AuthApi
-import com.medwiz.medwiz.data.network.DoctorApi
-import com.medwiz.medwiz.data.network.PatientApi
-import com.medwiz.medwiz.data.network.ReviewApi
+import com.medwiz.medwiz.data.network.*
 import com.medwiz.medwiz.repository.auth.AuthRepoInterface
 import com.medwiz.medwiz.repository.auth.AuthRepository
+import com.medwiz.medwiz.repository.consulat.ConsultationRepoInterface
+import com.medwiz.medwiz.repository.consulat.ConsultationRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepoInterface
 import com.medwiz.medwiz.repository.doctor.DoctorRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepository_Factory
@@ -95,5 +94,15 @@ object ApiModule {
     @Provides
     fun provideReviewRepository( api: ReviewApi) =
         ReviewRepository(api) as ReviewRepoInterface
+
+    @Provides
+    @Singleton
+    fun provideConsultation(retrofit: Retrofit): ConsultationApi {
+        return retrofit.create(ConsultationApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideConsultationRepository( api: ConsultationApi) =
+        ConsultationRepository(api) as ConsultationRepoInterface
 
 }

@@ -21,8 +21,12 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.android.material.snackbar.Snackbar
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.model.CustomTimeEntity
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 object MedWizUtils {
@@ -170,11 +174,39 @@ object MedWizUtils {
         }
 
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
     fun getCurrentDate():String{
-        val dtm: LocalDateTime = LocalDateTime.now()
-        return ""+dtm
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val currentDateandTime: String = sdf.format(Date())
+//        val dtm: LocalDateTime = LocalDateTime.now()
+//        return ""+dtm
+        return currentDateandTime
+    }
+    fun getAllTime(start:Int,end:Int):ArrayList<CustomTimeEntity>{
+        val lis=ArrayList<CustomTimeEntity>()
+        for (i in start..end) {
+            val customTime=CustomTimeEntity()
+            if(i<12){
+            customTime.amOrPm="am"
+            customTime.time="$i:00"
+            customTime.isSelected=false
+            lis.add(customTime)
+            }
+            else{
+                //all pm
+                var t=i-12
+                if(t==0){
+                    t=12
+                }
+
+                customTime.amOrPm="pm"
+                customTime.time="$t:00"
+                customTime.isSelected=false
+                lis.add(customTime)
+            }
+        }
+
+        return lis
     }
 
 
