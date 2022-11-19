@@ -10,6 +10,8 @@ import com.medwiz.medwiz.repository.doctor.DoctorRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepository_Factory
 import com.medwiz.medwiz.repository.patient.PatientRepoInterface
 import com.medwiz.medwiz.repository.patient.PatientRepository
+import com.medwiz.medwiz.repository.prescription.PrescriptionRepoInterface
+import com.medwiz.medwiz.repository.prescription.PrescriptionRepository
 import com.medwiz.medwiz.repository.reviews.ReviewRepoInterface
 import com.medwiz.medwiz.repository.reviews.ReviewRepository
 import com.medwiz.medwiz.util.UtilConstants
@@ -104,5 +106,16 @@ object ApiModule {
     @Provides
     fun provideConsultationRepository( api: ConsultationApi) =
         ConsultationRepository(api) as ConsultationRepoInterface
+
+
+    @Provides
+    @Singleton
+    fun providePrescription(retrofit: Retrofit): PrescriptionApi {
+        return retrofit.create(PrescriptionApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun providePrescriptionRepository( api: PrescriptionApi) =
+        PrescriptionRepository(api) as PrescriptionRepoInterface
 
 }
