@@ -16,11 +16,12 @@ data class LoginResponse(
     var token: String,
     var id: Long,
     var userType: String,
-    var gender:String
+    var gender:String,
+    var age:Int
 ):Parcelable{
     constructor() : this("", "",
         "", "", "",
         "", "", "",
-        0, "",""
+        0, "","",0
     )
 }

@@ -49,6 +49,7 @@ class PatientAdapter(private val context: Context,
             binding.tvPatientName.text = doctorItem.patientName
             binding.tvPatientGenderAndMobile.text= doctorItem.patientGender+" | "+doctorItem.patientMobile
             binding.tvDayAndDate.text=doctorItem.consDate
+            binding.tvAge.text="Age: "+doctorItem.age
             binding.tvTime.text=doctorItem.consTime
             binding.layMain.setOnClickListener {
                 listener.onClickConsult(position,doctorItem)

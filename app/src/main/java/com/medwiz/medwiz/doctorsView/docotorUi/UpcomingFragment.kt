@@ -41,7 +41,7 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), ConsultationListene
 
                 is Resource.Success->{
                     (activity as DoctorsActivity).hideLoading()
-                    adapter!!.setData(it.data!!)
+                     adapter!!.setData(it.data!!)
 
 
                 }

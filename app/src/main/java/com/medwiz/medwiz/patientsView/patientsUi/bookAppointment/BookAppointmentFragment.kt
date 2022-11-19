@@ -114,6 +114,7 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
             consulat.patientMobile= userDetails.mobile
             consulat.patientGender=userDetails.gender
             consulat.patientName= userDetails.firstname+" "+userDetails.lastname
+            consulat.age=userDetails.age
             val userId= userDetails.id
             consulat.patientId=userId.toLong()
             consulat.laboratoryId=0
@@ -200,6 +201,7 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
         requestObj.addProperty("patientMobile",consultation.patientMobile)
         requestObj.addProperty("patientGender",consultation.patientGender)
         requestObj.addProperty("patientName",consultation.patientName)
+        requestObj.addProperty("age",consultation.age)
 
         return requestObj
 

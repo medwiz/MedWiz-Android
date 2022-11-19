@@ -65,5 +65,12 @@ class PrescriptionMainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setConsultation(consultation: Consultation){
+        this.consultation=consultation
+    }
+    fun getConsultation():Consultation{
+        return this.consultation!!
+    }
+
 
 }

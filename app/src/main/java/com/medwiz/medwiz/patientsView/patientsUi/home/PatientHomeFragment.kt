@@ -74,13 +74,13 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                     (activity as PatientMainActivity).showLoading()
                 }
                 is Resource.Success->{
-                    (activity as PatientMainActivity).showLoading()
+                    (activity as PatientMainActivity).hideLoading()
                     this.allDoctors=it.data!!
                     this.adapter!!.setData(allDoctors!!)
                     this.topDoctorsAdapter!!.setData(it.data)
                 }
                 is Resource.Error->{
-                    (activity as PatientMainActivity).showLoading()
+                    (activity as PatientMainActivity).hideLoading()
                     MedWizUtils.showErrorPopup(
                         requireActivity(),
                         it.message.toString())

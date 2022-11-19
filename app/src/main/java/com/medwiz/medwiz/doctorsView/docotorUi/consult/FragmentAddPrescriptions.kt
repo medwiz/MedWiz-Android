@@ -14,6 +14,7 @@ import com.medwiz.medwiz.databinding.FragmentAddPrescriptionBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.doctorsView.model.Medicine
 import com.medwiz.medwiz.main.MainActivity
+import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,12 +26,13 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     private var labTestAdapter: LabTestAdapter?=null
     private var medicineList=ArrayList<Medicine>()
     private var labTestList=ArrayList<Medicine>()
-
+    private var consultation: Consultation?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddPrescriptionBinding.bind(view)
         medicineList= (activity as PrescriptionMainActivity).getMedicineList()
+        consultation=(activity as PrescriptionMainActivity).getConsultation()
         labTestList= (activity as PrescriptionMainActivity).getTestList()
         binding.imgBack.setOnClickListener{
               goBack()
