@@ -15,11 +15,12 @@ data class LoginResponse(
     var pinCode: String,
     var token: String,
     var id: Long,
-    var userType: String
+    var userType: String,
+    var gender:String
 ):Parcelable{
     constructor() : this("", "",
         "", "", "",
         "", "", "",
-        0, ""
+        0, "",""
     )
 }

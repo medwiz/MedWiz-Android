@@ -38,7 +38,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Male | 8010513971"
+                    android:text="Gender | Mobile"
                     android:textColor="@color/textColorGrey"
                     android:textSize="14sp"/>
 
@@ -83,7 +83,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="Appointment date and time"
                     android:textColor="@color/textColorGrey"
                     android:textSize="14sp"/>
 
@@ -112,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvDayAndDate"
                     android:layout_marginStart="8dp"
-                    android:text="15 Aug Monday"
+                    android:text="Date"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="14sp"
@@ -123,8 +122,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvTime"
                     android:layout_marginStart="12dp"
-                    android:text="8:00am - 10:00pm"
+                    android:text="Time"
                     android:textSize="14sp"
                     android:layout_gravity="center"
                     android:gravity="center"

@@ -88,11 +88,11 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
 
                 is Resource.Success->{
                     (activity as PatientMainActivity).hideLoading()
-                    if(it.data!!.dId>0){
-                          val i=0
-//                        bundle.putParcelable(UtilConstants.consultation,consulat)
-//                        bundle.putBoolean(UtilConstants.nearbyDocs,true)
-//                        findNavController().navigate(R.id.action_bookAppointmentFragment_to_paymentFragment,bundle)
+                    if(it.data!!.docId>0){
+                          val bundle=Bundle()
+                        bundle.putParcelable(UtilConstants.consultation,it.data)
+                        bundle.putBoolean(UtilConstants.nearbyDocs,true)
+                        findNavController().navigate(R.id.action_bookAppointmentFragment_to_paymentFragment,bundle)
                     }
 
 
@@ -106,14 +106,18 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
             val bundle=Bundle()
             val consulat=Consultation()
             consulat.addedDate=MedWizUtils.getCurrentDate()
-            consulat.cDate=selectedDateObj!!.actualDate
-            consulat.cTime=selectedTimeObj!!.time+" "+selectedTimeObj!!.amOrPm
+            consulat.consDate=selectedDateObj!!.actualDate
+            consulat.consTime=selectedTimeObj!!.time+" "+selectedTimeObj!!.amOrPm
             consulat.fees=selectedDoctor!!.fees
-            consulat.dId=selectedDoctor!!.id
-            val userId= MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,"0",false)
-            consulat.uId=userId.toLong()
-            consulat.lId=0
-            consulat.pId=0
+            consulat.docId=selectedDoctor!!.id
+            val userDetails=(activity as PatientMainActivity).getUserDetails()
+            consulat.patientMobile= userDetails.mobile
+            consulat.patientGender=userDetails.gender
+            consulat.patientName= userDetails.firstname+" "+userDetails.lastname
+            val userId= userDetails.id
+            consulat.patientId=userId.toLong()
+            consulat.laboratoryId=0
+            consulat.pharmaId=0
             consulat.filePath=""
             consulat.isCash=isCash
             consulat.isActive=true
@@ -135,7 +139,7 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
     }
 
     private fun createCustomDatesView() {
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf = SimpleDateFormat("dd MMM yy")
         for (i in 1..7) {
             val calendar: Calendar = GregorianCalendar()
             calendar.add(Calendar.DATE, i)
@@ -178,21 +182,24 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
     }
 
     private fun getJsonObject(consultation: Consultation): JsonObject {
-        //total 13 fields
+        //total 16 fields
         val requestObj=JsonObject()
         requestObj.addProperty("addedDate",consultation.addedDate)
-        requestObj.addProperty("cDate",consultation.cDate)
-        requestObj.addProperty("cTime",consultation.cTime)
-         requestObj.addProperty("dId",consultation.dId)
+        requestObj.addProperty("consDate",consultation.consDate)
+        requestObj.addProperty("consTime",consultation.consTime)
+         requestObj.addProperty("docId",consultation.docId)
         requestObj.addProperty("fees",consultation.fees)
         requestObj.addProperty("filePath",consultation.filePath)
         requestObj.addProperty("isActive",consultation.isActive)
         requestObj.addProperty("isCash",consultation.isCash)
-        requestObj.addProperty("lId",consultation.lId)
-        requestObj.addProperty("pId",consultation.pId)
+        requestObj.addProperty("laboratoryId",consultation.laboratoryId)
+        requestObj.addProperty("pharmaId",consultation.pharmaId)
         requestObj.addProperty("status",consultation.status)
         requestObj.addProperty("transactionId",consultation.transactionId)
-        requestObj.addProperty("uId",consultation.uId)
+        requestObj.addProperty("patientId",consultation.patientId)
+        requestObj.addProperty("patientMobile",consultation.patientMobile)
+        requestObj.addProperty("patientGender",consultation.patientGender)
+        requestObj.addProperty("patientName",consultation.patientName)
 
         return requestObj
 

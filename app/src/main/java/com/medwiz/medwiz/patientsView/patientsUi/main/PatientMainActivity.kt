@@ -20,6 +20,7 @@ class PatientMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPatientBinding
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
+    private var userDetails: LoginResponse?=null
     private var mCustomLoader: CustomLoaderDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class PatientMainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_patient_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-
+        mCustomLoader = CustomLoaderDialog(this, true)
         binding.bottomBar.setupWithNavController(navHostFragment.navController)
 
         navController
@@ -61,7 +62,13 @@ class PatientMainActivity : AppCompatActivity() {
         binding.bottomBar.visibility  = View.VISIBLE
     }
 
+    public fun setUserDetails(data: LoginResponse) {
+        this.userDetails=data
+    }
 
+    public fun getUserDetails():LoginResponse{
+        return this.userDetails!!
+    }
 
     fun showLoading() {
         if (mCustomLoader?.window != null) {
@@ -74,5 +81,7 @@ class PatientMainActivity : AppCompatActivity() {
         if (mCustomLoader != null) mCustomLoader?.cancel()
     }
     }
+
+
 
 

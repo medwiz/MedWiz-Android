@@ -274,6 +274,6 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
     }
 
     private fun registerDoctor(){
-        doctorViewModel.updateDoctor(getJsonObject(),registeredEmail)
+        doctorViewModel.updateDoctor(getJsonObject())
     }
 }

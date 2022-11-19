@@ -16,6 +16,7 @@ import com.medwiz.medwiz.repository.patient.PatientRepoInterface
 import com.medwiz.medwiz.repository.reviews.ReviewRepoInterface
 import com.medwiz.medwiz.util.NetworkUtils
 import com.medwiz.medwiz.util.Resource
+import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -31,6 +32,8 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
     val consultation:MutableLiveData<Resource<Consultation>> = MutableLiveData()
     var consultationResponse:Consultation?=null
 
+    val consultationList:MutableLiveData<Resource<ArrayList<Consultation>>> = MutableLiveData()
+    var consultationResponseList:ArrayList<Consultation>?=null
 
 
     public fun createNewConsultation(token:String,jsonObject: JsonObject)=viewModelScope.launch {
@@ -55,15 +58,57 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
             }
         }
     }
-
     private fun handleConsultationResponse(response: Response<Consultation>): Resource<Consultation> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.dId>0) {
+                if(resultResponse.docId>0) {
                     consultationResponse = resultResponse
                     return Resource.Success(consultationResponse ?: resultResponse)
                 }
             }
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
+    }
+
+
+    public fun getConsultationByDocId(token:String,id:Long)=viewModelScope.launch {
+
+        callGetConsultationApi(token,id)
+
+    }
+    private suspend fun callGetConsultationApi(token:String,id:Long){
+        consultationList.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.getConsultationByDocId(token,id)
+                consultationList.postValue(handleConsultationByDocResponse(response))
+            }
+            else
+                consultationList.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> consultationList.postValue(Resource.Error("Network Failure"))
+                else -> consultationList.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private fun handleConsultationByDocResponse(response: Response<ArrayList<Consultation>>): Resource<ArrayList<Consultation>> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if(resultResponse.isNotEmpty()) {
+                    consultationResponseList = resultResponse
+                    return Resource.Success(consultationResponseList ?: resultResponse)
+                }
+            }
+        }
+        else if(response.code()==401){
+            return Resource.Error(UtilConstants.unauthorized)
         }
         else{
             val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)

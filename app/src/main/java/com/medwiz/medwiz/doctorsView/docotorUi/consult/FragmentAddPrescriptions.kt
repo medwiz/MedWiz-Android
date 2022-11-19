@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.AddMedicinePopupBinding
 import com.medwiz.medwiz.databinding.FragmentAddPrescriptionBinding
+import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.doctorsView.model.Medicine
+import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -187,6 +189,7 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     }
 
     private fun goBack(){
+        startActivity(Intent(requireActivity(), DoctorsActivity::class.java))
         requireActivity().finish()
     }
 }

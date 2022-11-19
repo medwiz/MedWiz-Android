@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mCustomLoader = CustomLoaderDialog(this, true)
         supportFragmentManager.fragmentFactory = fragmentFactory
 
         val navHostFragment =

@@ -28,10 +28,9 @@ class DoctorsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_doctor_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-
+        mCustomLoader = CustomLoaderDialog(this, true)
         binding.bottomDoctorBar.setupWithNavController(
             navHostFragment.navController
         )
@@ -47,6 +46,9 @@ class DoctorsActivity : AppCompatActivity() {
                     }
                     R.id.paymentFragment -> {
                         hideBottomLayout()
+                    }
+                    R.id.docHomeFragment->{
+                        val i=0
                     }
 
 

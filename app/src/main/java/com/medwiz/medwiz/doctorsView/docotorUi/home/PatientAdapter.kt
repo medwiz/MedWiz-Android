@@ -1,24 +1,33 @@
 package com.medwiz.medwiz.doctorsView.docotorUi.home
 
 import android.content.Context
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.SinglePatientRcvItemBinding
+import com.medwiz.medwiz.doctorsView.docotorUi.ConsultationListener
+import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.model.DoctorResponse
+import com.medwiz.medwiz.model.Review
 import com.medwiz.medwiz.patientsView.patientsUi.home.HomeScreenListener
+import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
+import java.util.ArrayList
 
 class PatientAdapter(private val context: Context,
                      private val type:String,
-                     private val itemList:MutableList<DoctorResponse>,
-                     private val listener: HomeScreenListener
+                     private val listener: ConsultationListener
 ):RecyclerView.Adapter<PatientAdapter.PatientViewHolder>(){
 
+    private var itemList:ArrayList<Consultation> = ArrayList()
 
-
+    public fun setData(list:ArrayList<Consultation>){
+        this.itemList=list
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientViewHolder {
@@ -36,8 +45,11 @@ class PatientAdapter(private val context: Context,
     }
 
     inner class PatientViewHolder(val binding: SinglePatientRcvItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(doctorItem: DoctorResponse, position: Int){
-           // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
+        fun bind(doctorItem: Consultation, position: Int){
+            binding.tvPatientName.text = doctorItem.patientName
+            binding.tvPatientGenderAndMobile.text= doctorItem.patientGender+" | "+doctorItem.patientMobile
+            binding.tvDayAndDate.text=doctorItem.consDate
+            binding.tvTime.text=doctorItem.consTime
             binding.layMain.setOnClickListener {
                 listener.onClickConsult(position,doctorItem)
             }

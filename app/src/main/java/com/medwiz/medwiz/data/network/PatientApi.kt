@@ -13,6 +13,6 @@ interface PatientApi {
     suspend fun getPatientByEmail(@Header("Authorization") accessToken: String,
                             @Path("email")email:String):Response<LoginResponse>
 
-    @GET(UtilConstants.doctor)
+    @GET("doctor/")
     suspend fun getNearByDoctor(@Header("Authorization") accessToken: String):Response<java.util.ArrayList<DoctorResponse>>
 }

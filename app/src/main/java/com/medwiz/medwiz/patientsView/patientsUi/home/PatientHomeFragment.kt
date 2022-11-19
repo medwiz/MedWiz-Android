@@ -51,6 +51,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                is Resource.Success->{
                    (activity as PatientMainActivity).hideLoading()
                    this.userDetails=it.data!!
+                   (activity as PatientMainActivity).setUserDetails(it.data)
                    val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
                    binding.tvName.text= name
                }
@@ -74,8 +75,6 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                 }
                 is Resource.Success->{
                     (activity as PatientMainActivity).showLoading()
-
-                    val k=this.userDetails!!.pinCode
                     this.allDoctors=it.data!!
                     this.adapter!!.setData(allDoctors!!)
                     this.topDoctorsAdapter!!.setData(it.data)
@@ -103,6 +102,8 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
             findNavController().navigate(R.id.action_patientHomeFragment_to_viewAllDoctorsFragment,bundle)
         }
     }
+
+
 
     private fun getAllNearByDoctor(token: String) {
        viewModel.getAllNearByDoctors(token)

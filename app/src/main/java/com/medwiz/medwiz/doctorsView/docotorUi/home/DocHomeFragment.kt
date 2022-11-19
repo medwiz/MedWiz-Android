@@ -57,7 +57,9 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerList
 
                 is Resource.Success->{
                     this.userDetails=it.data!!
-                    val name="Hi Dr."+userDetails!!.firstname+" "+userDetails!!.lastname
+                    val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
+                    MedWizUtils.storeValueInPreference(requireContext(),
+                        UtilConstants.docId,userDetails!!.id.toString(),true)
                     binding.tvDoctorName.text= name
 
                 }

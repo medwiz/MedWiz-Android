@@ -56,13 +56,8 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
                 is Resource.Success->{
                   if(accountType==it.data!!.userType){
-                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,it.data.token,true)
-                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,it.data.id.toString(),true)
-                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.data.email,true)
-                    MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.data.userType,true)
                     goToNextScreen(it.data)
                   }else{
-                     // MedWizUtils.showErrorPopup(requireContext(),"You have chosen wrong account type")
                       Toast.makeText(requireContext(),"You have chosen wrong account type",Toast.LENGTH_SHORT).show()
                       goBack()
                   }
@@ -96,12 +91,11 @@ class LoginFragment :Fragment(R.layout.fragment_login){
         requireActivity().finish()
     }
 
-    private fun goToNextScreen(loginResponse: LoginResponse) {
-        val bundle=Bundle()
-//        bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)
-//        bundle.putString(MedWizConstants.AppValue.PHONE_NUMBER,binding.etEmail.text.toString())
-//        findNavController().navigate(R.id.action_loginFragment_to_verificationFragment,bundle)
-
+    private fun goToNextScreen(it: LoginResponse) {
+        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"Bearer "+it.token,true)
+        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,it.id.toString(),true)
+        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.email,true)
+        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.userType,true)
         when(accountType){
             MedWizConstants.Auth.ACCOUNT_DOCTOR->{
                 val intent = Intent (requireActivity(), DoctorsActivity::class.java)

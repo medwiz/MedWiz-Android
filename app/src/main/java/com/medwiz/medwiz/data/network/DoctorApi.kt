@@ -16,8 +16,8 @@ interface DoctorApi {
     suspend fun getDoctorByEmail(@Header("Authorization") accessToken: String,
                             @Path("email")email:String):Response<LoginResponse>
 
-    @POST(UtilConstants.doctor+"{email}")
-    suspend fun registerDoctor(@Body jsonObject: JsonObject,@Path("email")email:String):Response<CommonResponse>
+    @POST(UtilConstants.doctorApi)
+    suspend fun registerDoctor(@Body jsonObject: JsonObject):Response<CommonResponse>
 
 
 

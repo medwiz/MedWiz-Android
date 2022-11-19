@@ -16,11 +16,14 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.edit
+import androidx.fragment.app.FragmentActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.android.material.snackbar.Snackbar
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.model.CustomTimeEntity
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -176,11 +179,15 @@ object MedWizUtils {
     }
     fun getCurrentDate():String{
 
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        val currentDateandTime: String = sdf.format(Date())
-//        val dtm: LocalDateTime = LocalDateTime.now()
-//        return ""+dtm
-        return currentDateandTime
+        val sdf = SimpleDateFormat("dd MMM yy")
+        val currentDateAndTime: String = sdf.format(Date())
+        return currentDateAndTime
+    }
+    fun changeDateFormat(inputDate:String):String{
+        val sdf = SimpleDateFormat("yyyy-MMMM-dd")
+        val outPutDate:String=SimpleDateFormat("yyyy-MM-dd").parse(inputDate).toString().substring(0,10)
+        return outPutDate
+
     }
     fun getAllTime(start:Int,end:Int):ArrayList<CustomTimeEntity>{
         val lis=ArrayList<CustomTimeEntity>()
@@ -208,6 +215,15 @@ object MedWizUtils {
 
         return lis
     }
+    public fun performLogout(context: Context,requireActivity: FragmentActivity) {
+        MedWizUtils.storeValueInPreference(context,UtilConstants.accessToken,"",true)
+        MedWizUtils.storeValueInPreference(context,UtilConstants.userId,"",true)
+        MedWizUtils.storeValueInPreference(context,UtilConstants.email,"",true)
+        MedWizUtils.storeValueInPreference(context,UtilConstants.userType,"",true)
+        MedWizUtils.storeValueInPreference(context,UtilConstants.docId,"",true)
+        context.startActivity(Intent(requireActivity, MainActivity::class.java))
+        requireActivity.finish()
 
+    }
 
 }

@@ -15,8 +15,8 @@ class DoctorRepository @Inject constructor(private val api: DoctorApi):DoctorRep
         return api.getDoctorByEmail(token,email)
     }
 
-    override suspend fun registerDoctor(jsonObject: JsonObject, email: String): Response<CommonResponse> {
-        return api.registerDoctor(jsonObject,email)
+    override suspend fun registerDoctor(jsonObject: JsonObject): Response<CommonResponse> {
+        return api.registerDoctor(jsonObject)
     }
 
 

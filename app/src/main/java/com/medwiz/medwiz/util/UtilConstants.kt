@@ -2,6 +2,7 @@ package com.medwiz.medwiz.util
 
 object UtilConstants {
     const val consultation: String="consultation"
+    const val docId:String="docId"
     const val fees: String="fees"
     const val gender: String="gender"
     const val about: String="about"
@@ -38,11 +39,11 @@ object UtilConstants {
     const val register = "auth/register"
     const val login = "auth/login"
     const val getUserById="user"
-    const val doctor="doctor/"
+    const val doctor="doctor"
     const val review="review/doctor/"
     const val getDoctorByEmail="doctor/email/"
     const val getPatientByEmail="user/email/"
-    const val getNearByDoctors="doctor/"
+    const val doctorApi="doctor/"
     const val consultationApi="consult/"
     const val refresh = "identity-int/api/caritag/protocol/openid-connect/token"
 
@@ -65,23 +66,19 @@ object UtilConstants {
     const val TYPE_UPCOMING="upcoming"
     const val TYPE_COMPLETED="completed"
     const val TYPE_CANCELLED="cancelled"
-    const val GRANT_TYPE="grant_type"
-    const val CLIENT_ID="client_id"
-    const val CLIENT_SECRET="client_secret"
-    const val GRANT_TYPE_VALUE="client_credentials"
-    const val CLIENT_ID_VALUE_DEVICE="firmware-management"
-    const val CLIENT_SECRET_VALUE_DEVICE="638ab4d4-b13a-4e81-be1d-ce32251d454e"//BuildConfig.CLIENT_SECRET_DEVICE
-    const val CLIENT_ID_VALUE="eto-mobile-client"
-    const val CLIENT_CREDENTIALS="client_credentials"
-    const val CLIENT_SECRET_VALUE="311a80eb-3bc5-4c93-83ab-fe363a27afb1"
-    const val ERROR_INVALID_USER="MSG_INVALID_USER_CREDENTIALS"
-    const val ERROR_ACCOUNT_SETUP:String="MSG_ACCOUNT_IS_NOT_FULLY_SET_UP"
+
+    const val STATUS_IN_PROGRESS = "inProgress"
+    const val STATUS_ON_HOLD = "onHold"
+    const val STATUS_COMPLETED = "completed"
+    const val STATUS_CANCELED = "canceled"
+
 
     //Profile Items
     const val ITEM_PROFILE=1
     const val ITEM_EDIT_PROFILE=2
     const val ITEM_SETTING=3
-    const val ITEM_TERMS=4
+    const val ITEM_LOGOUT=4
+    const val ITEM_TERMS=5
 
 
 

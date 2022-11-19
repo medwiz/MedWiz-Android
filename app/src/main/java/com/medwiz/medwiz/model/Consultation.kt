@@ -7,18 +7,21 @@ import kotlinx.parcelize.Parcelize
 data class Consultation (
      var addedDate: String,
      var filePath: String,
+     var patientMobile:String,
+     var patientName:String,
+     var patientGender:String,
      var fees:Int,
-     var uId: Long,
-     var dId: Long,
-     var lId: Long,
-     var pId: Long,
+     var patientId: Long,
+     var docId: Long,
+     var laboratoryId: Long,
+     var pharmaId: Long,
      var isCash:Boolean,
      var isActive:Boolean,
      var status: String,
      var transactionId: String,
-     var cDate: String,
-     var cTime: String
+     var consDate: String,
+     var consTime: String
 ): Parcelable {
-    constructor():this("","",0,0,0,0,0,false,false,"",
-   "","","" )
+    constructor():this("","","","","",0,0,0,0,0,false,false,
+   "","","","" )
 }

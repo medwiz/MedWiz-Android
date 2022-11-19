@@ -68,14 +68,14 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
     }
 
 
-    public fun updateDoctor(jsonObj:JsonObject,email:String)=viewModelScope.launch {
-        callRegisterDoctorApi(jsonObj,email)
+    public fun updateDoctor(jsonObj:JsonObject)=viewModelScope.launch {
+        callRegisterDoctorApi(jsonObj)
     }
-    private suspend fun callRegisterDoctorApi(jsonObj:JsonObject,email:String){
+    private suspend fun callRegisterDoctorApi(jsonObj:JsonObject){
         registerDoctor.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.registerDoctor(jsonObj,email)
+                val response = repository.registerDoctor(jsonObj)
                 registerDoctor.postValue(handleRegisterDoctorResponse(response))
             }
             else
