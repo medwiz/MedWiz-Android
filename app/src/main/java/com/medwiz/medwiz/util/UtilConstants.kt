@@ -1,6 +1,7 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
+    val userDetails: String="userDetails"
     const val consultation: String="consultation"
     const val docId:String="docId"
     const val fees: String="fees"

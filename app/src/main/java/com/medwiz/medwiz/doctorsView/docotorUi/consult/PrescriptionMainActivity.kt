@@ -2,11 +2,12 @@ package com.medwiz.medwiz.doctorsView.docotorUi.consult
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.transaction
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.ActivityPrescriptionMainBinding
-import com.medwiz.medwiz.doctorsView.model.Medicine
+import com.medwiz.medwiz.doctorsView.model.Medication
 import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.util.CustomLoaderDialog
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,14 +15,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PrescriptionMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPrescriptionMainBinding
-    private var medicineList=ArrayList<Medicine>()
-    private var labTestList=ArrayList<Medicine>()
+    private var medicineList=ArrayList<Medication>()
+    private var labTestList=ArrayList<Medication>()
     private var consultation:Consultation?=null
+    private var userDetails: LoginResponse?=null
+    private var mCustomLoader: CustomLoaderDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrescriptionMainBinding.inflate(layoutInflater)
         consultation=intent.getParcelableExtra<Consultation>(UtilConstants.consultation)
+        userDetails=intent.getParcelableExtra<LoginResponse>(UtilConstants.userDetails)
         setContentView(binding.root)
+        mCustomLoader = CustomLoaderDialog(this, true)
         openAddPrescriptionFragment()
     }
 
@@ -41,17 +46,17 @@ class PrescriptionMainActivity : AppCompatActivity() {
 
     }
 
-    fun setPrescriptionData(medicineList: ArrayList<Medicine>, labTestList: ArrayList<Medicine>) {
+    fun setPrescriptionData(medicineList: ArrayList<Medication>, labTestList: ArrayList<Medication>) {
         this.medicineList=medicineList
         this.labTestList=labTestList
 
     }
 
-    fun getMedicineList():ArrayList<Medicine>{
+    fun getMedicineList():ArrayList<Medication>{
         return medicineList
     }
 
-    fun getTestList():ArrayList<Medicine>{
+    fun getTestList():ArrayList<Medication>{
         return labTestList
     }
 
@@ -71,6 +76,23 @@ class PrescriptionMainActivity : AppCompatActivity() {
     fun getConsultation():Consultation{
         return this.consultation!!
     }
+    fun setUserDetails(userDetails:LoginResponse){
+        this.userDetails=userDetails;
+    }
 
+    fun getUserDetails():LoginResponse{
+        return this.userDetails!!
+    }
+
+    fun showLoading() {
+        if (mCustomLoader?.window != null) {
+            (mCustomLoader?.window)!!.setBackgroundDrawableResource(android.R.color.transparent)
+            mCustomLoader?.show()
+        }
+    }
+
+    fun hideLoading() {
+        if (mCustomLoader != null) mCustomLoader?.cancel()
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.medwiz.medwiz.model
 
-import com.medwiz.medwiz.doctorsView.model.Medicine
+import com.medwiz.medwiz.doctorsView.model.Medication
 import java.util.ArrayList
 
 data class Prescription(
@@ -11,5 +11,5 @@ data class Prescription(
     var patientId: Long,
     var docId: Long,
     var docName: String,
-    var medicineList: ArrayList<Medicine>
+    var medicineList:ArrayList<Medication>
 )

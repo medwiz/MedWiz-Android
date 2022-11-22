@@ -78,6 +78,7 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), ConsultationListene
 
     override fun onClickConsult(position: Int, consultation: Consultation) {
         val intent = Intent (requireActivity(), PrescriptionMainActivity::class.java)
+        intent.putExtra(UtilConstants.userDetails,(activity as DoctorsActivity).getUserDetails())
         intent.putExtra(UtilConstants.consultation,consultation)
         requireActivity().startActivity(intent)
         requireActivity().finish()

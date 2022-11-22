@@ -6,16 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.PrescriptionSingleLayoutBinding
-import com.medwiz.medwiz.databinding.SingleBookingRcvItemBinding
-import com.medwiz.medwiz.doctorsView.model.Medicine
-import com.medwiz.medwiz.patientsView.patientModels.BookingModel
+import com.medwiz.medwiz.doctorsView.model.Medication
 
 class PrescriptionAdapter(private val context: Context,private val type:String
 ):RecyclerView.Adapter<PrescriptionAdapter.PrescriptionAdapterViewHolder>(){
 
-   private var precList=ArrayList<Medicine>()
+   private var precList=ArrayList<Medication>()
 
-   fun setData(itemList: ArrayList<Medicine>){
+   fun setData(itemList: ArrayList<Medication>){
        this.precList=itemList
        notifyDataSetChanged()
    }
@@ -35,7 +33,7 @@ class PrescriptionAdapter(private val context: Context,private val type:String
     }
 
     inner class PrescriptionAdapterViewHolder(val binding: PrescriptionSingleLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(medicineItem: Medicine, position: Int){
+        fun bind(medicineItem: Medication, position: Int){
             binding.tvNo.text=(position+1).toString()+"."
             when(type){
                 context.getString(R.string.add_medicine_title)->{
@@ -52,25 +50,17 @@ class PrescriptionAdapter(private val context: Context,private val type:String
         }
     }
 
-    private fun setUiForMedicine(binding: PrescriptionSingleLayoutBinding,medicineItem: Medicine){
+    private fun setUiForMedicine(binding: PrescriptionSingleLayoutBinding,medicineItem: Medication){
         binding.tvName.text=medicineItem.name
-        var mor=0
-        var aft=0
-        var night=0
+        var mor=medicineItem.morningDose
+        var aft=medicineItem.afternoonDose
+        var night=medicineItem.nightDose
         val days=" ("+medicineItem.noOfDays.toString()+" days)"
-        if(medicineItem.isMorning){
-            mor=1
-        }
-        if(medicineItem.isAfterNoon){
-            aft=1
-        }
-        if(medicineItem.isNight){
-            night=1
-        }
+
         binding.tvTime.text =""+mor+"-"+aft+"-"+night+days
     }
 
-    private fun setUiForLabTest(binding: PrescriptionSingleLayoutBinding,medicineItem: Medicine){
+    private fun setUiForLabTest(binding: PrescriptionSingleLayoutBinding,medicineItem: Medication){
         binding.tvName.text=medicineItem.labTestName
 
     }

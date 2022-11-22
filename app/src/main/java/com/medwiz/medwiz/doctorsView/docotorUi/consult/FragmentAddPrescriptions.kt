@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.AddMedicinePopupBinding
 import com.medwiz.medwiz.databinding.FragmentAddPrescriptionBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
-import com.medwiz.medwiz.doctorsView.model.Medicine
-import com.medwiz.medwiz.main.MainActivity
+import com.medwiz.medwiz.doctorsView.model.Medication
 import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,8 +22,8 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     private lateinit var binding: FragmentAddPrescriptionBinding
     private var medicineAdapter: PrescriptionAdapter?=null
     private var labTestAdapter: LabTestAdapter?=null
-    private var medicineList=ArrayList<Medicine>()
-    private var labTestList=ArrayList<Medicine>()
+    private var medicineList=ArrayList<Medication>()
+    private var labTestList=ArrayList<Medication>()
     private var consultation: Consultation?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,18 +137,18 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
         val medicineName=alertBinding.etMedicineName.text.toString()
         val noOfDays=alertBinding.etNoOfDays.text.toString()
         if(medicineName.isNotEmpty()&&noOfDays.isNotEmpty()){
-            val medicine=Medicine((medicineList.size+1),alertBinding.etMedicineName.text.toString(),"",
+            val medicine=Medication((medicineList.size+1),alertBinding.etMedicineName.text.toString(),"",
                 noOfDays.toInt(),
-                false,false,false)
+                0,0,0)
 
             if(alertBinding.btMorning.text.toString()=="M"){
-                medicine.isMorning=true
+                medicine.morningDose=1
             }
             if(alertBinding.btAfterNoon.text.toString()=="A"){
-                medicine.isAfterNoon=true
+                medicine.afternoonDose=1
             }
             if(alertBinding.btNight.text.toString()=="N"){
-                medicine.isNight=true
+                medicine.nightDose=1
             }
             medicineList.add(medicine)
             createMedicineAdapter()
@@ -164,8 +162,8 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     private fun addLabTest(alertBinding:AddMedicinePopupBinding,mAlert: AlertDialog) {
         val medicineName=alertBinding.etMedicineName.text.toString()
         if(medicineName.isNotEmpty()){
-            val labTest=Medicine((medicineList.size+1),"",alertBinding.etMedicineName.text.toString(),0,
-                false,false,false)
+            val labTest=Medication((medicineList.size+1),"",alertBinding.etMedicineName.text.toString(),0,
+                0,0,0)
             labTestList.add(labTest)
             createLabtestAdapter()
 
@@ -178,13 +176,13 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
 
 
 
-    private fun createMedicineList(mAlert:AlertDialog,list:ArrayList<Medicine>) {
+    private fun createMedicineList(mAlert:AlertDialog,list:ArrayList<Medication>) {
         mAlert.dismiss()
         medicineAdapter!!.setData(list)
 
     }
 
-    private fun createLabList(mAlert:AlertDialog,list:ArrayList<Medicine>) {
+    private fun createLabList(mAlert:AlertDialog,list:ArrayList<Medication>) {
         mAlert.dismiss()
         labTestAdapter!!.setData(list)
 

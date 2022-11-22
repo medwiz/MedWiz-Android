@@ -62,7 +62,7 @@ class PrescriptionViewModel @Inject constructor(private val repository: Prescrip
     private fun handlePrescriptionResponse(response: Response<Prescription>): Resource<Prescription> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.docId>0) {
+                if(resultResponse.id>0) {
                     prescriptionResponse = resultResponse
                     return Resource.Success(prescriptionResponse ?: resultResponse)
                 }

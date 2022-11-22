@@ -24,6 +24,7 @@ class DoctorsActivity : AppCompatActivity() {
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
     private var mCustomLoader: CustomLoaderDialog? = null
+    private var userDetails: LoginResponse?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorsBinding.inflate(layoutInflater)
@@ -74,6 +75,14 @@ class DoctorsActivity : AppCompatActivity() {
 
     fun hideLoading() {
         if (mCustomLoader != null) mCustomLoader?.cancel()
+    }
+
+    fun setUserDetails(userDetails:LoginResponse){
+        this.userDetails=userDetails;
+    }
+
+    fun getUserDetails():LoginResponse{
+        return this.userDetails!!
     }
 
 

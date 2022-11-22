@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPreviewBinding
-import com.medwiz.medwiz.doctorsView.model.Medicine
+import com.medwiz.medwiz.doctorsView.model.Medication
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,8 +15,8 @@ class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview) {
     private lateinit var binding:FragmentPreviewBinding
     private var medicineAdapter: PrescriptionAdapter?=null
     private var labAdapter: PrescriptionAdapter?=null
-    private var medicineList=ArrayList<Medicine>()
-    private var labTestList=ArrayList<Medicine>()
+    private var medicineList=ArrayList<Medication>()
+    private var labTestList=ArrayList<Medication>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding=FragmentPreviewBinding.bind(view)
