@@ -5,6 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.LoginResponse
@@ -24,6 +27,9 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerList
         "Completed",
         "Cancelled"
     )
+    private var viewPager:ViewPager2?=null
+    private var tabLayout:TabLayout?=null
+    private  var  viewPagerAdapter:ViewPagerAdapter?=null
     private val viewModel: DoctorViewModel by viewModels()
     private lateinit var binding:FragmentDocHomeLayoutBinding
     private var userDetails: LoginResponse?=null
@@ -31,15 +37,14 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerList
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDocHomeLayoutBinding.bind(view)
-        val viewPager = binding.viewPager
-        val tabLayout = binding.tabLayout
+          viewPager = binding.viewPager
+         tabLayout = binding.tabLayout
 
-        val adapter = ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle,this)
-        viewPager.adapter = adapter
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabNameArray[position]
-        }.attach()
+
+//        TabLayoutMediator(tabLayout!!, viewPager!!) { tab, position ->
+//            tab.text = tabNameArray[position]
+//        }.attach()
         val token= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.accessToken,"",false)
         val userType= MedWizUtils.storeValueInPreference(requireContext(),
@@ -63,13 +68,21 @@ class DocHomeFragment:Fragment(R.layout.fragment_doc_home_layout), ViewPagerList
                         UtilConstants.docId,userDetails!!.id.toString(),true)
 
                     binding.tvDoctorName.text= name
+                    viewPagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle,this)
+                    viewPager!!.adapter = viewPagerAdapter
+                    TabLayoutMediator(tabLayout!!, viewPager!!) { tab, position ->
+                        tab.text = tabNameArray[position]
+                    }.attach()
 
                 }
                 is Resource.Error->{
                     (activity as DoctorsActivity).hideLoading()
-                    MedWizUtils.showErrorPopup(
-                        requireActivity(),
-                        it.message.toString())
+//                    MedWizUtils.showErrorPopup(
+//                        requireActivity(),
+//                        it.message.toString())
+                    if(it.message==UtilConstants.unauthorized){
+                        MedWizUtils.performLogout(requireContext(),requireActivity())
+                    }
                 }
             }
         })

@@ -1,7 +1,9 @@
 package com.medwiz.medwiz.doctorsView.docotorUi.consult
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -30,6 +32,7 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
     private var medicineList=ArrayList<Medication>()
     private var labTestList=ArrayList<Medication>()
     private var consultation: Consultation?=null
+    private var token:String=""
     private var userDetails: LoginResponse?=null
     private val consultationViewModel: ConsultationViewModel by viewModels()
     private val prescriptionViewModel: PrescriptionViewModel by viewModels()
@@ -48,7 +51,7 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
              goBack()
         }
         binding.btSend.setOnClickListener{
-            updateConsultation()
+           createPrescription()
 
         }
         binding.tvPreview.setOnClickListener{
@@ -76,7 +79,33 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
                 is Resource.Success->{
                     (activity as PrescriptionMainActivity).hideLoading()
                     if(it.data!!.id>0){
-                        val i=0
+                        Toast.makeText(requireContext(),"Prescription created", Toast.LENGTH_SHORT).show()
+                        updateConsultation(it.data.id)
+
+                    }
+
+                }
+                is Resource.Error->{
+                    (activity as PrescriptionMainActivity).hideLoading()
+                    if(it.message==UtilConstants.unauthorized){
+                        MedWizUtils.performLogout(requireContext(),requireActivity())
+                    }
+
+                }
+            }
+        })
+        consultationViewModel.consultation.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as PrescriptionMainActivity).showLoading()
+                }
+
+                is Resource.Success->{
+                    (activity as PrescriptionMainActivity).hideLoading()
+                    if(it.data!!.id>0){
+                        Toast.makeText(requireContext(),"consultation updated successfully", Toast.LENGTH_SHORT).show()
+                        goToDoctorActivity()
+
                     }
 
                 }
@@ -91,12 +120,20 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         })
     }
 
-    private fun updateConsultation() {
-      val jsonObject=JsonObject()
+    private fun goToDoctorActivity() {
+        val intent = Intent (requireActivity(), DoctorsActivity::class.java)
+        requireActivity().startActivity(intent)
+        requireActivity().finish()
+    }
+    
+    private fun createPrescription(){
+
+        val jsonObject=JsonObject()
         jsonObject.addProperty("addedDate",MedWizUtils.getCurrentDate())
         jsonObject.addProperty("isActive",true)
         jsonObject.addProperty("updateDate",MedWizUtils.getCurrentDate())
         jsonObject.addProperty("patientId",consultation!!.patientId)
+        jsonObject.addProperty("patientName",consultation!!.patientName)
         jsonObject.addProperty("docId",consultation!!.docId)
         val docName=userDetails!!.firstname+" "+userDetails!!.lastname
         jsonObject.addProperty("docName",docName)
@@ -118,8 +155,32 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         jsonObject.add("medicationLab",medicationLabArray)
 
         jsonObject.add("medication",medicationArray)
-        val token=MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"",false)
+        token=MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"",false)
         prescriptionViewModel.createPrescription(token,jsonObject)
+
+    }
+
+    private fun updateConsultation(prescriptionId:Long) {
+        val requestObj=JsonObject()
+        requestObj.addProperty("addedDate",consultation!!.addedDate)
+        requestObj.addProperty("consDate",consultation!!.consDate)
+        requestObj.addProperty("consTime",consultation!!.consTime)
+        requestObj.addProperty("docId",consultation!!.docId)
+        requestObj.addProperty("fees",consultation!!.fees)
+        requestObj.addProperty("filePath",consultation!!.filePath)
+        requestObj.addProperty("isActive",consultation!!.isActive)
+        requestObj.addProperty("isCash",consultation!!.isCash)
+        requestObj.addProperty("laboratoryId",consultation!!.laboratoryId)
+        requestObj.addProperty("pharmaId",consultation!!.pharmaId)
+        requestObj.addProperty("status",UtilConstants.STATUS_COMPLETED)
+        requestObj.addProperty("transactionId",consultation!!.transactionId)
+        requestObj.addProperty("patientId",consultation!!.patientId)
+        requestObj.addProperty("patientMobile",consultation!!.patientMobile)
+        requestObj.addProperty("patientGender",consultation!!.patientGender)
+        requestObj.addProperty("patientName",consultation!!.patientName)
+        requestObj.addProperty("prescriptionId",prescriptionId)
+        requestObj.addProperty("age",consultation!!.age)
+        consultationViewModel.update(token,requestObj,consultation!!.id)
 
     }
 

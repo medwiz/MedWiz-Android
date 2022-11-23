@@ -18,8 +18,12 @@ class ConsultationRepository @Inject constructor(private val api: ConsultationAp
         return api.createNewConsultation(token,jsonObject)
     }
 
-    override suspend fun getConsultationByDocId(token: String, id: Long): Response<ArrayList<Consultation>> {
-        return api.getConsultationByDocId(token,id)
+    override suspend fun getConsultationByDocId(token: String, id: Long,status:String): Response<ArrayList<Consultation>> {
+        return api.getConsultationByDocId(token,id,status)
+    }
+
+    override suspend fun updateConsultation(token: String, jsonObject: JsonObject, id: Long): Response<Consultation> {
+        return api.updateConsultation(token,jsonObject,id)
     }
 
 

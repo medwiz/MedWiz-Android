@@ -16,7 +16,8 @@ interface ConsultationRepoInterface {
 
 
     suspend fun createNewConsultation(token:String,jsonObject: JsonObject):Response<Consultation>
-    suspend fun getConsultationByDocId(token:String,id: Long):Response<ArrayList<Consultation>>
+    suspend fun getConsultationByDocId(token:String,id: Long,status:String):Response<ArrayList<Consultation>>
+    suspend fun updateConsultation(token:String,jsonObject: JsonObject,id: Long):Response<Consultation>
 
 
 }

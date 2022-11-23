@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Consultation (
+     var id:Long,
      var addedDate: String,
      var filePath: String,
      var patientMobile:String,
@@ -24,6 +25,6 @@ data class Consultation (
      var consTime: String,
      var prescriptionId:Long
 ): Parcelable {
-    constructor():this("","","","",0,"",0,0,0,0,0,false,false,
+    constructor():this(0,"","","","",0,"",0,0,0,0,0,false,false,
    "","","","" ,0)
 }

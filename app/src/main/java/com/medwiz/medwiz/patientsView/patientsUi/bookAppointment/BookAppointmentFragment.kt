@@ -195,12 +195,13 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
         requestObj.addProperty("isCash",consultation.isCash)
         requestObj.addProperty("laboratoryId",consultation.laboratoryId)
         requestObj.addProperty("pharmaId",consultation.pharmaId)
-        requestObj.addProperty("status",consultation.status)
+        requestObj.addProperty("status",UtilConstants.STATUS_UPCOMING)
         requestObj.addProperty("transactionId",consultation.transactionId)
         requestObj.addProperty("patientId",consultation.patientId)
         requestObj.addProperty("patientMobile",consultation.patientMobile)
         requestObj.addProperty("patientGender",consultation.patientGender)
         requestObj.addProperty("patientName",consultation.patientName)
+        requestObj.addProperty("prescriptionId",0)
         requestObj.addProperty("age",consultation.age)
 
         return requestObj

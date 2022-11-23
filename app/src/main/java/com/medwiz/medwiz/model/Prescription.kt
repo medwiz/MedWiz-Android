@@ -11,5 +11,6 @@ data class Prescription(
     var patientId: Long,
     var docId: Long,
     var docName: String,
+    var patientName:String,
     var medicineList:ArrayList<Medication>
 )

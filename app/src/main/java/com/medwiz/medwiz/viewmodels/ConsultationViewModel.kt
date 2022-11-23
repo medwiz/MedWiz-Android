@@ -75,16 +75,16 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
     }
 
 
-    public fun getConsultationByDocId(token:String,id:Long)=viewModelScope.launch {
+    public fun getConsultationByDocId(token:String,id:Long,status:String)=viewModelScope.launch {
 
-        callGetConsultationApi(token,id)
+        callGetConsultationApi(token,id,status)
 
     }
-    private suspend fun callGetConsultationApi(token:String,id:Long){
+    private suspend fun callGetConsultationApi(token:String,id:Long,status:String){
         consultationList.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.getConsultationByDocId(token,id)
+                val response = repository.getConsultationByDocId(token,id,status)
                 consultationList.postValue(handleConsultationByDocResponse(response))
             }
             else
@@ -116,5 +116,28 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
         }
         return Resource.Error(response.message())
     }
+
+    fun update(token:String,jsonObject: JsonObject,id:Long)=viewModelScope.launch{
+        callConsultationUpdateApi(token,jsonObject,id)
+    }
+
+    private suspend fun callConsultationUpdateApi(token:String,jsonObject: JsonObject,id:Long){
+        consultation.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.updateConsultation(token,jsonObject,id)
+                consultation.postValue(handleConsultationResponse(response))
+            }
+            else
+                consultation.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> consultation.postValue(Resource.Error("Network Failure"))
+                else -> consultation.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
 
 }

@@ -11,6 +11,7 @@ import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.repository.doctor.DoctorRepoInterface
 import com.medwiz.medwiz.util.NetworkUtils
 import com.medwiz.medwiz.util.Resource
+import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -59,6 +60,8 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
                     return Resource.Success(getDoctorResponse ?: resultResponse)
                 }
             }
+        }else if(response.code()==500||response.code()==401){
+            return Resource.Error(UtilConstants.unauthorized)
         }
         else{
             val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)

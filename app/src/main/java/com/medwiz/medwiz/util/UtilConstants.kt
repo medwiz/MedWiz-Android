@@ -73,6 +73,7 @@ object UtilConstants {
     const val STATUS_ON_HOLD = "onHold"
     const val STATUS_COMPLETED = "completed"
     const val STATUS_CANCELED = "canceled"
+    const val STATUS_UPCOMING="upcoming"
 
 
     //Profile Items

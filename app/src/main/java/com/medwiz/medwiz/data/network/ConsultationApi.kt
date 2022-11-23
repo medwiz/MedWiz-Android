@@ -15,7 +15,13 @@ interface ConsultationApi {
     suspend fun createNewConsultation(@Header("Authorization") accessToken: String,
                                       @Body jsonObject: JsonObject): Response<Consultation>
 
-    @GET(UtilConstants.consultationApi+"doctor/{doctorId}")
+    @GET(UtilConstants.consultationApi+"doctor/{doctorId}/{status}")
     suspend fun getConsultationByDocId(@Header("Authorization") accessToken: String,
-                                 @Path("doctorId")email:Long):Response<ArrayList<Consultation>>
+                                 @Path("doctorId")email:Long,
+                                 @Path("status")status:String):Response<ArrayList<Consultation>>
+
+    @PUT(UtilConstants.consultationApi+"{id}")
+    suspend fun updateConsultation(@Header("Authorization") accessToken: String,
+                                   @Body jsonObject: JsonObject,
+                                   @Path("id")id:Long): Response<Consultation>
 }

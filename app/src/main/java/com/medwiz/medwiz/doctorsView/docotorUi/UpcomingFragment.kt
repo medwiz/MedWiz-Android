@@ -12,10 +12,7 @@ import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentUpcomingBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionMainActivity
 import com.medwiz.medwiz.doctorsView.docotorUi.home.PatientAdapter
-import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.model.Consultation
-import com.medwiz.medwiz.model.DoctorResponse
-import com.medwiz.medwiz.patientsView.patientsUi.home.HomeScreenListener
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
@@ -27,12 +24,16 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), ConsultationListene
     private lateinit var binding:FragmentUpcomingBinding
     private var adapter: PatientAdapter?=null
     private var userDetails: LoginResponse?=null
+    private var id:String=""
+    private var token:String=""
     private val consultationViewModel: ConsultationViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+         id=MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.docId,"",false)
+         token=MedWizUtils.storeValueInPreference(requireContext(),
+            UtilConstants.accessToken,"",false)
         binding = FragmentUpcomingBinding.bind(view)
         crateAdapter()
-
         consultationViewModel.consultationList.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Loading->{
@@ -67,12 +68,12 @@ class UpcomingFragment:Fragment(R.layout.fragment_upcoming), ConsultationListene
 
     override fun onResume() {
         super.onResume()
-        val id=MedWizUtils.storeValueInPreference(requireContext(),
-            UtilConstants.docId,"",false)
-        val token=MedWizUtils.storeValueInPreference(requireContext(),
-            UtilConstants.accessToken,"",false)
+        callApi()
+    }
+
+    private fun callApi() {
         if(id.isNotEmpty()){
-          consultationViewModel.getConsultationByDocId(token,id.toLong())
+            consultationViewModel.getConsultationByDocId(token,id.toLong(),UtilConstants.STATUS_UPCOMING)
         }
     }
 

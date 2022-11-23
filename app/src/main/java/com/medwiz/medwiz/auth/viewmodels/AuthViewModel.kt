@@ -155,6 +155,9 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
                 }
             }
         }
+        else if(response.code()==500||response.code()==401){
+            return Resource.Error(UtilConstants.unauthorized)
+        }
         else{
             val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
             return Resource.Error(commonResponse.message)
