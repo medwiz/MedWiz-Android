@@ -37,6 +37,7 @@ class DoctorsAdapter(private val context: Context,
     inner class DoctorsViewHolder(val binding: SingleDoctorRcvItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(doctorItem: DoctorResponse, position: Int){
             binding.nameTextView.text = doctorItem.firstname+" "+doctorItem.lastname
+            binding.tvSpecialization.text=doctorItem.specialization
             binding.layMain.setOnClickListener {
                 listener.onClickConsult(position,doctorItem)
             }

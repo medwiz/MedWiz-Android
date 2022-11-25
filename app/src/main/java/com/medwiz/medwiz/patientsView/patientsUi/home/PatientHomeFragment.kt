@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentPatientHomeBinding
+import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
 import com.medwiz.medwiz.viewmodels.PatientViewModel
@@ -16,6 +17,7 @@ import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
+import com.medwiz.medwiz.viewmodels.ConsultationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.NullPointerException
 import java.util.*
@@ -28,6 +30,8 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
     private val viewModel: PatientViewModel by viewModels()
     private var userDetails: LoginResponse?=null
     private var allDoctors:ArrayList<DoctorResponse>?=null
+    private var  userId:Long=0
+    private val consultationViewModel: ConsultationViewModel by viewModels()
     private lateinit var binding: FragmentPatientHomeBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,8 +42,8 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
             UtilConstants.accessToken,"",false)
         val userType= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.userType,"",false)
-        val userId= MedWizUtils.storeValueInPreference(requireContext(),
-            UtilConstants.userId,"0",false)
+         userId= MedWizUtils.storeValueInPreference(requireContext(),
+            UtilConstants.userId,"0",false).toLong()
         val email= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.email,"",false)
         viewModel.getPatientByEmail(token,email)
@@ -68,6 +72,25 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
 
         getAllNearByDoctor(token)
 
+        consultationViewModel.consultation.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as PatientMainActivity).showLoading()
+                }
+                is Resource.Success->{
+                    (activity as PatientMainActivity).hideLoading()
+                     setUpcomingBookingUi(it.data)
+                }
+                is Resource.Error->{
+                    (activity as PatientMainActivity).hideLoading()
+//                    if(it.message!!.isNotEmpty()){
+//                    MedWizUtils.showErrorPopup(
+//                        requireActivity(),
+//                        it.message.toString())
+//                }
+                }
+            }
+        })
         viewModel.getDoctor.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when(it){
                 is Resource.Loading->{
@@ -78,6 +101,8 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                     this.allDoctors=it.data!!
                     this.adapter!!.setData(allDoctors!!)
                     this.topDoctorsAdapter!!.setData(it.data)
+                    //val userId2=(activity as PatientMainActivity).getUserDetails().id
+                    consultationViewModel.getConsultationByPatientId(token,userId,UtilConstants.STATUS_UPCOMING)
                 }
                 is Resource.Error->{
                     (activity as PatientMainActivity).hideLoading()
@@ -87,6 +112,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                 }
             }
         })
+
         binding.btNearByViewAll.setOnClickListener{
             val bundle=Bundle()
             if(this.allDoctors!!.size>0){
@@ -103,6 +129,13 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
         }
     }
 
+    private fun setUpcomingBookingUi(it: Consultation?) {
+        binding.layUpcomingMain.visibility=View.VISIBLE
+        binding.nameTextView.text=it!!.doctorName
+        binding.tvSpecialization.text=it.specialization
+        binding.tvDate.text=it.consDate
+        binding.tvTime.text=it.consTime
+    }
 
 
     private fun getAllNearByDoctor(token: String) {

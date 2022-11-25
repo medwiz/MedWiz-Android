@@ -18,7 +18,14 @@ interface ConsultationApi {
     @GET(UtilConstants.consultationApi+"doctor/{doctorId}/{status}")
     suspend fun getConsultationByDocId(@Header("Authorization") accessToken: String,
                                  @Path("doctorId")email:Long,
-                                 @Path("status")status:String):Response<ArrayList<Consultation>>
+                                 @Path("status")status:String,
+                                 ):Response<ArrayList<Consultation>>
+
+    @GET(UtilConstants.consultationApi+"user/{userId}/{status}")
+    suspend fun getConsultationByPatientId(@Header("Authorization") accessToken: String,
+                                       @Path("userId")email:Long,
+                                       @Path("status")status:String,
+    ):Response<Consultation>
 
     @PUT(UtilConstants.consultationApi+"{id}")
     suspend fun updateConsultation(@Header("Authorization") accessToken: String,

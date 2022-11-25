@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,11 +17,11 @@ import com.medwiz.medwiz.databinding.FragmentLoginBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
-import com.medwiz.medwiz.util.MedWizConstants
-import com.medwiz.medwiz.util.MedWizUtils
-import com.medwiz.medwiz.util.Resource
-import com.medwiz.medwiz.util.UtilConstants
+import com.medwiz.medwiz.util.*
+import com.medwiz.medwiz.viewmodels.FileViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+
 
 @AndroidEntryPoint
 class LoginFragment :Fragment(R.layout.fragment_login){
@@ -28,6 +29,9 @@ class LoginFragment :Fragment(R.layout.fragment_login){
     private var accountType:String=MedWizConstants.Auth.ACCOUNT_DOCTOR
     private val viewModel: AuthViewModel by viewModels()
     private var isComingFromCreatePassword:Boolean=false
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
@@ -36,12 +40,12 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
         binding.btContinue.setOnClickListener {
 
+
             val username =  binding.etEmail.text.toString().trim()
             val password =  binding.etPassword.text.toString().trim()
             viewModel.login(username,password)
 
         }
-
         binding.liSignUp.setOnClickListener {
             val bundle=Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)

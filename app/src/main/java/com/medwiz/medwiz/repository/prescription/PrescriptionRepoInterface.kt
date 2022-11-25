@@ -8,4 +8,5 @@ interface PrescriptionRepoInterface {
 
 
     suspend fun create(token:String,jsonObject: JsonObject):Response<Prescription>
+    suspend fun getPrescriptionList(token: String, id: Long): Response<ArrayList<Prescription>>
 }

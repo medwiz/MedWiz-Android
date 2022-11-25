@@ -20,10 +20,10 @@
         tools:targetApi="o" />
 
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_notification"
+        android:id="@+id/prescriptionFragment"
+        android:icon="@drawable/ic_booking"
         android:iconTint="@color/black"
-        android:title="@string/notification"
+        android:title="@string/prescription"
         app:showAsAction="withText"
         tools:targetApi="o" />
 

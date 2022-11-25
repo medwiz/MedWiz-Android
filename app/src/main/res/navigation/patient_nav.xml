@@ -10,10 +10,6 @@
         android:name="com.medwiz.medwiz.patientsView.patientsUi.booking.BookingFragments"
         android:label="LabFragments" />
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.settings.SettingsFragment"
-        android:label="SettingsFragment" />
-    <fragment
         android:id="@+id/viewAllDoctorsFragment"
         android:name="com.medwiz.medwiz.patientsView.booking.patient.home.ViewAllDoctorsFragment"
         android:label="ViewAllDoctorsFragment" >
@@ -60,5 +56,9 @@
         android:id="@+id/profileFragments"
         android:name="com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileFragments"
         android:label="ProfileFragments" />
+    <fragment
+        android:id="@+id/prescriptionFragment"
+        android:name="com.medwiz.medwiz.patientsView.patientsUi.prescription.PrescriptionFragment"
+        android:label="PrescriptionFragment" />
 
 </navigation>

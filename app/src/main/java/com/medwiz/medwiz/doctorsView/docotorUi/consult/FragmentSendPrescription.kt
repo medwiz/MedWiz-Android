@@ -144,17 +144,18 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
             medicineObj.addProperty("morningDose",medicineList[i].morningDose)
             medicineObj.addProperty("afternoonDose",medicineList[i].afternoonDose)
             medicineObj.addProperty("nightDose",medicineList[i].nightDose)
+            medicineObj.addProperty("name",medicineList[i].name)
             medicationArray.add(medicineObj)
         }
         val medicationLabArray= JsonArray()
         for (i in 0 until labTestList.size) {
             val medicineLabObj=JsonObject()
-            medicineLabObj.addProperty("noOfDays",labTestList[i].labTestName)
+            medicineLabObj.addProperty("name",labTestList[i].labTestName)
             medicationLabArray.add(medicineLabObj)
         }
-        jsonObject.add("medicationLab",medicationLabArray)
+        jsonObject.add("medicationLabs",medicationLabArray)
 
-        jsonObject.add("medication",medicationArray)
+        jsonObject.add("medications",medicationArray)
         token=MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"",false)
         prescriptionViewModel.createPrescription(token,jsonObject)
 

@@ -15,4 +15,12 @@ interface PrescriptionApi {
     suspend fun create(@Header("Authorization") accessToken: String,
                        @Body jsonObject: JsonObject): Response<Prescription>
 
+
+    @GET(UtilConstants.prescriptionApi+"patient/{patientId}")
+    suspend fun getPrescriptionList(@Header("Authorization") accessToken: String,
+                                    @Path("patientId")userId:String): Response<ArrayList<Prescription>>
+
+
+
+
 }

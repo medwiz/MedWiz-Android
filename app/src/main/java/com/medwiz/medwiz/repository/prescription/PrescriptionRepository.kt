@@ -19,5 +19,9 @@ class PrescriptionRepository @Inject constructor(private val api: PrescriptionAp
         return api.create(token,jsonObject)
     }
 
+    override suspend fun getPrescriptionList(token: String, id: Long): Response<ArrayList<Prescription>> {
+        return api.getPrescriptionList(token,id.toString())
+    }
+
 
 }

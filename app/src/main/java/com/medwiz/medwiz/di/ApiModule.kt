@@ -8,6 +8,8 @@ import com.medwiz.medwiz.repository.consulat.ConsultationRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepoInterface
 import com.medwiz.medwiz.repository.doctor.DoctorRepository
 import com.medwiz.medwiz.repository.doctor.DoctorRepository_Factory
+import com.medwiz.medwiz.repository.file.FileRepoInterface
+import com.medwiz.medwiz.repository.file.FileRepository
 import com.medwiz.medwiz.repository.patient.PatientRepoInterface
 import com.medwiz.medwiz.repository.patient.PatientRepository
 import com.medwiz.medwiz.repository.prescription.PrescriptionRepoInterface
@@ -117,5 +119,16 @@ object ApiModule {
     @Provides
     fun providePrescriptionRepository( api: PrescriptionApi) =
         PrescriptionRepository(api) as PrescriptionRepoInterface
+
+
+    @Provides
+    @Singleton
+    fun provideFile(retrofit: Retrofit): FileApi {
+        return retrofit.create(FileApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideFileRepository( api: FileApi) =
+        FileRepository(api) as FileRepoInterface
 
 }

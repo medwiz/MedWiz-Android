@@ -55,26 +55,29 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         }
 
 
+
+
         when(accountType){
             MedWizConstants.Auth.ACCOUNT_DOCTOR->{
-                binding.tvQualification.visibility=View.VISIBLE
-                binding.etExperience.visibility=View.VISIBLE
                val i= getJsonObject();
                 val k=0
             }
             MedWizConstants.Auth.ACCOUNT_PATIENT->{
-                binding.tvQualification.visibility=View.GONE
-                binding.etExperience.visibility=View.GONE
+
             }
             MedWizConstants.Auth.ACCOUNT_LAB->{
-                binding.tvQualification.visibility=View.GONE
-                binding.etExperience.visibility=View.GONE
+
             }
         }
 
         binding.btCreateAccount.setOnClickListener {
             val password=binding.etPassword.text.toString()
             val repeatPassword=binding.etRepeatPassword.text.toString()
+
+            if(password==repeatPassword){
+                MedWizUtils.showErrorPopup(requireContext(),"Password not matched!!")
+                return@setOnClickListener
+            }
 
             if(password.isNotEmpty()){
                     request.password=password
@@ -102,6 +105,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                 }
 
                 is Resource.Success->{
+                    (activity as MainActivity).hideLoading()
                     if(it.data!!.success){
                         if(accountType== MedWizConstants.Auth.ACCOUNT_DOCTOR){
                         registerDoctor()

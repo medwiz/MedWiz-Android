@@ -29,7 +29,6 @@
         android:background="@drawable/layout_rounded_bg"
         android:fontFamily="@font/poppins_regular"
         android:inputType="textPersonName"
-        android:maxLength="10"
         android:padding="5dp"
         android:textColor="@color/black"
         android:textSize="14sp" />

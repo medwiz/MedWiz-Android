@@ -64,6 +64,8 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
                 if(resultResponse.docId>0) {
                     consultationResponse = resultResponse
                     return Resource.Success(consultationResponse ?: resultResponse)
+                }else{
+                    return Resource.Error("")
                 }
             }
         }
@@ -126,6 +128,30 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
         try{
             if(NetworkUtils.isInternetAvailable(context)){
                 val response = repository.updateConsultation(token,jsonObject,id)
+                consultation.postValue(handleConsultationResponse(response))
+            }
+            else
+                consultation.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> consultation.postValue(Resource.Error("Network Failure"))
+                else -> consultation.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    fun getConsultationByPatientId(token: String, userId: Long, status: String) =viewModelScope.launch {
+
+        callGetPatientConsultationApi(token,userId,status)
+
+    }
+
+    private suspend fun callGetPatientConsultationApi(token:String,id:Long,status: String){
+        consultation.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.getConsultationByPatientId(token,id,status)
                 consultation.postValue(handleConsultationResponse(response))
             }
             else

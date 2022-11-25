@@ -107,9 +107,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-6457" />
-                            <option name="y" value="-4345" />
+                            <option name="x" value="-6532" />
+                            <option name="y" value="-4502" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addDocInfoFragment_to_createPassword">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -122,6 +131,15 @@
                             <option name="x" value="-6206" />
                             <option name="y" value="-4338" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addLabInfoFragment_to_createPassword">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -215,6 +233,16 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_signUpFragment_to_addDocInfoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_signUpFragment_to_addLabInfoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_signUpFragment_to_createPassword">
                               <value>
                                 <LayoutPositions />
@@ -322,11 +350,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_patientHomeFragment_to_viewAllDoctorsFragment2">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -353,6 +376,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="prescriptionFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1680" />
+                            <option name="y" value="-136" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="profileFragments">
                     <value>
                       <LayoutPositions>
@@ -360,18 +395,6 @@
                           <Point>
                             <option name="x" value="-1463" />
                             <option name="y" value="-141" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="settingsFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-1690" />
-                            <option name="y" value="-140" />
                           </Point>
                         </option>
                       </LayoutPositions>

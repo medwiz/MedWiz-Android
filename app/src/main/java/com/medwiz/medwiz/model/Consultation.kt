@@ -10,6 +10,8 @@ data class Consultation (
      var filePath: String,
      var patientMobile:String,
      var patientName:String,
+     var doctorName:String,
+     var specialization:String,
      var age:Int,
      var patientGender:String,
      var fees:Int,
@@ -25,6 +27,6 @@ data class Consultation (
      var consTime: String,
      var prescriptionId:Long
 ): Parcelable {
-    constructor():this(0,"","","","",0,"",0,0,0,0,0,false,false,
+    constructor():this(0,"","","","","","",0,"",0,0,0,0,0,false,false,
    "","","","" ,0)
 }

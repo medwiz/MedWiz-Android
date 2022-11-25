@@ -1,19 +1,33 @@
 package com.medwiz.medwiz.auth.signUp
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.PackageManagerCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentAddDocInfoBinding
 import com.medwiz.medwiz.databinding.WorkingTimeDialogBinding
+import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.model.*
 import com.medwiz.medwiz.patientsView.booking.doctorDetails.WorkingTimeAdapter
-import com.medwiz.medwiz.util.MedWizConstants
-import com.medwiz.medwiz.util.UtilConstants
+import com.medwiz.medwiz.util.*
+import com.medwiz.medwiz.viewmodels.FileViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.io.FileDescriptor
 
 
 @AndroidEntryPoint
@@ -22,9 +36,20 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
     lateinit var dialog: Dialog
     var password:String=""
     var confirmPassword:String=""
+    var downloadUrl:String=""
+    private val viewModel: FileViewModel by viewModels()
     var request:RegisterRequest= RegisterRequest()
     private var accountType:String=MedWizConstants.Auth.ACCOUNT_DOCTOR
     private lateinit var binding: FragmentAddDocInfoBinding
+    private val getFile=registerForActivityResult(
+        ActivityResultContracts.GetContent()) {
+        val file: File = FileUtil.from(requireContext(), it)
+        binding.btUpload.text = file.name
+        val filePart=FileUtil.prepareFilePart("file",file,it,requireContext())
+        viewModel.uploadFile(filePart)
+
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddDocInfoBinding.bind(view)
@@ -32,6 +57,29 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
         binding.btSelectWorkingTime.setOnClickListener{
             openDialog(requireView())
         }
+        binding.btUpload.setOnClickListener {
+            getFile.launch("application/pdf")
+        }
+
+       viewModel.uploadFile.observe(viewLifecycleOwner, Observer {
+           when(it){
+               is Resource.Loading->{
+                   (activity as MainActivity).showLoading()
+               }
+
+               is Resource.Success->{
+                   (activity as MainActivity).hideLoading()
+                    downloadUrl=it.data!!.downloadUrl
+
+               }
+               is Resource.Error->{
+                   (activity as MainActivity).hideLoading()
+                   MedWizUtils.showErrorPopup(
+                       requireActivity(),
+                       it.message.toString())
+               }
+           }
+       })
 
         binding.btNextStep.setOnClickListener {
 
@@ -43,11 +91,11 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
             val workTimeList=getWorkTime()
             val reviewList=getReviewList()
 
-            if(specialization.isNotEmpty()||experience.isNotEmpty()||about.isNotEmpty()||workTimeList.size>0||reviewList.size>0||fees.isNotEmpty()){
+            if(specialization.isNotEmpty()&&experience.isNotEmpty()&&about.isNotEmpty()&&workTimeList.size>0&&reviewList.size>0&&fees.isNotEmpty()&&downloadUrl.isNotEmpty()){
                 val doctorInfo=DoctorInfo()
                 doctorInfo.experience=experience
                 doctorInfo.specialization=specialization
-                doctorInfo.licencePath=licencePath
+                doctorInfo.licencePath=downloadUrl
                 doctorInfo.about=about
                 doctorInfo.fees=fees.toInt()
                 val bundle = Bundle()
@@ -136,4 +184,9 @@ class AddDocInfoFragment:Fragment(R.layout.fragment_add_doc_info) {
         dialog.dismiss()
 
     }
+
+
+
+
+
 }

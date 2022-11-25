@@ -106,6 +106,7 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
             val bundle=Bundle()
             val consulat=Consultation()
             consulat.addedDate=MedWizUtils.getCurrentDate()
+            consulat.isActive=true
             consulat.consDate=selectedDateObj!!.actualDate
             consulat.consTime=selectedTimeObj!!.time+" "+selectedTimeObj!!.amOrPm
             consulat.fees=selectedDoctor!!.fees
@@ -114,6 +115,8 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
             consulat.patientMobile= userDetails.mobile
             consulat.patientGender=userDetails.gender
             consulat.patientName= userDetails.firstname+" "+userDetails.lastname
+            consulat.doctorName=selectedDoctor!!.firstname+" "+selectedDoctor!!.lastname
+            consulat.specialization=selectedDoctor!!.specialization
             consulat.age=userDetails.age
             val userId= userDetails.id
             consulat.patientId=userId.toLong()
@@ -201,7 +204,9 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
         requestObj.addProperty("patientMobile",consultation.patientMobile)
         requestObj.addProperty("patientGender",consultation.patientGender)
         requestObj.addProperty("patientName",consultation.patientName)
+        requestObj.addProperty("doctorName",consultation.doctorName)
         requestObj.addProperty("prescriptionId",0)
+        requestObj.addProperty("specialization",consultation.specialization)
         requestObj.addProperty("age",consultation.age)
 
         return requestObj

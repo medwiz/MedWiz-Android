@@ -72,7 +72,7 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
             val pinCode=binding.etPincode.text.toString()
             val age=binding.etAge.text.toString()
              val gender=strGender
-            if(firstName.isNotEmpty()||lastName.isNotEmpty()||mobile.isNotEmpty()||email.isNotEmpty()||pinCode.isNotEmpty()||gender.isNotEmpty()){
+            if(firstName.isNotEmpty()&&lastName.isNotEmpty()&&mobile.isNotEmpty()&&email.isNotEmpty()&&pinCode.isNotEmpty()&&gender.isNotEmpty()){
                 val register= RegisterRequest()
                 register.firstname=firstName
                 register.lastname=lastName
