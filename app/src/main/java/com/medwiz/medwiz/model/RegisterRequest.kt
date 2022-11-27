@@ -5,6 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class RegisterRequest(
+    var name:String,
+    var shopType:String,
     var address: String,
     var age: String,
     var credit: String,
@@ -19,7 +21,7 @@ data class RegisterRequest(
     var isActivated:Boolean,
     var licencePath:String
 ): Parcelable {
-    constructor() : this("", "",
+    constructor() : this("","","", "",
         "", "", "",
         "", "", "",
         "", "","",false,""

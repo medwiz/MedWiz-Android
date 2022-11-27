@@ -22,5 +22,9 @@ class PatientRepository @Inject constructor(private val api: PatientApi):Patient
         return api.getNearByDoctor(token)
     }
 
+    override suspend fun registerPatient(jsonObject: JsonObject): Response<CommonResponse> {
+        return api.registerPatient(jsonObject)
+    }
+
 
 }

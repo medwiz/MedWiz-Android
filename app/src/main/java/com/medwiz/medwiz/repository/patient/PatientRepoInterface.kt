@@ -14,4 +14,6 @@ interface PatientRepoInterface {
 
     suspend fun getPatientByEmail(token:String,email:String):Response<LoginResponse>
     suspend fun getNearByDoctors(token: String):Response<java.util.ArrayList<DoctorResponse>>
+
+    suspend fun registerPatient(jsonObject: JsonObject):Response<CommonResponse>
 }

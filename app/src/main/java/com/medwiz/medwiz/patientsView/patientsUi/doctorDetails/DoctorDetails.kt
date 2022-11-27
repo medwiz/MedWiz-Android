@@ -56,8 +56,12 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
                 }
             }
         })
-
+        val i=selectedDoctor!!.workingTimes
+       // binding.tvRating.text=selectedDoctor!!.rating
         binding.tvAboutDoctor.text=selectedDoctor!!.about
+        binding.nameTextView.text=selectedDoctor!!.firstname+" "+selectedDoctor!!.lastname
+        binding.tvSpecialization.text=selectedDoctor!!.specialization
+
 
 
 //        val workingTimeList=ArrayList<String>()

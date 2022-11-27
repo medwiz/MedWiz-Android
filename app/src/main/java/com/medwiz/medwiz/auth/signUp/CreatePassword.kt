@@ -29,6 +29,8 @@ import com.medwiz.medwiz.util.MedWizConstants
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
+import com.medwiz.medwiz.viewmodels.PatientViewModel
+import com.medwiz.medwiz.viewmodels.PatientViewModel_Factory
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 
@@ -37,6 +39,7 @@ import org.json.JSONObject
 class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
     private val doctorViewModel: DoctorViewModel by viewModels()
+    private val patientViewModel: PatientViewModel by viewModels()
     private var doctorInfOJsonObject=JSONObject()
     private var password:String=""
     private var confirmPassword:String=""
@@ -65,7 +68,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
             MedWizConstants.Auth.ACCOUNT_PATIENT->{
 
             }
-            MedWizConstants.Auth.ACCOUNT_LAB->{
+            MedWizConstants.Auth.ACCOUNT_SHOP->{
 
             }
         }
@@ -108,10 +111,14 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                     (activity as MainActivity).hideLoading()
                     if(it.data!!.success){
                         if(accountType== MedWizConstants.Auth.ACCOUNT_DOCTOR){
-                        registerDoctor()
-                        }else{
-                          goToLoginScreen(it.data.message)
+                            registerDoctor()
                          }
+
+                        if(accountType==MedWizConstants.Auth.ACCOUNT_PATIENT){
+                            registerPatient()
+                        }
+
+
                     }
 
 
@@ -126,6 +133,26 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         })
 
         doctorViewModel.registerDoctor.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success->{
+                    (activity as MainActivity).hideLoading()
+                    if(it.data!!.success){
+                        goToLoginScreen(it.data.message)
+                    }
+
+
+                }
+                is Resource.Error->{
+                    (activity as MainActivity).hideLoading()
+                }
+            }
+        })
+
+        patientViewModel.registerPatient.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Loading->{
                     (activity as MainActivity).showLoading()
@@ -250,6 +277,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         requestObj.addProperty(UtilConstants.specialization,doctorInfo.specialization)
         requestObj.addProperty(UtilConstants.about,doctorInfo.about)
         requestObj.addProperty(UtilConstants.isActivated,request.isActivated)
+        requestObj.addProperty(UtilConstants.gender,request.gender)
 
         val workTimeArray= JsonArray()
         val reviewArray= JsonArray()
@@ -280,4 +308,21 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private fun registerDoctor(){
         doctorViewModel.updateDoctor(getJsonObject())
     }
+
+    private fun registerPatient(){
+         val requestObj=JsonObject()
+        requestObj.addProperty(UtilConstants.firstname, request.firstname)
+        requestObj.addProperty(UtilConstants.lastname, request.lastname)
+        requestObj.addProperty(UtilConstants.email, request.email)
+        requestObj.addProperty(UtilConstants.mobile, request.mobile)
+        requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
+        requestObj.addProperty(UtilConstants.age, request.age)
+        requestObj.addProperty(UtilConstants.userType, request.userType)
+        requestObj.addProperty(UtilConstants.credit, request.credit)
+        requestObj.addProperty(UtilConstants.address,request.pinCode)
+        requestObj.addProperty(UtilConstants.gender,request.gender)
+        patientViewModel.registerPatient(requestObj)
+    }
+
+
 }

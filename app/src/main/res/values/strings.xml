@@ -41,6 +41,7 @@
     <string name="change_account_type">Change Account Type</string>
     <string name="total_years_of_experience">Total Years Of Experience</string>
     <string name="upload_your_highest_qualification_certificate">Upload your highest Qualification Certificate</string>
+    <string name="upload_license">Upload license</string>
     <string name="sample_text">An ophthalmologist is a physician who specializes in the diagnosis and treatment of diseases of the eye. Ophthalmologists may prescribe and fit eyeglasses and contact lenses and also treat eye diseases with drugs and surgery. An optometrist is not a physician.</string>
     <string name="welcome_to_med_wiz">Welcome to Medwiz</string>
     <string name="phone_number">Phone Number</string>
@@ -108,7 +109,7 @@
     <string name="something_went_wrong">Something went wrong !</string>
     <string name="INVALID_USER_CREDENTIALS">Invalid username or password</string>
     <string name="add_info">Add Info</string>
-    <string name="add_info_title">Please add all information to complete the regostration process</string>
+    <string name="add_info_title">Please add all information to complete the registration process</string>
     <string name="specialization">Specialization</string>
     <string name="years_of_experience">Years OF Experience</string>
     <string name="upload_file">Upload file</string>
@@ -116,4 +117,9 @@
     <string name="tap_here_to_select">Tap here to select</string>
     <string name="select_timings">Select Timings</string>
     <string name="age">Age</string>
+    <string name="lab_test">Lab Tests</string>
+    <string name="order_now">Order now</string>
+    <string name="add_lab_info">Add Lab/Pharmacy Info</string>
+    <string name="lab_name">Lab Name</string>
+    <string name="lab_address">Lab Address</string>
 </resources>

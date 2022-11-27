@@ -11,9 +11,9 @@ import com.medwiz.medwiz.doctorsView.model.Medication
 class PrescriptionAdapter(private val context: Context,private val type:String
 ):RecyclerView.Adapter<PrescriptionAdapter.PrescriptionAdapterViewHolder>(){
 
-   private var precList=ArrayList<Medication>()
+   private var precList=java.util.ArrayList<Medication>()
 
-   fun setData(itemList: ArrayList<Medication>){
+   fun setData(itemList: java.util.ArrayList<Medication>){
        this.precList=itemList
        notifyDataSetChanged()
    }

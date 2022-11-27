@@ -37,6 +37,9 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPatientHomeBinding.bind(view)
 
+//        userDetails=(activity as PatientMainActivity).getUserDetails()
+//        val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
+//        binding.tvName.text= name
 
         val token= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.accessToken,"",false)
@@ -46,32 +49,32 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
             UtilConstants.userId,"0",false).toLong()
         val email= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.email,"",false)
-        viewModel.getPatientByEmail(token,email)
-        viewModel.getPatient.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-           when(it){
-              is Resource.Loading->{
-                  (activity as PatientMainActivity).showLoading()
-              }
-               is Resource.Success->{
-                   (activity as PatientMainActivity).hideLoading()
-                   this.userDetails=it.data!!
-                   (activity as PatientMainActivity).setUserDetails(it.data)
-                   val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
-                   binding.tvName.text= name
-               }
-               is Resource.Error->{
-                   (activity as PatientMainActivity).hideLoading()
-                   MedWizUtils.showErrorPopup(
-                       requireActivity(),
-                       it.message.toString())
-               }
-           }
-       })
+
 
         createAdapters()
 
         getAllNearByDoctor(token)
-
+        viewModel.getPatientByEmail(token,email)
+        viewModel.getPatient.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as PatientMainActivity).showLoading()
+                }
+                is Resource.Success->{
+                    (activity as PatientMainActivity).hideLoading()
+                    this.userDetails=it.data!!
+                    (activity as PatientMainActivity).setUserDetails(it.data)
+                    val name="Hi "+userDetails!!.firstname+" "+userDetails!!.lastname
+                    binding.tvName.text= name
+                }
+                is Resource.Error->{
+                    (activity as PatientMainActivity).hideLoading()
+                    MedWizUtils.showErrorPopup(
+                        requireActivity(),
+                        it.message.toString())
+                }
+            }
+        })
         consultationViewModel.consultation.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when(it){
                 is Resource.Loading->{
@@ -98,11 +101,13 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                 }
                 is Resource.Success->{
                     (activity as PatientMainActivity).hideLoading()
-                    this.allDoctors=it.data!!
+                    if(it.data!!.isNotEmpty()){
+                    this.allDoctors=it.data
                     this.adapter!!.setData(allDoctors!!)
                     this.topDoctorsAdapter!!.setData(it.data)
                     //val userId2=(activity as PatientMainActivity).getUserDetails().id
                     consultationViewModel.getConsultationByPatientId(token,userId,UtilConstants.STATUS_UPCOMING)
+                    }
                 }
                 is Resource.Error->{
                     (activity as PatientMainActivity).hideLoading()
@@ -115,7 +120,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
 
         binding.btNearByViewAll.setOnClickListener{
             val bundle=Bundle()
-            if(this.allDoctors!!.size>0){
+            if(this.allDoctors!=null&&this.allDoctors!!.size>0){
             bundle.putParcelableArrayList(UtilConstants.doctor,this.allDoctors)
             bundle.putBoolean(UtilConstants.nearbyDocs,true)
             findNavController().navigate(R.id.action_patientHomeFragment_to_viewAllDoctorsFragment,bundle)

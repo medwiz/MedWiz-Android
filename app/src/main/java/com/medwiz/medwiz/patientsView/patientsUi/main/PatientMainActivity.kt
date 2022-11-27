@@ -26,6 +26,8 @@ class PatientMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        userDetails=intent.getParcelableExtra(UtilConstants.userDetails)
+//        setUserDetails(userDetails!!)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_patient_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         mCustomLoader = CustomLoaderDialog(this, true)

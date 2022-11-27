@@ -1,16 +1,13 @@
 package com.medwiz.medwiz.patientsView.patientsUi.profile
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentProfileBinding
-import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
-import com.medwiz.medwiz.patientsView.patientModels.ProfileItemModel
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.model.ProfileItemModel
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,11 +20,11 @@ class ProfileFragments:Fragment(R.layout.fragment_profile),ProfileItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
-        val profileItem1=ProfileItemModel(UtilConstants.ITEM_PROFILE,"Profile",R.drawable.ic_profile_item)
-        val profileItem2=ProfileItemModel(UtilConstants.ITEM_EDIT_PROFILE,"Edit Profile",R.drawable.ic_edit_profile_item)
-        val profileItem3=ProfileItemModel(UtilConstants.ITEM_SETTING,"Setting",R.drawable.ic_setting_item)
-        val logout=ProfileItemModel(UtilConstants.ITEM_LOGOUT,"Logout",R.drawable.ic_logout)
-        val profileItem4=ProfileItemModel(UtilConstants.ITEM_TERMS,"Terms & Privacy Policy",R.drawable.ic_terms_item)
+        val profileItem1= ProfileItemModel(UtilConstants.ITEM_PROFILE,"Profile",R.drawable.ic_profile_item)
+        val profileItem2= ProfileItemModel(UtilConstants.ITEM_EDIT_PROFILE,"Edit Profile",R.drawable.ic_edit_profile_item)
+        val profileItem3= ProfileItemModel(UtilConstants.ITEM_SETTING,"Setting",R.drawable.ic_setting_item)
+        val logout= ProfileItemModel(UtilConstants.ITEM_LOGOUT,"Logout",R.drawable.ic_logout)
+        val profileItem4= ProfileItemModel(UtilConstants.ITEM_TERMS,"Terms & Privacy Policy",R.drawable.ic_terms_item)
         val lis= ArrayList<ProfileItemModel>()
         lis.add(profileItem1)
         lis.add(profileItem2)

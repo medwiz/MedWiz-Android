@@ -5,11 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.databinding.FragmentDocAppointmentBinding
 import com.medwiz.medwiz.databinding.FragmentDocProfileBinding
-import com.medwiz.medwiz.databinding.FragmentUpcomingBinding
 import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
-import com.medwiz.medwiz.patientsView.patientModels.ProfileItemModel
+import com.medwiz.medwiz.model.ProfileItemModel
 import com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileItemAdapter
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
@@ -26,7 +24,7 @@ class DocProfileFragment:Fragment(R.layout.fragment_doc_profile), ProfileItemLis
         val profileItem1= ProfileItemModel(UtilConstants.ITEM_PROFILE,"Profile",R.drawable.ic_profile_item)
         val profileItem2= ProfileItemModel(UtilConstants.ITEM_EDIT_PROFILE,"Edit Profile",R.drawable.ic_edit_profile_item)
         val profileItem3= ProfileItemModel(UtilConstants.ITEM_SETTING,"Setting",R.drawable.ic_setting_item)
-        val logout=ProfileItemModel(UtilConstants.ITEM_LOGOUT,"Logout",R.drawable.ic_logout)
+        val logout= ProfileItemModel(UtilConstants.ITEM_LOGOUT,"Logout",R.drawable.ic_logout)
         val profileItem4= ProfileItemModel(UtilConstants.ITEM_TERMS,"Terms & Privacy Policy",R.drawable.ic_terms_item)
         val lis= ArrayList<ProfileItemModel>()
         lis.add(profileItem1)

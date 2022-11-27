@@ -56,17 +56,21 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
 //            register.postValue(Resource.Error(context.getString(R.string.paasword_length_error)))
 //            return@launch
 //        }
-        requestObj.addProperty(UtilConstants.firstname, request.firstname)
-        requestObj.addProperty(UtilConstants.lastname, request.lastname)
+
         requestObj.addProperty(UtilConstants.PASSWORD, request.password)
         requestObj.addProperty(UtilConstants.email, request.email)
-        requestObj.addProperty(UtilConstants.mobile, request.mobile)
-        requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
-        requestObj.addProperty(UtilConstants.age, request.age)
         requestObj.addProperty(UtilConstants.userType, request.userType)
-        requestObj.addProperty(UtilConstants.credit, request.credit)
-        requestObj.addProperty(UtilConstants.address,request.pinCode)
-        requestObj.addProperty(UtilConstants.gender,request.gender)
+
+//        requestObj.addProperty(UtilConstants.firstname, request.firstname)
+//        requestObj.addProperty(UtilConstants.lastname, request.lastname)
+//        requestObj.addProperty(UtilConstants.email, request.email)
+//        requestObj.addProperty(UtilConstants.mobile, request.mobile)
+//        requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
+//        requestObj.addProperty(UtilConstants.age, request.age)
+//        requestObj.addProperty(UtilConstants.userType, request.userType)
+//        requestObj.addProperty(UtilConstants.credit, request.credit)
+//        requestObj.addProperty(UtilConstants.address,request.pinCode)
+//        requestObj.addProperty(UtilConstants.gender,request.gender)
 
         callRegisterApi(requestObj)
     }

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.patientsView.patientModels.BookingDate
+import com.medwiz.medwiz.model.BookingDate
 
 class DatePickerAdapter( private val mContext: Context, private val listener:BookingListener) :
     RecyclerView.Adapter<DatePickerAdapter.ViewHolder>() {

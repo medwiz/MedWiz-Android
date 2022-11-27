@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_addLabInfoFragment"
+            app:destination="@id/addLabInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -35,9 +38,6 @@
         <action
             android:id="@+id/action_signUpFragment_to_addDocInfoFragment"
             app:destination="@id/addDocInfoFragment" />
-        <action
-            android:id="@+id/action_signUpFragment_to_addLabInfoFragment"
-            app:destination="@id/addLabInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPassword"

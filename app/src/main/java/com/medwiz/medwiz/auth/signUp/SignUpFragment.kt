@@ -23,19 +23,6 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpBinding.bind(view)
         accountType = arguments?.getString(MedWizConstants.Auth.ACCOUNT_TYPE)!!
-//        when(accountType){
-//            MedWizConstants.Auth.ACCOUNT_DOCTOR->{
-//
-//                binding.imgProfile.setImageResource(R.drawable.ic_doctor_blue)
-//            }
-//            MedWizConstants.Auth.ACCOUNT_PATIENT->{
-//
-//                binding.imgProfile.setImageResource(R.drawable.ic_patient_blue)
-//            }
-//            MedWizConstants.Auth.ACCOUNT_LAB->{
-//                binding.imgProfile.setImageResource(R.drawable.ic_lab_blue)
-//            }
-//        }
         binding.imgBackCreateAccount.setOnClickListener{
 
             findNavController().navigateUp()
@@ -91,9 +78,7 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
                     MedWizConstants.Auth.ACCOUNT_PATIENT->{
                         findNavController().navigate(R.id.action_signUpFragment_to_createPassword,bundle)
                     }
-                    MedWizConstants.Auth.ACCOUNT_LAB->{
-                        findNavController().navigate(R.id.action_signUpFragment_to_addDocInfoFragment,bundle)
-                    }
+
                 }
 
 

@@ -43,7 +43,7 @@ class VerificationFragment:Fragment(R.layout.fragment_verification) {
                     requireActivity().startActivity(intent)
                     requireActivity().finish()
                 }
-                MedWizConstants.Auth.ACCOUNT_LAB->{
+                MedWizConstants.Auth.ACCOUNT_SHOP->{
                     val intent = Intent (requireActivity(), LabActivity::class.java)
                     requireActivity().startActivity(intent)
                     requireActivity().finish()

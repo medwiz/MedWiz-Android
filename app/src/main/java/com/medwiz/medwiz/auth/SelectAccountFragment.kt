@@ -53,13 +53,13 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         }
         binding.rlLab.setOnClickListener{
             val bundle = Bundle()
-            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_LAB)
+            bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_SHOP)
             findNavController().navigate(R.id.action_selectAccountFragment_to_loginFragment,bundle)
 
 
         }
 
-        if(token.isNotEmpty()&&userId.isNotEmpty()&&userType.isNotEmpty()&&(userType==MedWizConstants.Auth.ACCOUNT_LAB||
+        if(token.isNotEmpty()&&userId.isNotEmpty()&&userType.isNotEmpty()&&(userType==MedWizConstants.Auth.ACCOUNT_SHOP||
                     userType==MedWizConstants.Auth.ACCOUNT_DOCTOR||userType==MedWizConstants.Auth.ACCOUNT_PATIENT)){
             when(userType){
                 MedWizConstants.Auth.ACCOUNT_DOCTOR->{
@@ -74,7 +74,7 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
                     requireActivity().finish()
 
                 }
-                MedWizConstants.Auth.ACCOUNT_LAB->{
+                MedWizConstants.Auth.ACCOUNT_SHOP->{
                     val intent = Intent (requireActivity(), LabActivity::class.java)
                     requireActivity().startActivity(intent)
                     requireActivity().finish()

@@ -1,7 +1,8 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
-    val userDetails: String="userDetails"
+   const val prescription: String="prescription"
+    const val userDetails: String="userDetails"
     const val consultation: String="consultation"
     const val docId:String="docId"
     const val fees: String="fees"
@@ -44,8 +45,9 @@ object UtilConstants {
     const val doctor="doctor"
     const val review="review/doctor/"
     const val getDoctorByEmail="doctor/email/"
-    const val getPatientByEmail="user/email/"
+    const val getPatientByEmail="patient/email/"
     const val doctorApi="doctor/register"
+    const val patientApi="patient/"
     const val consultationApi="consult/"
     const val prescriptionApi="prescription/"
     const val refresh = "identity-int/api/caritag/protocol/openid-connect/token"

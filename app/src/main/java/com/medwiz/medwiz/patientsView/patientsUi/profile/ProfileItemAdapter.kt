@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleProfileItemBinding
 import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
-import com.medwiz.medwiz.patientsView.patientModels.ProfileItemModel
+import com.medwiz.medwiz.model.ProfileItemModel
 
 
 class ProfileItemAdapter (private val context: Context,

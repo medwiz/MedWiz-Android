@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientsUi.prescription
+package com.medwiz.medwiz.patientsView.patientsUi.order
 
 import android.os.Bundle
 import android.view.View
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPrescriptionBinding
+import com.medwiz.medwiz.databinding.FragmentSelectShopsBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionMainActivity
 import com.medwiz.medwiz.model.Prescription
 import com.medwiz.medwiz.patientsView.booking.PrescriptionItemListener
@@ -23,16 +24,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
 @AndroidEntryPoint
-class PrescriptionFragment:Fragment(R.layout.fragment_prescription) ,PrescriptionItemListener{
-    private var prescriptionAdapter: PrescriptionAdapter?=null
-    private lateinit var binding: FragmentPrescriptionBinding
+class SelectShopFragment:Fragment(R.layout.fragment_select_shops) ,PrescriptionItemListener{
+    //private var prescriptionAdapter: PrescriptionAdapter?=null
+    private lateinit var binding: FragmentSelectShopsBinding
     private val prescriptionViewModel: PrescriptionViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentPrescriptionBinding.bind(view)
+        binding = FragmentSelectShopsBinding.bind(view)
         val token= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.accessToken,"",false)
-        createAdapter()
+           createAdapter()
 
         prescriptionViewModel.getPrescriptionList(token,(activity as PatientMainActivity).getUserDetails().id)
 
@@ -45,7 +46,7 @@ class PrescriptionFragment:Fragment(R.layout.fragment_prescription) ,Prescriptio
 
                 is Resource.Success->{
                     (activity as PatientMainActivity).hideLoading()
-                     prescriptionAdapter!!.setData(it.data!!)
+                     //prescriptionAdapter!!.setData(it.data!!)
 
                 }
                 is Resource.Error->{
@@ -60,9 +61,14 @@ class PrescriptionFragment:Fragment(R.layout.fragment_prescription) ,Prescriptio
     }
 
     private fun createAdapter() {
-        prescriptionAdapter = PrescriptionAdapter(requireActivity(),this)
-        binding.rcvPrescription.adapter = prescriptionAdapter
-        binding.rcvPrescription.layoutManager = LinearLayoutManager(requireActivity())
+//        prescriptionAdapter = PrescriptionAdapter(requireActivity(),this)
+//        binding.rcvPharmacy.adapter = prescriptionAdapter
+//        binding.rcvPharmacy.layoutManager = LinearLayoutManager(requireActivity())
+//
+//
+//        prescriptionAdapter = PrescriptionAdapter(requireActivity(),this)
+//        binding.rcvLabs.adapter = prescriptionAdapter
+//        binding.rcvLabs.layoutManager = LinearLayoutManager(requireActivity())
 
     }
 

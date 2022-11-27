@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDocName"
+            android:text="Dr Prithwiraj Nath"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/h5_sp_14"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="2sp"
+            android:translationY="-0.79sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDate"
+            android:text="09 Nov 2022"
+            android:textColor="@color/textColorGrey"
+            android:textSize="14sp"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="2sp"
+            android:translationY="-0.79sp"/>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

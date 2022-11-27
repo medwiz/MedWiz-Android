@@ -59,6 +59,22 @@
     <fragment
         android:id="@+id/prescriptionFragment"
         android:name="com.medwiz.medwiz.patientsView.patientsUi.prescription.PrescriptionFragment"
-        android:label="PrescriptionFragment" />
+        android:label="PrescriptionFragment" >
+        <action
+            android:id="@+id/action_prescriptionFragment_to_prescriptionDetailsFragment"
+            app:destination="@id/prescriptionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prescriptionDetailsFragment"
+        android:name="com.medwiz.medwiz.patientsView.patientsUi.prescription.PrescriptionDetailsFragment"
+        android:label="PrescriptionDetailsFragment" >
+        <action
+            android:id="@+id/action_prescriptionDetailsFragment_to_selectShopFragment"
+            app:destination="@id/selectShopFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectShopFragment"
+        android:name="com.medwiz.medwiz.patientsView.patientsUi.order.SelectShopFragment"
+        android:label="SelectShopFragment" />
 
 </navigation>

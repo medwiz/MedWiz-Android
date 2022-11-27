@@ -47,9 +47,14 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
         }
         binding.liSignUp.setOnClickListener {
+
+            if(accountType==MedWizConstants.Auth.ACCOUNT_SHOP){
+                findNavController().navigate(R.id.action_loginFragment_to_addLabInfoFragment)
+            }else{
             val bundle=Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,accountType)
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment,bundle)
+            }
         }
 
         viewModel.login.observe(viewLifecycleOwner, Observer {
@@ -108,10 +113,11 @@ class LoginFragment :Fragment(R.layout.fragment_login){
             }
             MedWizConstants.Auth.ACCOUNT_PATIENT->{
                 val intent = Intent (requireActivity(), PatientMainActivity::class.java)
+               // intent.putExtra(UtilConstants.userDetails,it)
                 requireActivity().startActivity(intent)
                 requireActivity().finish()
             }
-            MedWizConstants.Auth.ACCOUNT_LAB->{
+            MedWizConstants.Auth.ACCOUNT_SHOP->{
                 val intent = Intent (requireActivity(), LabActivity::class.java)
                 requireActivity().startActivity(intent)
                 requireActivity().finish()

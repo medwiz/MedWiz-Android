@@ -135,6 +135,10 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         jsonObject.addProperty("patientId",consultation!!.patientId)
         jsonObject.addProperty("patientName",consultation!!.patientName)
         jsonObject.addProperty("docId",consultation!!.docId)
+        jsonObject.addProperty("specialization",consultation!!.specialization)
+        jsonObject.addProperty("age",consultation!!.age)
+        jsonObject.addProperty("weight",0)
+        jsonObject.addProperty("gender",userDetails!!.gender)
         val docName=userDetails!!.firstname+" "+userDetails!!.lastname
         jsonObject.addProperty("docName",docName)
         val medicationArray= JsonArray()

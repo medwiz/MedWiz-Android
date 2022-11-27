@@ -4,8 +4,8 @@ class MedWizConstants {
     object Auth{
         const val ACCOUNT_TYPE:String="account_type"
         const val ACCOUNT_DOCTOR:String="doctor"
-        const val ACCOUNT_PATIENT:String="user"
-        const val ACCOUNT_LAB:String="lab"
+        const val ACCOUNT_PATIENT:String="patient"
+        const val ACCOUNT_SHOP:String="shop"
     }
     object AppValue{
         val PHONE_NUMBER: String="phone_number"

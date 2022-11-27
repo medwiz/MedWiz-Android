@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.model.DoctorResponse
@@ -26,6 +27,9 @@ class PatientViewModel @Inject constructor(private val repository: PatientRepoIn
 
     val getDoctor:MutableLiveData<Resource<java.util.ArrayList<DoctorResponse>>> = MutableLiveData()
     var getDoctorResponse:java.util.ArrayList<DoctorResponse>?=null
+
+    val registerPatient: MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
+    var registerPatientResponse: CommonResponse? = null
 
 
 
@@ -90,12 +94,10 @@ class PatientViewModel @Inject constructor(private val repository: PatientRepoIn
     private fun handleGetDoctorResponse(response: Response<java.util.ArrayList<DoctorResponse>>): Resource<java.util.ArrayList<DoctorResponse>> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-
-                if(resultResponse.isNotEmpty()) {
-                    getDoctorResponse = resultResponse
+                getDoctorResponse = resultResponse
                    //return Resource.Error("message")
                     return Resource.Success(getDoctorResponse ?: resultResponse)
-                }
+
             }
         }
         else{
@@ -104,4 +106,43 @@ class PatientViewModel @Inject constructor(private val repository: PatientRepoIn
         }
         return Resource.Error(response.message())
     }
+
+
+    public fun registerPatient(jsonObj: JsonObject)=viewModelScope.launch {
+        callRegisterPatientApi(jsonObj)
+    }
+    private suspend fun callRegisterPatientApi(jsonObj: JsonObject){
+        registerPatient.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.registerPatient(jsonObj)
+                registerPatient.postValue(handleRegisterPatientResponse(response))
+            }
+            else
+                registerPatient.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> registerPatient.postValue(Resource.Error("Network Failure"))
+                else -> registerPatient.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private fun handleRegisterPatientResponse(response: Response<CommonResponse>): Resource<CommonResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                // if(resultResponse.id>0) {
+                registerPatientResponse = resultResponse
+                return Resource.Success(registerPatientResponse ?: resultResponse)
+                // }
+            }
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
+    }
+
 }

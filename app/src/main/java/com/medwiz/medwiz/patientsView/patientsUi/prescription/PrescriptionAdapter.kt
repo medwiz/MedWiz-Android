@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.medwiz.medwiz.databinding.PrescriptionSingleItemBinding
 import com.medwiz.medwiz.databinding.SingleDoctorRcvItemBinding
 import com.medwiz.medwiz.model.Prescription
+import com.medwiz.medwiz.patientsView.booking.PrescriptionItemListener
 import java.util.ArrayList
 
-class PrescriptionAdapter(private val context: Context,
-):RecyclerView.Adapter<PrescriptionAdapter.DoctorsViewHolder>(){
+class PrescriptionAdapter(private val context: Context, private val listener: PrescriptionItemListener,
+):RecyclerView.Adapter<PrescriptionAdapter.PrescriptionViewHolder>(){
 
     private var prescriptionList:ArrayList<Prescription> = ArrayList()
 
@@ -19,12 +21,12 @@ class PrescriptionAdapter(private val context: Context,
    }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorsViewHolder {
-        val binding = SingleDoctorRcvItemBinding.inflate(LayoutInflater.from(context),parent,false)
-        return DoctorsViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrescriptionViewHolder {
+        val binding = PrescriptionSingleItemBinding.inflate(LayoutInflater.from(context),parent,false)
+        return PrescriptionViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DoctorsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PrescriptionViewHolder, position: Int) {
         val foodItem = prescriptionList[position]
         holder.bind(foodItem,position)
     }
@@ -33,8 +35,14 @@ class PrescriptionAdapter(private val context: Context,
         return prescriptionList.size
     }
 
-    inner class DoctorsViewHolder(val binding: SingleDoctorRcvItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(Item: Prescription, position: Int){
+    inner class PrescriptionViewHolder(val binding: PrescriptionSingleItemBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(item: Prescription, position: Int){
+
+            binding.tvDocName.text=item.docName
+            binding.tvDate.text=item.updateDate
+            binding.tvDate.setOnClickListener {
+                listener.onClickPrescription(position,item)
+            }
 
         }
     }

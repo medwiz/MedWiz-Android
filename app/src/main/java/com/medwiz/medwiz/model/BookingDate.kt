@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientModels
+package com.medwiz.medwiz.model
 
 import androidx.annotation.NonNull
 

@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPatientBookingBinding
-import com.medwiz.medwiz.patientsView.patientModels.BookingModel
-import com.medwiz.medwiz.patientsView.patientModels.ProfileItemModel
-import com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileItemAdapter
+import com.medwiz.medwiz.model.BookingModel
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
