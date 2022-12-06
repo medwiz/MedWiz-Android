@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientsUi.main
+package com.medwiz.medwiz.patientsView.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

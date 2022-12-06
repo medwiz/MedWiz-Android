@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/addLabInfoFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.AddLabInfoFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.AddShopInfoFragment"
         android:label="AddLabInfoFragment" >
         <action
             android:id="@+id/action_addLabInfoFragment_to_createPassword"

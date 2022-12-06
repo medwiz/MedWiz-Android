@@ -9,6 +9,7 @@ import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwiz.data.reponse.LoginResponse
+import com.medwiz.medwiz.data.reponse.ShopResponse
 import com.medwiz.medwiz.model.RegisterRequest
 import com.medwiz.medwiz.model.UserResponse
 import com.medwiz.medwiz.repository.auth.AuthRepoInterface
@@ -28,6 +29,9 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
     val login: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     var loginResponse: LoginResponse? = null
 
+    val loginShop: MutableLiveData<Resource<ShopResponse>> = MutableLiveData()
+    var loginShopResponse: ShopResponse? = null
+
     val register: MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
     var registerResponse: CommonResponse? = null
 
@@ -39,39 +43,11 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
 
     fun signUp(request: RegisterRequest)=viewModelScope.launch {
         val requestObj = JsonObject()
-//        if (username.isEmpty()) {
-//            register.postValue(Resource.Error(context.getString(R.string.invalid_username)))
-//            return@launch
-//        }
-//
-//        if (password.isEmpty()) {
-//            register.postValue(Resource.Error(context.getString(R.string.password_error)))
-//            return@launch
-//        }
-//        if (username.length < 3) {
-//            register.postValue(Resource.Error(context.getString(R.string.invalid_username)))
-//            return@launch
-//        }
-//        if (password.length < 3) {
-//            register.postValue(Resource.Error(context.getString(R.string.paasword_length_error)))
-//            return@launch
-//        }
+
 
         requestObj.addProperty(UtilConstants.PASSWORD, request.password)
         requestObj.addProperty(UtilConstants.email, request.email)
         requestObj.addProperty(UtilConstants.userType, request.userType)
-
-//        requestObj.addProperty(UtilConstants.firstname, request.firstname)
-//        requestObj.addProperty(UtilConstants.lastname, request.lastname)
-//        requestObj.addProperty(UtilConstants.email, request.email)
-//        requestObj.addProperty(UtilConstants.mobile, request.mobile)
-//        requestObj.addProperty(UtilConstants.pinCode, request.pinCode)
-//        requestObj.addProperty(UtilConstants.age, request.age)
-//        requestObj.addProperty(UtilConstants.userType, request.userType)
-//        requestObj.addProperty(UtilConstants.credit, request.credit)
-//        requestObj.addProperty(UtilConstants.address,request.pinCode)
-//        requestObj.addProperty(UtilConstants.gender,request.gender)
-
         callRegisterApi(requestObj)
     }
 
@@ -83,12 +59,12 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
                 register.postValue(handleRegisterResponse(response))
             }
             else
-                login.postValue(Resource.Error("No Internet Connection"))
+                register.postValue(Resource.Error("No Internet Connection"))
         }
         catch (ex: Exception){
             when(ex){
-                is IOException -> login.postValue(Resource.Error("Network Failure"))
-                else -> login.postValue(Resource.Error("Conversion Error"))
+                is IOException -> register.postValue(Resource.Error("Network Failure"))
+                else -> register.postValue(Resource.Error("Conversion Error"))
             }
         }
     }
@@ -198,6 +174,67 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
                     return Resource.Success(getUserResponse ?: resultResponse)
                 }
             }
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
+    }
+
+    fun loginShop(username:String,password:String)=viewModelScope.launch {
+        val requestObj = JsonObject()
+        if (username.isEmpty()) {
+            login.postValue(Resource.Error(context.getString(R.string.invalid_username)))
+            return@launch
+        }
+
+        if (password.isEmpty()) {
+            login.postValue(Resource.Error(context.getString(R.string.password_error)))
+            return@launch
+        }
+        if (username.length < 3) {
+            login.postValue(Resource.Error(context.getString(R.string.invalid_username)))
+            return@launch
+        }
+        if (password.length < 3) {
+            login.postValue(Resource.Error(context.getString(R.string.paasword_length_error)))
+            return@launch
+        }
+
+        requestObj.addProperty(UtilConstants.USERNAME, username)
+        requestObj.addProperty(UtilConstants.PASSWORD, password)
+        callShopLoginApi(requestObj)
+    }
+
+    private suspend fun callShopLoginApi(jsonObject: JsonObject){
+        loginShop.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.loginShop(jsonObject)
+                loginShop.postValue(handleLoginShopResponse(response))
+            }
+            else
+                loginShop.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> loginShop.postValue(Resource.Error("Network Failure"))
+                else -> loginShop.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+    private fun handleLoginShopResponse(response: Response<ShopResponse>): Resource<ShopResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if(resultResponse.token.isNotEmpty()) {
+                    loginShopResponse = resultResponse
+                    return Resource.Success(loginShopResponse ?: resultResponse)
+                }
+            }
+        }
+        else if(response.code()==500||response.code()==401){
+            return Resource.Error(UtilConstants.unauthorized)
         }
         else{
             val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)

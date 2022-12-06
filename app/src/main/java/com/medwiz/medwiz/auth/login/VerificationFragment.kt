@@ -8,8 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentVerificationBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
-import com.medwiz.medwiz.LabView.ui.LabActivity
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.shopView.ShopActivity
+import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +44,7 @@ class VerificationFragment:Fragment(R.layout.fragment_verification) {
                     requireActivity().finish()
                 }
                 MedWizConstants.Auth.ACCOUNT_SHOP->{
-                    val intent = Intent (requireActivity(), LabActivity::class.java)
+                    val intent = Intent (requireActivity(), ShopActivity::class.java)
                     requireActivity().startActivity(intent)
                     requireActivity().finish()
                 }

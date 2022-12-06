@@ -1,6 +1,7 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
+ const val shop:String="shop"
    const val prescription: String="prescription"
     const val userDetails: String="userDetails"
     const val consultation: String="consultation"
@@ -36,7 +37,7 @@ object UtilConstants {
     const val refreshToken = "medwizRefreshToken"
     const val nearbyDocs="NEAR_BY_DOCS"
     const val nearbyDocsValue=10
-    const val baseurl = "http://10.0.2.2:8080/api/v1/"
+    const val baseurl = "http://52.66.214.145:9090/api/v1/"//"http://10.0.2.2:8080/api/v1/"
 
     const val register = "auth/register"
     const val login = "auth/login"
@@ -47,6 +48,9 @@ object UtilConstants {
     const val getDoctorByEmail="doctor/email/"
     const val getPatientByEmail="patient/email/"
     const val doctorApi="doctor/register"
+    const val shopRegisterApi="shop/register"
+     const val getAllShopApi="shop/"
+       const val getShopApi="shop/"
     const val patientApi="patient/"
     const val consultationApi="consult/"
     const val prescriptionApi="prescription/"

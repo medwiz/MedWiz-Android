@@ -6,12 +6,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:name=".MedWizApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:fullBackupContent="false"
         android:theme="@style/Theme.App.Starting">
         <activity
             android:name=".doctorsView.docotorUi.consult.PrescriptionMainActivity"
@@ -19,11 +20,11 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
         <activity
-            android:name=".LabView.ui.LabActivity"
+            android:name=".shopView.ShopActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".patientsView.patientsUi.main.PatientMainActivity"
+            android:name=".patientsView.main.PatientMainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity

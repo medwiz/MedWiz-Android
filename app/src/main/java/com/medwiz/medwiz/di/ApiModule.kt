@@ -16,6 +16,8 @@ import com.medwiz.medwiz.repository.prescription.PrescriptionRepoInterface
 import com.medwiz.medwiz.repository.prescription.PrescriptionRepository
 import com.medwiz.medwiz.repository.reviews.ReviewRepoInterface
 import com.medwiz.medwiz.repository.reviews.ReviewRepository
+import com.medwiz.medwiz.repository.shop.ShopRepoInterface
+import com.medwiz.medwiz.repository.shop.ShopRepository
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.Module
 import dagger.Provides
@@ -130,5 +132,16 @@ object ApiModule {
     @Provides
     fun provideFileRepository( api: FileApi) =
         FileRepository(api) as FileRepoInterface
+
+    @Provides
+    @Singleton
+    fun provideShop(retrofit: Retrofit): ShopApi {
+        return retrofit.create(ShopApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideShopRepository( api: ShopApi) =
+        ShopRepository(api) as ShopRepoInterface
+
 
 }

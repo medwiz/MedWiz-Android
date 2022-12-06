@@ -31,6 +31,7 @@ import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
 import com.medwiz.medwiz.viewmodels.PatientViewModel
 import com.medwiz.medwiz.viewmodels.PatientViewModel_Factory
+import com.medwiz.medwiz.viewmodels.ShopViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 
@@ -40,6 +41,7 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
     private val viewModel: AuthViewModel by viewModels()
     private val doctorViewModel: DoctorViewModel by viewModels()
     private val patientViewModel: PatientViewModel by viewModels()
+    private val shopViewModel:ShopViewModel by viewModels()
     private var doctorInfOJsonObject=JSONObject()
     private var password:String=""
     private var confirmPassword:String=""
@@ -112,6 +114,8 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                     if(it.data!!.success){
                         if(accountType== MedWizConstants.Auth.ACCOUNT_DOCTOR){
                             registerDoctor()
+                         }else if(accountType==MedWizConstants.Auth.ACCOUNT_SHOP){
+                             registerShop()
                          }
 
                         if(accountType==MedWizConstants.Auth.ACCOUNT_PATIENT){
@@ -128,6 +132,23 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
                     MedWizUtils.showErrorPopup(
                         requireActivity(),
                         it.message.toString())
+                }
+            }
+        })
+
+        shopViewModel.registerShop.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as MainActivity).showLoading()
+                }
+                is Resource.Success->{
+                    (activity as MainActivity).hideLoading()
+                    if(it.data!!.success){
+                        goToLoginScreen(it.data.message)
+                    }
+                }
+                is Resource.Error->{
+                    (activity as MainActivity).hideLoading()
                 }
             }
         })
@@ -322,6 +343,33 @@ class CreatePassword:Fragment(R.layout.fragment_create_password) {
         requestObj.addProperty(UtilConstants.address,request.pinCode)
         requestObj.addProperty(UtilConstants.gender,request.gender)
         patientViewModel.registerPatient(requestObj)
+    }
+
+    private fun registerShop(){
+        val requestObj=JsonObject()
+        requestObj.addProperty("name",request.name)
+        requestObj.addProperty("address",request.address)
+        requestObj.addProperty("city",request.city)
+        requestObj.addProperty("pinCode",request.pinCode)
+        requestObj.addProperty("mobile",request.mobile)
+        requestObj.addProperty("email",request.email)
+        requestObj.addProperty("state","Tripura")
+        requestObj.addProperty("country","India")
+        requestObj.addProperty("credit",0.0)
+        requestObj.addProperty("rating",5)
+        requestObj.addProperty("shopType",request.shopType)
+        requestObj.addProperty("userType",request.userType)
+        requestObj.addProperty("offer","")
+        requestObj.addProperty("profileImageUrl","")
+        requestObj.addProperty("lastLogin","")
+        requestObj.addProperty("offer","")
+        requestObj.addProperty(UtilConstants.licencePath,request.licencePath)
+        shopViewModel.registerShop(requestObj)
+
+
+
+
+
     }
 
 

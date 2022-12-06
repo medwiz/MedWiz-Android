@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:id="@+id/item_layout1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="14dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_settings" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/user_img"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp"
+                android:paddingStart="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:fontFamily="@font/poppins_bold"
+                        android:text="TRNXF1596453820334"
+                        android:maxLines="2"
+                        android:gravity="start"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="2dp"
+                        android:drawableStart="@drawable/ic_location"
+                        android:layout_marginTop="4dp"
+                        android:text="Dharmanagar ,North Tripura"
+                        android:gravity="center|start"
+
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/payment_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:fontFamily="@font/poppins_bold"
+                        android:text="Paymentmode: Paytm"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/green"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvModifystatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:fontFamily="@font/poppins_bold"
+                        android:text="Modification Accepted"
+                        android:visibility="visible"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/green"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:fontFamily="@font/poppins_bold"
+                        android:text="Dispute Created"
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textSize="14sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_time"
+                        android:gravity="end"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/order_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="08.15 AM"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

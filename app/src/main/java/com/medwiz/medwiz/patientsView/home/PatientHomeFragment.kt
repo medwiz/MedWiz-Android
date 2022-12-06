@@ -13,7 +13,7 @@ import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.booking.HealthTypeAdapter
 import com.medwiz.medwiz.viewmodels.PatientViewModel
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants

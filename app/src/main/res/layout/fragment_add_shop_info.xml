@@ -129,6 +129,75 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabAddressTitle"
                 />
+
+<!--            kkk-->
+
+            <TextView
+                android:id="@+id/tvLabCityTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city_hint"
+                android:textSize="@dimen/h5_sp_14"
+                android:lineSpacingExtra="4sp"
+                android:translationY="-1.79sp"
+                android:textColor="#303245"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/h5_dp_14"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLabAddress"
+                />
+
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabCityTitle"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPinCodeTitle"
+                android:text="@string/pin_code"
+                android:textSize="@dimen/h5_sp_14"
+                android:lineSpacingExtra="4sp"
+                android:translationY="-1.79sp"
+                android:textColor="#303245"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/h5_dp_14"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCity"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/etPinCode"
+                android:background="@drawable/layout_rounded_bg"
+                android:inputType="number"
+                android:padding="5dp"
+                android:maxLength="10"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPinCodeTitle"/>
+
+<!--            mm-->
+
+
             <TextView
                 android:id="@+id/tvPhoneTitle"
                 android:layout_width="match_parent"
@@ -143,7 +212,7 @@
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etLabAddress"
+                app:layout_constraintTop_toBottomOf="@+id/etPinCode"
                 />
 
             <EditText
@@ -195,36 +264,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvMailTitle"
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPinCodeTitile"
-                android:text="@string/pin_code"
-                android:textSize="@dimen/h5_sp_14"
-                android:lineSpacingExtra="4sp"
-                android:translationY="-1.79sp"
-                android:textColor="#303245"
-                android:gravity="start"
-                android:layout_marginTop="@dimen/h5_dp_14"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etMail"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/etPinCode"
-                android:background="@drawable/layout_rounded_bg"
-                android:inputType="number"
-                android:padding="5dp"
-                android:maxLength="10"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPinCodeTitile"/>
 
             <Spinner
                 android:id="@+id/spinnerShop"
@@ -239,7 +279,7 @@
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPinCode"
+                app:layout_constraintTop_toBottomOf="@+id/etMail"
                 />
 
 
@@ -276,35 +316,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvCertificate"
                 />
 
-            <TextView
-                android:id="@+id/tvWorkTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/select_your_timings"
-                android:textSize="@dimen/h5_sp_14"
-                android:lineSpacingExtra="4sp"
-                android:translationY="-1.79sp"
-                android:textColor="#303245"
-                android:gravity="start"
-                android:layout_marginTop="@dimen/h5_dp_14"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btUpload"
-                />
 
-            <Button
-                android:id="@+id/btSelectWorkingTime"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:padding="5dp"
-                android:text="@string/tap_here_to_select"
-                android:fontFamily="@font/poppins_bold"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWorkTime"/>
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -322,7 +334,7 @@
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btSelectWorkingTime" />
+                app:layout_constraintTop_toBottomOf="@+id/btUpload" />
 
 
 

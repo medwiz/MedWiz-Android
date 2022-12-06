@@ -4,20 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.medwiz.medwiz.LabView.ui.LabActivity
+import com.medwiz.medwiz.shopView.ShopActivity
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
-import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.SelectAccountFragmentBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
-import com.medwiz.medwiz.main.MainActivity
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants
 import com.medwiz.medwiz.util.MedWizUtils
-import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -75,7 +69,7 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
 
                 }
                 MedWizConstants.Auth.ACCOUNT_SHOP->{
-                    val intent = Intent (requireActivity(), LabActivity::class.java)
+                    val intent = Intent (requireActivity(), ShopActivity::class.java)
                     requireActivity().startActivity(intent)
                     requireActivity().finish()
 

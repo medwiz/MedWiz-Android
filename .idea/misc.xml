@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/activity_patient.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/activity_prescription_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_send_prescription.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_shop.xml" value="0.33423180592991913" />
         <entry key="app/src/main/res/layout/add_medicine_popup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/booking_date_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.3333333333333333" />
@@ -35,7 +36,7 @@
         <entry key="app/src/main/res/layout/enter_otp_popup.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/fragment_account_selection.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_add_doc_info.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_add_lab_info.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_add_lab_info.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_add_prescription.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/fragment_add_prescriptions.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/fragment_book_appointment.xml" value="0.25" />
@@ -58,15 +59,21 @@
         <entry key="app/src/main/res/layout/fragment_patient_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_prescription_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_preview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_send_prescription.xml" value="0.33423180592991913" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/fragment_shop_history.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_shop_home.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_shop_profile.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/fragment_shops.xml" value="0.16742654508611957" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_upcoming.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.11481481481481481" />
         <entry key="app/src/main/res/layout/fragment_view_all_doctors.xml" value="0.16198933919270833" />
         <entry key="app/src/main/res/layout/health_type_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/prescription_single_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/prescription_single_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/review_single_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/select_account_fragment.xml" value="0.16742654508611957" />
@@ -75,12 +82,14 @@
         <entry key="app/src/main/res/layout/single_booking_rcv_item.xml" value="0.165" />
         <entry key="app/src/main/res/layout/single_doctor_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_lab_rcv_item.xml" value="0.34427083333333336" />
+        <entry key="app/src/main/res/layout/single_order_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_patient_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_profile_item.xml" value="0.14379119873046872" />
         <entry key="app/src/main/res/layout/single_working_time.xml" value="0.335" />
         <entry key="app/src/main/res/layout/working_time_dialog.xml" value="0.165" />
         <entry key="app/src/main/res/menu/bottom_doctor_nav_menu.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/menu/bottom_patient_nav_menu.xml" value="0.22870370370370371" />
+        <entry key="app/src/main/res/menu/bottom_shop_nav_menu.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1455" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_splash.xml" value="0.1455" />

@@ -122,4 +122,6 @@
     <string name="add_lab_info">Add Lab/Pharmacy Info</string>
     <string name="lab_name">Lab Name</string>
     <string name="lab_address">Lab Address</string>
+    <string name="Orders">Orders</string>
+    <string name="order_time">Order Time</string>
 </resources>

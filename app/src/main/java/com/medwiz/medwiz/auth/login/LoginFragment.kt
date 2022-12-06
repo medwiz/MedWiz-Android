@@ -4,23 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.medwiz.medwiz.LabView.ui.LabActivity
+import com.medwiz.medwiz.shopView.ShopActivity
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentLoginBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.main.MainActivity
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.*
-import com.medwiz.medwiz.viewmodels.FileViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 
 
 @AndroidEntryPoint
@@ -43,7 +40,11 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
             val username =  binding.etEmail.text.toString().trim()
             val password =  binding.etPassword.text.toString().trim()
+            if(accountType==MedWizConstants.Auth.ACCOUNT_SHOP){
+                viewModel.loginShop(username,password)
+            }else{
             viewModel.login(username,password)
+            }
 
         }
         binding.liSignUp.setOnClickListener {
@@ -66,7 +67,8 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                 is Resource.Success->{
                   if(accountType==it.data!!.userType){
                     goToNextScreen(it.data)
-                  }else{
+                  }else
+                  {
                       Toast.makeText(requireContext(),"You have chosen wrong account type",Toast.LENGTH_SHORT).show()
                       goBack()
                   }
@@ -91,6 +93,50 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                 }
             }
         })
+
+        viewModel.loginShop.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success->{
+                    if(accountType==it.data!!.userType){
+                        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"Bearer "+it.data.token,true)
+                        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userId,it.data.id.toString(),true)
+                        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.data.email,true)
+                        MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.data.userType,true)
+                        val intent = Intent (requireActivity(), ShopActivity::class.java)
+                        requireActivity().startActivity(intent)
+                        requireActivity().finish()
+                    }else
+                    {
+                        Toast.makeText(requireContext(),"You have chosen wrong account type",Toast.LENGTH_SHORT).show()
+                        goBack()
+                    }
+
+                }
+                is Resource.Error->{
+                    (activity as MainActivity).hideLoading()
+//                    if(it.message==UtilConstants.unauthorized){
+//                        MedWizUtils.showErrorPopup(
+//                            requireActivity(),
+//                            requireActivity().getString(R.string.INVALID_USER_CREDENTIALS))
+//
+//                    }
+//                    else{
+//                        MedWizUtils.showErrorPopup(
+//                            requireActivity(),
+//                            requireActivity().getString(R.string.something_went_wrong))
+//                    }
+                    MedWizUtils.showErrorPopup(
+                        requireActivity(),
+                        it.message.toString())
+                }
+            }
+        })
+
+
 
         binding.etEmail.setText("s@gmail.com")
         binding.etPassword.setText("s12345")
@@ -118,7 +164,7 @@ class LoginFragment :Fragment(R.layout.fragment_login){
                 requireActivity().finish()
             }
             MedWizConstants.Auth.ACCOUNT_SHOP->{
-                val intent = Intent (requireActivity(), LabActivity::class.java)
+                val intent = Intent (requireActivity(), ShopActivity::class.java)
                 requireActivity().startActivity(intent)
                 requireActivity().finish()
             }

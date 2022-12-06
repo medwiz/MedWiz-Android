@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
-import com.medwiz.medwiz.databinding.FragmentAddLabInfoBinding
+import com.medwiz.medwiz.data.reponse.ShopResponse
+import com.medwiz.medwiz.databinding.FragmentAddShopInfoBinding
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.viewmodels.DoctorViewModel
 import com.medwiz.medwiz.model.RegisterRequest
@@ -22,7 +23,7 @@ import java.io.File
 
 
 @AndroidEntryPoint
-class AddLabInfoFragment:Fragment(R.layout.fragment_add_lab_info) {
+class AddShopInfoFragment:Fragment(R.layout.fragment_add_shop_info) {
     private val viewModel: AuthViewModel by viewModels()
     private val doctorViewModel: DoctorViewModel by viewModels()
     var shopList = arrayOf("Select type","Pharmacy", "Lab")
@@ -33,7 +34,7 @@ class AddLabInfoFragment:Fragment(R.layout.fragment_add_lab_info) {
     var confirmPassword:String=""
     var request:RegisterRequest= RegisterRequest()
     private var accountType:String=MedWizConstants.Auth.ACCOUNT_SHOP
-    private lateinit var binding: FragmentAddLabInfoBinding
+    private lateinit var binding: FragmentAddShopInfoBinding
     private val getFile=registerForActivityResult(
         ActivityResultContracts.GetContent()) {
         val file: File = FileUtil.from(requireContext(), it)
@@ -45,7 +46,7 @@ class AddLabInfoFragment:Fragment(R.layout.fragment_add_lab_info) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAddLabInfoBinding.bind(view)
+        binding = FragmentAddShopInfoBinding.bind(view)
 
         binding.imgBackAddInfo.setOnClickListener{
 
@@ -113,7 +114,8 @@ class AddLabInfoFragment:Fragment(R.layout.fragment_add_lab_info) {
         val mobile=binding.etPhoneNumber.text.toString()
         val email=binding.etMail.text.toString()
         val pinCode=binding.etPinCode.text.toString()
-        if(name.isNotEmpty()&&mobile.isNotEmpty()&&email.isNotEmpty()&&pinCode.isNotEmpty()&&downloadUrl.isNotEmpty()){
+        val city=binding.etCity.text.toString()
+        if(name.isNotEmpty()&&mobile.isNotEmpty()&&email.isNotEmpty()&&pinCode.isNotEmpty()&&downloadUrl.isNotEmpty()&&city.isNotEmpty()){
 
         val register= RegisterRequest()
         register.name=name
@@ -123,6 +125,7 @@ class AddLabInfoFragment:Fragment(R.layout.fragment_add_lab_info) {
         register.userType=accountType
         register.shopType=strShopType
         register.licencePath= downloadUrl
+        register.city=city
         val bundle = Bundle()
         bundle.putParcelable(UtilConstants.request,register)
         findNavController().navigate(R.id.action_addLabInfoFragment_to_createPassword,bundle)

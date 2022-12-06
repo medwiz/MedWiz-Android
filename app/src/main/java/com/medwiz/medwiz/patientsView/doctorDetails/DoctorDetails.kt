@@ -10,7 +10,7 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentDoctorDetailsBinding
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.patientsUi.doctorDetails.ReviewAdapter
-import com.medwiz.medwiz.patientsView.patientsUi.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants

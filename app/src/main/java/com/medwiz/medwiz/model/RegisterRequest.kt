@@ -19,11 +19,12 @@ data class RegisterRequest(
     var userType: String,
     var gender: String,
     var isActivated:Boolean,
-    var licencePath:String
+    var licencePath:String,
+    var city:String,
 ): Parcelable {
     constructor() : this("","","", "",
         "", "", "",
         "", "", "",
-        "", "","",false,""
+        "", "","",false,"",""
     )
 }
