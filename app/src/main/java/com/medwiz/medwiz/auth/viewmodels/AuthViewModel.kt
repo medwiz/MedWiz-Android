@@ -38,6 +38,9 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
     val getUser: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     var getUserResponse: LoginResponse? = null
 
+    val addMedicine: MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
+    var addMedicineResponse: CommonResponse? = null
+
 
     //signUp
 
@@ -241,6 +244,46 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
             return Resource.Error(commonResponse.message)
         }
         return Resource.Error(response.message())
+    }
+
+    fun addMedicine(medicineObj: JsonObject) =viewModelScope.launch{
+           callMedicineApi(medicineObj)
+    }
+
+    private suspend fun callMedicineApi(medicineObj: JsonObject) {
+        addMedicine.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.addMedicine(medicineObj)
+                addMedicine.postValue(handleAddMedicineResponse(response))
+            }
+            else
+                addMedicine.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> addMedicine.postValue(Resource.Error("Network Failure"))
+                else -> addMedicine.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+
+    }
+
+    private fun handleAddMedicineResponse(response: Response<CommonResponse>): Resource<CommonResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if(resultResponse.success) {
+                    addMedicineResponse = resultResponse
+                    return Resource.Success(resultResponse ?: resultResponse)
+                }
+            }
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
+
     }
 
 }

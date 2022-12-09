@@ -30,6 +30,10 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         val userId= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.userId,"0",false)
 
+        binding.tvMed.setOnClickListener {
+            findNavController().navigate(R.id.action_selectAccountFragment_to_addMedicineInfoFragment)
+        }
+
         binding.rlDoctor.setOnClickListener{
             val bundle = Bundle()
             bundle.putString(MedWizConstants.Auth.ACCOUNT_TYPE,MedWizConstants.Auth.ACCOUNT_DOCTOR)

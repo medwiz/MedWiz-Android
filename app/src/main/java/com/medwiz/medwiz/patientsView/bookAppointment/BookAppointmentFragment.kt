@@ -1,9 +1,10 @@
-package com.medwiz.medwiz.patientsView.patientsUi.bookAppointment
+package com.medwiz.medwiz.patientsView.bookAppointment
 
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,10 @@ import com.medwiz.medwiz.model.CustomDateEntity
 import com.medwiz.medwiz.model.CustomTimeEntity
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.patientsView.main.PatientMainActivity
+import com.medwiz.medwiz.patientsView.patientsUi.bookAppointment.SelectCustomDateAdapter
+import com.medwiz.medwiz.patientsView.patientsUi.bookAppointment.SelectCustomTimeAdapter
+import com.medwiz.medwiz.patientsView.patientsUi.bookAppointment.SelectedDateListener
+import com.medwiz.medwiz.patientsView.patientsUi.bookAppointment.SelectedTimeListener
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
@@ -25,7 +30,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),SelectedTimeListener,SelectedDateListener {
+class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment), SelectedTimeListener,
+    SelectedDateListener {
     private lateinit var binding: FragmentBookAppointmentBinding
     private val consultationViewModel: ConsultationViewModel by viewModels()
     private var selectCustomTimeAdapter: SelectCustomTimeAdapter?=null
@@ -100,33 +106,44 @@ class BookAppointmentFragment : Fragment(R.layout.fragment_book_appointment),Sel
             }
         })
         binding.btContinue.setOnClickListener{
-            val bundle=Bundle()
-            val consulat=Consultation()
-            consulat.addedDate=MedWizUtils.getCurrentDate()
-            consulat.isActive=true
-            consulat.consDate=selectedDateObj!!.actualDate
-            consulat.consTime=selectedTimeObj!!.time+" "+selectedTimeObj!!.amOrPm
-            consulat.fees=selectedDoctor!!.fees
-            consulat.docId=selectedDoctor!!.id
+            if(selectedTimeObj==null||selectedDateObj==null){
+                Toast.makeText(requireContext(),"Please select time and date",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+           if(selectedTimeObj!!.time.isEmpty()&&selectedTimeObj!!.amOrPm.isEmpty()){
+               Toast.makeText(requireContext(),"Please select time",Toast.LENGTH_SHORT).show()
+               return@setOnClickListener
+           }
+            if(selectedDateObj!!.actualDate.isEmpty()){
+                Toast.makeText(requireContext(),"Please select date",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val consult=Consultation()
+            consult.addedDate=MedWizUtils.getCurrentDate()
+            consult.isActive=true
+            consult.consDate=selectedDateObj!!.actualDate
+            consult.consTime=selectedTimeObj!!.time+" "+selectedTimeObj!!.amOrPm
+            consult.fees=selectedDoctor!!.fees
+            consult.docId=selectedDoctor!!.id
             val userDetails=(activity as PatientMainActivity).getUserDetails()
-            consulat.patientMobile= userDetails.mobile
-            consulat.patientGender=userDetails.gender
-            consulat.patientName= userDetails.firstname+" "+userDetails.lastname
-            consulat.doctorName=selectedDoctor!!.firstname+" "+selectedDoctor!!.lastname
-            consulat.specialization=selectedDoctor!!.specialization
-            consulat.age=userDetails.age
+            consult.patientMobile= userDetails.mobile
+            consult.patientGender=userDetails.gender
+            consult.patientName= userDetails.firstname+" "+userDetails.lastname
+            consult.doctorName=selectedDoctor!!.firstname+" "+selectedDoctor!!.lastname
+            consult.specialization=selectedDoctor!!.specialization
+            consult.age=userDetails.age
             val userId= userDetails.id
-            consulat.patientId=userId.toLong()
-            consulat.laboratoryId=0
-            consulat.pharmaId=0
-            consulat.filePath=""
-            consulat.isCash=isCash
-            consulat.isActive=true
-            consulat.transactionId=""
-            consulat.status=""
-            getJsonObject(consulat)
+            consult.patientId=userId.toLong()
+            consult.laboratoryId=0
+            consult.pharmaId=0
+            consult.filePath=""
+            consult.isCash=isCash
+            consult.isActive=true
+            consult.transactionId=""
+            consult.status=""
+            getJsonObject(consult)
             val token:String=MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.accessToken,"",false)
-            consultationViewModel.createNewConsultation(token, getJsonObject(consulat))
+            consultationViewModel.createNewConsultation(token, getJsonObject(consult))
 
         }
     }

@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_selectAccountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_selectAccountFragment_to_addMedicineInfoFragment"
+            app:destination="@id/addMedicineInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -70,4 +73,8 @@
             android:id="@+id/action_addLabInfoFragment_to_createPassword"
             app:destination="@id/createPassword" />
     </fragment>
+    <fragment
+        android:id="@+id/addMedicineInfoFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.AddMedicineInfoFragment"
+        android:label="AddMedicineInfoFragment" />
 </navigation>

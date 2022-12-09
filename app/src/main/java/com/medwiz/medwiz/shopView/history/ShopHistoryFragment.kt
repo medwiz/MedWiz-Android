@@ -18,8 +18,5 @@ class ShopHistoryFragment:Fragment(R.layout.fragment_shop_history) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentShopHistoryBinding.bind(view)
 
-
-
-
     }
 }

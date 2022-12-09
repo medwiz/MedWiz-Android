@@ -24,7 +24,7 @@ class ConsultationRepository @Inject constructor(private val api: ConsultationAp
     }
 
     override suspend fun getConsultationByPatientId(
-        token: String, id: Long, status: String): Response<Consultation> {
+        token: String, id: Long, status: String): Response<ArrayList<Consultation>> {
         return api.getConsultationByPatientId(token,id,status)
     }
 

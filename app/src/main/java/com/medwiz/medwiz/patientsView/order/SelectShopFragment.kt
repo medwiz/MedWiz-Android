@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientsUi.order
+package com.medwiz.medwiz.patientsView.order
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentSelectShopsBinding
+import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.model.Prescription
 import com.medwiz.medwiz.patientsView.booking.PrescriptionItemListener
 import com.medwiz.medwiz.patientsView.main.PatientMainActivity
@@ -21,14 +22,20 @@ import dagger.hilt.android.AndroidEntryPoint
 class SelectShopFragment:Fragment(R.layout.fragment_select_shops) ,PrescriptionItemListener{
     //private var prescriptionAdapter: PrescriptionAdapter?=null
     private lateinit var binding: FragmentSelectShopsBinding
+    private var prescription:Prescription?=null
     private val prescriptionViewModel: PrescriptionViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSelectShopsBinding.bind(view)
         val token= MedWizUtils.storeValueInPreference(requireContext(),
             UtilConstants.accessToken,"",false)
+        prescription=requireArguments().getParcelable<Prescription>(UtilConstants.prescription)
            createAdapter()
+        binding.imgBack.setOnClickListener {
 
+            findNavController().navigateUp()
+
+        }
         prescriptionViewModel.getPrescriptionList(token,(activity as PatientMainActivity).getUserDetails().id)
 
         prescriptionViewModel.prescriptionList.observe(viewLifecycleOwner, Observer {

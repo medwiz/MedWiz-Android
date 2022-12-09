@@ -25,6 +25,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:src="@drawable/ic_back"
+                  android:visibility="gone"
                   android:gravity="center"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"/>
@@ -43,42 +44,27 @@
                   app:layout_constraintStart_toEndOf="@+id/imgBack"
                   app:layout_constraintTop_toTopOf="parent" />
 
+
+
           </LinearLayout>
 
-          <LinearLayout
+          <Spinner
+              android:id="@+id/spinnerShop"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/linearBooking"
-              android:orientation="horizontal"
+              android:text="@string/phone_number"
+              android:textSize="@dimen/h5_sp_14"
+              android:lineSpacingExtra="4sp"
+              android:textColor="#303245"
+              android:gravity="start"
+              android:fontFamily="@font/poppins_regular"
               android:layout_marginTop="@dimen/h3_dp_20"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/imgBack"
-              android:weightSum="2">
-              <TextView
-                  android:id="@+id/tvUpComingBooking"
-                  android:layout_width="0dp"
-                  android:layout_height="wrap_content"
-                  android:text="@string/upcoming"
-                  android:layout_weight="1"
-                  android:fontFamily="@font/poppins_medium"
-                  android:textColor="@color/black"
-                  android:textStyle="bold"
-                  android:gravity="center"/>
-
-              <TextView
-                  android:id="@+id/tvPastBooking"
-                  android:layout_width="0dp"
-                  android:layout_height="wrap_content"
-                  android:text="@string/past"
-                  android:layout_weight="1"
-                  android:fontFamily="@font/poppins_medium"
-                  android:textColor="@color/black"
-                  android:textStyle="bold"
-                  android:gravity="center"/>
+              />
 
 
-          </LinearLayout>
 
           <androidx.recyclerview.widget.RecyclerView
               android:layout_width="match_parent"

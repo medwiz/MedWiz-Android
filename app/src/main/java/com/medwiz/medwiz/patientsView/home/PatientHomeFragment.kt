@@ -75,14 +75,16 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
                 }
             }
         })
-        consultationViewModel.consultation.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        consultationViewModel.consultationList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when(it){
                 is Resource.Loading->{
                     (activity as PatientMainActivity).showLoading()
                 }
                 is Resource.Success->{
                     (activity as PatientMainActivity).hideLoading()
-                     setUpcomingBookingUi(it.data)
+                     if(it.data!=null&&it.data.isNotEmpty()){
+                     setUpcomingBookingUi(it.data[0])
+                     }
                 }
                 is Resource.Error->{
                     (activity as PatientMainActivity).hideLoading()
@@ -134,7 +136,7 @@ class PatientHomeFragment:Fragment(R.layout.fragment_patient_home), HomeScreenLi
         }
     }
 
-    private fun setUpcomingBookingUi(it: Consultation?) {
+    private fun setUpcomingBookingUi(it: Consultation) {
         binding.layUpcomingMain.visibility=View.VISIBLE
         binding.nameTextView.text=it!!.doctorName
         binding.tvSpecialization.text=it.specialization

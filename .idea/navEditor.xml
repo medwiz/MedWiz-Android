@@ -144,6 +144,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="addMedicineInfoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-7048" />
+                            <option name="y" value="-4600" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="createPassword">
                     <value>
                       <LayoutPositions>
@@ -181,6 +193,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_loginFragment_to_addLabInfoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_loginFragment_to_selectAccountFragment">
                               <value>
                                 <LayoutPositions />
@@ -234,11 +251,6 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_signUpFragment_to_addDocInfoFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_signUpFragment_to_addLabInfoFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -493,8 +505,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="326" />
-                            <option name="y" value="211" />
+                            <option name="x" value="229" />
+                            <option name="y" value="191" />
                           </Point>
                         </option>
                       </LayoutPositions>

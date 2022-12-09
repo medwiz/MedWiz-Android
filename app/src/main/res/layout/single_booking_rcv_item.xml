@@ -71,23 +71,21 @@
                     android:textColor="@color/textColorGrey"
                     android:textSize="14sp"/>
                 <TextView
-                    android:id="@+id/tvRating"
+                    android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/layout_rounded_bg"
                     android:fontFamily="@font/poppins_regular"
-                    android:backgroundTint="@color/green"
                     android:gravity="center"
                     android:padding="6dp"
-                    android:text="4.8"
-                    android:drawableEnd="@drawable/ic_star"
+                    
                     android:drawablePadding="6dp"
                     android:textColor="@color/white"
                     android:textSize="14sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/h6_dp_12"
                     android:orientation="horizontal">
                     <ImageView
@@ -101,7 +99,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="1.2 KM from your location"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="14sp"
@@ -116,6 +113,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvTimeAndDate"
                     android:text="09:00 AM - 10:00 AM"
                     android:layout_gravity="center"
                     android:gravity="start"

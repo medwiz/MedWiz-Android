@@ -23,4 +23,7 @@ interface AuthApi {
     @GET(UtilConstants.getUserById+"/"+"{userId}")
     suspend fun getUserById(@Header("Authorization") accessToken: String,
                             @Path("userId")userId:String):Response<LoginResponse>
+
+    @POST(UtilConstants.addMedicine)
+    suspend fun addMedicine(@Body jsonObject: JsonObject):Response<CommonResponse>
 }

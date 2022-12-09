@@ -14,4 +14,5 @@ interface AuthRepoInterface {
     suspend fun loginShop( jsonObject: JsonObject): Response<ShopResponse>
     suspend fun register( jsonObject: JsonObject): Response<CommonResponse>
     suspend fun getUserById(token:String,id:String):Response<LoginResponse>
+    suspend fun addMedicine(jsonObject: JsonObject):Response<CommonResponse>
 }

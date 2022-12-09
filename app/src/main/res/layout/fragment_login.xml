@@ -8,6 +8,14 @@
     android:background="@color/white"
     android:padding="@dimen/h4_dp_16">
 
+    <ImageView
+        android:id="@+id/imgBackAddInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvLogin"

@@ -13,7 +13,7 @@
         android:name="com.medwiz.medwiz.shopView.history.ShopHistoryFragment"
         android:label="ShopHistoryFragment" />
     <fragment
-        android:id="@+id/shopProfileFragment"
+        android:id="@+id/shopProfileFragments"
         android:name="com.medwiz.medwiz.shopView.profile.ShopProfileFragment"
         android:label="ShopProfileFragment" />
 </navigation>

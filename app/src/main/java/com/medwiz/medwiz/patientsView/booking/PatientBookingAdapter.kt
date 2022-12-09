@@ -1,15 +1,20 @@
-package com.medwiz.medwiz.patientsView.patientsUi.booking
+package com.medwiz.medwiz.patientsView.booking
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.SingleBookingRcvItemBinding
-import com.medwiz.medwiz.model.BookingModel
+import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.patientsView.patientsUi.booking.BookingItemListener
+import com.medwiz.medwiz.util.UtilConstants
+import java.util.ArrayList
 
 class PatientBookingAdapter(private val context: Context,
-                            private val itemList:MutableList<BookingModel>,
-                            private val listener: BookingItemListener
+                            private val itemList:ArrayList<Consultation>,
+                            private val listener: BookingItemListener,
+                            private val status:String
 ):RecyclerView.Adapter<PatientBookingAdapter.PatientBookingAdapterViewHolder>(){
 
 
@@ -31,8 +36,18 @@ class PatientBookingAdapter(private val context: Context,
     }
 
     inner class PatientBookingAdapterViewHolder(val binding: SingleBookingRcvItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(reviewItem: BookingModel, position: Int){
-           // binding.nameTextView.text = doctorItem.firstName+" "+doctorItem.lastName
+        fun bind(item: Consultation, position: Int){
+           binding.nameTextView.text = item.doctorName
+           binding.tvSpecialization.text=item.specialization
+            val timeAndDate=item.consDate+" "+item.consTime
+           binding. tvTimeAndDate.text=timeAndDate
+            if(status==UtilConstants.STATUS_UPCOMING){
+                binding.tvStatus.setTextColor(context.getColor(R.color.blue))
+            }
+            if(status==UtilConstants.STATUS_COMPLETED){
+                binding.tvStatus.setTextColor(context.getColor(R.color.green))
+            }
+            binding.tvStatus.text=item.status
            
         }
     }

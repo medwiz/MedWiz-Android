@@ -124,4 +124,6 @@
     <string name="lab_address">Lab Address</string>
     <string name="Orders">Orders</string>
     <string name="order_time">Order Time</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="mrp">MRP</string>
 </resources>

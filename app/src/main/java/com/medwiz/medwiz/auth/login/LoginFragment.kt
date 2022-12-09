@@ -34,7 +34,12 @@ class LoginFragment :Fragment(R.layout.fragment_login){
         binding = FragmentLoginBinding.bind(view)
         accountType = arguments?.getString(MedWizConstants.Auth.ACCOUNT_TYPE)!!
         isComingFromCreatePassword= requireArguments().getBoolean(MedWizConstants.AppValue.SCREEN_NAME,false)
+        binding.imgBackAddInfo.setOnClickListener{
 
+            findNavController().navigateUp()
+
+
+        }
         binding.btContinue.setOnClickListener {
 
 

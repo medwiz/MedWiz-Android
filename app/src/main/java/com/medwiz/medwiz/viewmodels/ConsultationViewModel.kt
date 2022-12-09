@@ -32,6 +32,7 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
     val consultation:MutableLiveData<Resource<Consultation>> = MutableLiveData()
     var consultationResponse:Consultation?=null
 
+
     val consultationList:MutableLiveData<Resource<ArrayList<Consultation>>> = MutableLiveData()
     var consultationResponseList:ArrayList<Consultation>?=null
 
@@ -148,21 +149,43 @@ class ConsultationViewModel @Inject constructor(private val repository: Consulta
     }
 
     private suspend fun callGetPatientConsultationApi(token:String,id:Long,status: String){
-        consultation.postValue(Resource.Loading())
+        consultationList.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
                 val response = repository.getConsultationByPatientId(token,id,status)
-                consultation.postValue(handleConsultationResponse(response))
+                consultationList.postValue(handleConsultationListResponse(response))
             }
             else
-                consultation.postValue(Resource.Error("No Internet Connection"))
+                consultationList.postValue(Resource.Error("No Internet Connection"))
         }
         catch (ex: Exception){
             when(ex){
-                is IOException -> consultation.postValue(Resource.Error("Network Failure"))
-                else -> consultation.postValue(Resource.Error("Conversion Error"))
+                is IOException -> consultationList.postValue(Resource.Error("Network Failure"))
+                else -> consultationList.postValue(Resource.Error("Conversion Error"))
             }
         }
+    }
+
+    private fun handleConsultationListResponse(response: Response<ArrayList<Consultation>>): Resource<ArrayList<Consultation>> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if(resultResponse.isNotEmpty()) {
+                    consultationResponseList = resultResponse
+                    return Resource.Success(consultationResponseList ?: resultResponse)
+                }else{
+                    consultationResponseList = resultResponse
+                    return Resource.Success(consultationResponseList ?: resultResponse)
+                }
+            }
+        }
+        else if(response.code()==401){
+            return Resource.Error(UtilConstants.unauthorized)
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
     }
 
 

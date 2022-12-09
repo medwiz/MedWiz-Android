@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.patientsUi.profile
+package com.medwiz.medwiz.patientsView.profile
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentProfileBinding
 import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
 import com.medwiz.medwiz.model.ProfileItemModel
+import com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileItemAdapter
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint

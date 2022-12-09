@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/labFragments"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.booking.BookingFragments"
+        android:name="com.medwiz.medwiz.patientsView.booking.BookingFragments"
         android:label="LabFragments" />
     <fragment
         android:id="@+id/viewAllDoctorsFragment"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookAppointmentFragment"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.bookAppointment.BookAppointmentFragment"
+        android:name="com.medwiz.medwiz.patientsView.bookAppointment.BookAppointmentFragment"
         android:label="BookAppointmentFragment" >
         <action
             android:id="@+id/action_bookAppointmentFragment_to_paymentFragment"
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragments"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileFragments"
+        android:name="com.medwiz.medwiz.patientsView.profile.ProfileFragments"
         android:label="ProfileFragments" />
     <fragment
         android:id="@+id/prescriptionFragment"
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectShopFragment"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.order.SelectShopFragment"
+        android:name="com.medwiz.medwiz.patientsView.order.SelectShopFragment"
         android:label="SelectShopFragment" />
 
 </navigation>
