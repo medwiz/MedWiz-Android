@@ -30,4 +30,8 @@ class AuthRepository @Inject constructor(private val api: AuthApi):AuthRepoInter
     override suspend fun addMedicine(jsonObject: JsonObject): Response<CommonResponse> {
         return api.addMedicine(jsonObject)
     }
+
+    override suspend fun addLabTest(jsonObject: JsonObject): Response<CommonResponse> {
+        return api.addLabTest(jsonObject)
+    }
 }

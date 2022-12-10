@@ -69,6 +69,23 @@
         app:layout_constraintTop_toBottomOf="@+id/rlLab"
         />
 
+    <TextView
+        android:id="@+id/tvLabTest"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:textSize="@dimen/h3_sp_20"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/add_lab_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/h5_dp_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMed"
+        />
+
 
 
 

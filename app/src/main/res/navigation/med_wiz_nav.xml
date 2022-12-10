@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_selectAccountFragment_to_addMedicineInfoFragment"
             app:destination="@id/addMedicineInfoFragment" />
+        <action
+            android:id="@+id/action_selectAccountFragment_to_addLabTestInfoFragment"
+            app:destination="@id/addLabTestInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -77,4 +80,8 @@
         android:id="@+id/addMedicineInfoFragment"
         android:name="com.medwiz.medwiz.auth.signUp.AddMedicineInfoFragment"
         android:label="AddMedicineInfoFragment" />
+    <fragment
+        android:id="@+id/addLabTestInfoFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.AddLabTestInfoFragment"
+        android:label="AddLabTestInfoFragment" />
 </navigation>

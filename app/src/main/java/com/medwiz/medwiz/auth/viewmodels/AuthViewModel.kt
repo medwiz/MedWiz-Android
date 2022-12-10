@@ -286,4 +286,45 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
 
     }
 
+
+    fun addLabTest(labTestObj: JsonObject) =viewModelScope.launch{
+        callLabTestApi(labTestObj)
+    }
+
+    private suspend fun callLabTestApi(labTestObj: JsonObject) {
+        addMedicine.postValue(Resource.Loading())
+        try{
+            if(NetworkUtils.isInternetAvailable(context)){
+                val response = repository.addLabTest(labTestObj)
+                addMedicine.postValue(handleLabTestResponse(response))
+            }
+            else
+                addMedicine.postValue(Resource.Error("No Internet Connection"))
+        }
+        catch (ex: Exception){
+            when(ex){
+                is IOException -> addMedicine.postValue(Resource.Error("Network Failure"))
+                else -> addMedicine.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+
+    }
+
+    private fun handleLabTestResponse(response: Response<CommonResponse>): Resource<CommonResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if(resultResponse.success) {
+                    addMedicineResponse = resultResponse
+                    return Resource.Success(resultResponse ?: resultResponse)
+                }
+            }
+        }
+        else{
+            val commonResponse = Gson().fromJson( response.errorBody()!!.string(), CommonResponse::class.java)
+            return Resource.Error(commonResponse.message)
+        }
+        return Resource.Error(response.message())
+
+    }
+
 }

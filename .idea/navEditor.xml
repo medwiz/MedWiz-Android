@@ -144,6 +144,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="addLabTestInfoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-7391" />
+                            <option name="y" value="-4634" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="addMedicineInfoFragment">
                     <value>
                       <LayoutPositions>
@@ -229,6 +241,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_selectAccountFragment_to_addMedicineInfoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_selectAccountFragment_to_loginFragment">
                               <value>
                                 <LayoutPositions />

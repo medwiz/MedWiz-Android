@@ -33,6 +33,9 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         binding.tvMed.setOnClickListener {
             findNavController().navigate(R.id.action_selectAccountFragment_to_addMedicineInfoFragment)
         }
+        binding.tvLabTest.setOnClickListener {
+            findNavController().navigate(R.id.action_selectAccountFragment_to_addLabTestInfoFragment)
+        }
 
         binding.rlDoctor.setOnClickListener{
             val bundle = Bundle()

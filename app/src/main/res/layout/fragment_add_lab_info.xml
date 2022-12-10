@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/imgBackAddInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAddLab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="1sp"
+        android:text="@string/add_lab_test"
+        android:textColor="#303245"
+        android:textSize="@dimen/h3_sp_20"
+        android:translationY="-0.27sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackAddInfo" />
+
+    <TextView
+        android:id="@+id/tvLabTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h5_dp_14"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start"
+        android:lineSpacingExtra="4sp"
+        android:text="@string/lab_test_name"
+        android:textColor="#303245"
+        android:textSize="@dimen/h5_sp_14"
+        android:translationY="-1.79sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddLab" />
+
+    <EditText
+        android:id="@+id/etLabTestName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/layout_rounded_bg"
+        android:fontFamily="@font/poppins_regular"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabTitle" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h5_dp_14"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start"
+        android:lineSpacingExtra="4sp"
+        android:text="Price"
+        android:textColor="#303245"
+        android:textSize="@dimen/h5_sp_14"
+        android:translationY="-1.79sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etLabTestName" />
+
+    <EditText
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/layout_rounded_bg"
+        android:fontFamily="@font/poppins_regular"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/confirm_btn"
+        android:gravity="center"
+        android:lineSpacingExtra="16sp"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,44 +1,29 @@
 package com.medwiz.medwiz.auth.signUp
-import android.app.Activity
-import android.app.Dialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.PackageManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
-import com.medwiz.medwiz.databinding.FragmentAddDocInfoBinding
 import com.medwiz.medwiz.databinding.FragmentAddMedicineInfoBinding
-import com.medwiz.medwiz.databinding.WorkingTimeDialogBinding
 import com.medwiz.medwiz.main.MainActivity
-import com.medwiz.medwiz.model.*
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.WorkingTimeAdapter
-import com.medwiz.medwiz.patientsView.main.PatientMainActivity
-import com.medwiz.medwiz.util.*
-import com.medwiz.medwiz.viewmodels.FileViewModel
+import com.medwiz.medwiz.util.MedWizUtils
+import com.medwiz.medwiz.util.Resource
+import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
-import java.io.FileDescriptor
 
 
 @AndroidEntryPoint
-class AddMedicineInfoFragment:Fragment(R.layout.fragment_add_medicine_info) {
-
+class AddMedicineInfoFragment:Fragment(R.layout.fragment_add_medicine_info),AddMedicineListener {
+    private var adapter: AddMedicineAdapter?=null
     private val viewModel: AuthViewModel by viewModels()
+    private var viewCount:ArrayList<AddView> = ArrayList()
     private var strType=""
     private lateinit var binding: FragmentAddMedicineInfoBinding
     var typeList = arrayOf("Tablet","Drops","Syrup","Inhalers","Injections","others")
@@ -52,42 +37,36 @@ class AddMedicineInfoFragment:Fragment(R.layout.fragment_add_medicine_info) {
 
 
         }
-        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, typeList)
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Set Adapter to Spinner
-        binding.spinnerMedicineType.adapter = aa
-
-        binding.spinnerMedicineType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                strType=typeList[position]
-            }
-
-        }
         binding.btAdd.setOnClickListener {
-            val medName=binding.etMedicineName.text.toString()
-            val brandName=binding.etBrandName.text.toString()
-            val mrp=binding.etMrp.text.toString()
+            val i=viewCount.size
+            if(binding.etMedicineName.text.toString().isNotEmpty()){
+            val medArray=JsonArray()
+            for (itemObj in viewCount){
+                if(itemObj.brandName.isNotEmpty()&&itemObj.mrp>0){
+                    val jObj=JsonObject()
+                jObj.addProperty("name",itemObj.brandName)
+                jObj.addProperty("price",itemObj.mrp)
+                    medArray.add(jObj)
 
-            if(medName.isNotEmpty()&&brandName.isNotEmpty()&&mrp.isNotEmpty()&&strType.isNotEmpty()){
-                val medicineObj=JsonObject()
-                medicineObj.addProperty("name",medName)
-                medicineObj.addProperty("type",strType)
-                medicineObj.addProperty("brand",brandName)
-                medicineObj.addProperty("price",mrp)
-                medicineObj.addProperty("isActive",true)
-                 viewModel.addMedicine(medicineObj)
-            }else{
-                MedWizUtils.showErrorPopup(requireContext(),"Please fill all details")
+                }
+
             }
-
-
+            val medicineObj=JsonObject()
+            medicineObj.addProperty("medicine_name",binding.etMedicineName.text.toString())
+            medicineObj.add("brands",medArray)
+            medicineObj.addProperty("bb","kk")
+            viewModel.addMedicine(medicineObj)
+            }
         }
+
+
+            createAdapter()
+
+
+
+
+
 
         viewModel.addMedicine.observe(viewLifecycleOwner, Observer {
 
@@ -114,17 +93,76 @@ class AddMedicineInfoFragment:Fragment(R.layout.fragment_add_medicine_info) {
 
     }
 
-    private fun clearAll() {
-        binding.etMedicineName.setText("")
-        binding.etBrandName.setText("")
-        binding.etMrp.setText("")
-        strType=""
-        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, typeList)
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    private fun createAdapter() {
+        adapter = AddMedicineAdapter(requireContext(),this)
+        binding.rcvAddMedicine.adapter = adapter
+        binding.rcvAddMedicine.layoutManager = LinearLayoutManager(requireContext())
+        val addView=AddView(0,"",0.0)
+        viewCount.add(addView)
+        adapter!!.setData(viewCount,0)
+    }
 
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Set Adapter to Spinner
-        binding.spinnerMedicineType.adapter = aa
+    private fun addViews() {
+//        val parent = LinearLayout(requireContext())
+//        parent.layoutParams =
+//            LinearLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
+//        parent.orientation = LinearLayout.HORIZONTAL
+//        val etBrandName=EditText(requireContext())
+//        val etMrp=EditText(requireContext())
+//        parent.addView(etBrandName)
+//        parent.addView(etMrp)
+
+
+    }
+
+    override fun onClickAddView(obj: AddView,position:Int) {
+        if(binding.etMedicineName.text.toString().isNotEmpty()){
+          for(i in 0 until viewCount.size){
+              val viewObj=viewCount[i]
+            if(viewObj.brandName.isEmpty()&&viewObj.mrp==0.0){
+                viewCount.remove(viewObj)
+                val addView=AddView(obj.id,obj.brandName,obj.mrp)
+                viewCount.add(i,addView)
+            }
+        }
+//            for (i in 0 until viewCount.size) {
+//            }
+
+        //create empty view
+        if(viewCount.size<7){
+            val newAddView=AddView(position,"",0.0)
+            viewCount.add(newAddView)
+            adapter!!.setData(viewCount,position)
+        }
+        }
+
+    }
+
+    private fun clearAll(){
+        viewCount.clear()
+        createAdapter()
+    }
+
+    override fun onBrandChange(obj: AddView, position: Int) {
+       val i=0
+    }
+
+    override fun onMrpChange(obj: AddView, position: Int) {
+        val i=0
+    }
+
+    override fun onItemDelete(obj: AddView, position: Int) {
+        if(viewCount.size>1){
+//         for(objDelete in viewCount){
+//             if(objDelete.brandName==obj.brandName&&objDelete.mrp==obj.mrp){
+//                 viewCount.remove(objDelete)
+//                 adapter!!.setRemoveData(viewCount)
+//             }
+//         }
+            viewCount.removeAt(position)
+            adapter!!.setRemoveData(viewCount)
+        val i=0
+        }
     }
 
 

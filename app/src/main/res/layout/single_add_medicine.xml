@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="2"
+    android:weightSum="3"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -42,5 +42,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPrice"/>
+
+    <Button
+        android:id="@+id/btSave"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="@string/save"
+        android:layout_weight="1"
+        android:background="@drawable/confirm_btn"
+        android:layout_marginStart="10dp"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="4sp"
+        android:textColor="#303245"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMrp"
+        />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="@string/delete"
+        android:layout_weight="0.45"
+        android:visibility="gone"
+       android:src="@drawable/ic_cancel"
+        android:layout_marginStart="10dp"/>
 
 </LinearLayout>

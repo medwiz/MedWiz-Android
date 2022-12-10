@@ -126,4 +126,7 @@
     <string name="order_time">Order Time</string>
     <string name="brand_name">Brand Name</string>
     <string name="mrp">MRP</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="add_lab_test">Add Lab tests</string>
 </resources>
