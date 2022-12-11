@@ -2,29 +2,39 @@ package com.medwiz.medwiz.doctorsView.docotorUi.consult
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
+import com.medwiz.medwiz.data.reponse.MedicineResponse
 import com.medwiz.medwiz.databinding.AddMedicinePopupBinding
 import com.medwiz.medwiz.databinding.FragmentAddPrescriptionBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.doctorsView.model.Medication
 import com.medwiz.medwiz.model.Consultation
 import com.medwiz.medwiz.util.MedWizUtils
+import com.medwiz.medwiz.util.Resource
+import com.medwiz.medwiz.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
+class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription),OnSearchItemListener {
     private lateinit var binding: FragmentAddPrescriptionBinding
     private var medicineAdapter: PrescriptionAdapter?=null
     private var labTestAdapter: LabTestAdapter?=null
     private var medicineList=ArrayList<Medication>()
     private var labTestList=ArrayList<Medication>()
     private var consultation: Consultation?=null
+    private var alertBinding:AddMedicinePopupBinding?=null
+    private var searchAdapter:SearchAdapter?=null
+    private val searchViewModel:SearchViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,6 +80,28 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
         }
 
 
+
+        searchViewModel.medicine.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading->{
+                    (activity as PrescriptionMainActivity).showLoading()
+                }
+
+                is Resource.Success->{
+                    (activity as PrescriptionMainActivity).hideLoading()
+                    if(it.data!!.size>0){
+                    this.searchAdapter = SearchAdapter(requireContext(),it.data,this)
+                    this.alertBinding!!.rcvSearch.adapter=searchAdapter
+                    }
+
+                }
+
+                is Resource.Error->{
+                    (activity as PrescriptionMainActivity).hideLoading()
+                }
+            }
+        })
+
     }
 
     private fun createMedicineAdapter() {
@@ -97,39 +129,59 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
 
     private fun showAlertFilter(type:String) {
         lateinit var mAlert : AlertDialog
-        val alertBinding = AddMedicinePopupBinding.inflate(LayoutInflater.from(requireContext()))
+         alertBinding = AddMedicinePopupBinding.inflate(LayoutInflater.from(requireContext()))
         val builder = AlertDialog.Builder(requireContext())
-        mAlert = builder.setView(alertBinding.root)
+        mAlert = builder.setView(alertBinding!!.root)
             .setCancelable(false)
             .create()
         mAlert.show()
         mAlert.setCanceledOnTouchOutside(true)
-        alertBinding.tvTitle.text=type
+        alertBinding!!.tvTitle.text=type
         var medicineName:String=""
         var noOfDays:String=""
 
         when(type){
             getString(R.string.add_medicine_title)->{
-                alertBinding.tvTypeName.text=getString(R.string.medicine_name)
-                alertBinding.rlMedicine.visibility=View.VISIBLE
+                alertBinding!!.tvTypeName.text=getString(R.string.medicine_name)
+                alertBinding!!.rlMedicine.visibility=View.VISIBLE
             }
             getString(R.string.add_test_title)->{
-                alertBinding.tvTypeName.text=getString(R.string.lab_test_name)
-                alertBinding.rlMedicine.visibility=View.GONE
+                alertBinding!!.tvTypeName.text=getString(R.string.lab_test_name)
+                alertBinding!!.rlMedicine.visibility=View.GONE
             }
         }
-        alertBinding.imgAddMedicine.setOnClickListener {
+        alertBinding!!.imgAddMedicine.setOnClickListener {
             when(type){
                 getString(R.string.add_medicine_title)->{
-                      addMedicine(alertBinding,mAlert)
+                      addMedicine(alertBinding!!,mAlert)
                 }
                 getString(R.string.add_test_title)->{
-                    addLabTest(alertBinding,mAlert)
+                    addLabTest(alertBinding!!,mAlert)
                 }
             }
 
 
         }
+        alertBinding!!.etMedicineName.addTextChangedListener(object :TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(e: Editable?) {
+                if (e!!.length > 2){
+                    searchViewModel.searchMedicine(e.toString().trim())
+                }
+                if(e.isEmpty()&&searchAdapter!=null){
+                    searchAdapter!!.searchList.clear()
+                    searchAdapter!!.notifyDataSetChanged()
+                }
+            }
+
+        })
 
     }
 
@@ -191,5 +243,9 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription) {
     private fun goBack(){
         startActivity(Intent(requireActivity(), DoctorsActivity::class.java))
         requireActivity().finish()
+    }
+
+    override fun onItemClick(obj: MedicineResponse, position: Int) {
+       alertBinding!!.etMedicineName.setText(obj.brand)
     }
 }

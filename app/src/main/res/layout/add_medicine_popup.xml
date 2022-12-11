@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/h6_dp_12">
 
@@ -22,16 +23,23 @@
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/textColorGrey" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/etMedicineName"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:background="@drawable/layout_rounded_bg"
         android:fontFamily="@font/poppins_regular"
-        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:singleLine="true"
         android:padding="5dp"
         android:textColor="@color/black"
         android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/rcvSearch"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

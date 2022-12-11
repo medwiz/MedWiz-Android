@@ -16,6 +16,8 @@ import com.medwiz.medwiz.repository.prescription.PrescriptionRepoInterface
 import com.medwiz.medwiz.repository.prescription.PrescriptionRepository
 import com.medwiz.medwiz.repository.reviews.ReviewRepoInterface
 import com.medwiz.medwiz.repository.reviews.ReviewRepository
+import com.medwiz.medwiz.repository.search.SearchRepoInterface
+import com.medwiz.medwiz.repository.search.SearchRepository
 import com.medwiz.medwiz.repository.shop.ShopRepoInterface
 import com.medwiz.medwiz.repository.shop.ShopRepository
 import com.medwiz.medwiz.util.UtilConstants
@@ -142,6 +144,17 @@ object ApiModule {
     @Provides
     fun provideShopRepository( api: ShopApi) =
         ShopRepository(api) as ShopRepoInterface
+
+
+    @Provides
+    @Singleton
+    fun provideSearch(retrofit: Retrofit): SearchApi {
+        return retrofit.create(SearchApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideSearchRepository( api: SearchApi) =
+        SearchRepository(api) as SearchRepoInterface
 
 
 }
