@@ -49,77 +49,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
         />
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="21dp"
+        android:hint="@string/user_name"
+        android:background="@drawable/layout_rounded_bg"
+        android:inputType="text|textNoSuggestions|textMultiLine"
+        android:padding="5dp"
+        android:maxLines="5"
+        android:maxLength="100"
+        android:fontFamily="@font/archivo_narrow"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
-    <TextView
-        android:id="@+id/tvPhoneTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/etLoginPasswordLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_name"
-        android:textSize="@dimen/h5_sp_14"
-        android:lineSpacingExtra="4sp"
-        android:translationY="-1.79sp"
-        android:textColor="#303245"
-        android:gravity="start"
-        android:layout_marginTop="30dp"
-        android:textFontWeight="400"
-        android:lineHeight="@dimen/h3_dp_20"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/etUserName">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/etPassword"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:autofillHints="@string/password_hint"
+            android:textSize="15sp"
+            android:drawableEnd="@drawable/ic_password"
+            android:hint="@string/password_hint"
+            android:fontFamily="@font/archivo_narrow"
+            android:inputType="textWebPassword"
+            android:background="@drawable/layout_rounded_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/show_login_pass_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="64dp"
+            android:alpha=".5"
+            android:src="@drawable/ic_hide_password"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etLoginPasswordLay"
+            app:layout_constraintTop_toTopOf="@+id/etLoginPasswordLay" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@drawable/layout_rounded_bg"
-        android:inputType="textEmailAddress"
-        android:padding="5dp"
-        android:maxLength="50"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhoneTitle" />
-
-    <TextView
-        android:id="@+id/tvPasswordTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/password"
-        android:textSize="@dimen/h5_sp_14"
-        android:lineSpacingExtra="4sp"
-        android:translationY="-1.79sp"
-        android:textColor="#303245"
-        android:gravity="start"
-        android:layout_marginTop="20dp"
-        android:textFontWeight="400"
-        android:lineHeight="@dimen/h3_dp_20"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
-        />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@drawable/layout_rounded_bg"
-        android:inputType="textWebPassword"
-        android:padding="5dp"
-
-        android:maxLength="10"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPasswordTitle" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
@@ -135,7 +126,7 @@
         android:background="@drawable/ic_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordLay"
         />
 
     <LinearLayout

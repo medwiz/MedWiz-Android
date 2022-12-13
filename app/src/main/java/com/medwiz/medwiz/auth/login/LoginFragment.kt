@@ -2,7 +2,11 @@ package com.medwiz.medwiz.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -40,10 +44,13 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
 
         }
+        binding.showLoginPassBtn.setOnClickListener {
+            showHidePass(binding.showLoginPassBtn,binding.etPassword)
+        }
         binding.btContinue.setOnClickListener {
 
 
-            val username =  binding.etEmail.text.toString().trim()
+            val username =  binding.etUserName.text.toString().trim()
             val password =  binding.etPassword.text.toString().trim()
             if(accountType==MedWizConstants.Auth.ACCOUNT_SHOP){
                 viewModel.loginShop(username,password)
@@ -149,6 +156,20 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
     private fun goBack() {
         requireActivity().finish()
+    }
+    private fun showHidePass(view: View,editText: EditText) {
+        if (editText.transformationMethod
+                .equals(PasswordTransformationMethod.getInstance())
+        ) {
+            (view as ImageView).setImageResource(R.drawable.ic_show_password)
+            //Show Password
+            editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        } else {
+            (view as ImageView).setImageResource(R.drawable.ic_hide_password)
+            //Hide Password
+            editText.transformationMethod = PasswordTransformationMethod.getInstance()
+        }
+
     }
 
     private fun goToNextScreen(it: LoginResponse) {
