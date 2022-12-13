@@ -27,8 +27,13 @@ class AuthRepository @Inject constructor(private val api: AuthApi):AuthRepoInter
         return api.getUserById(token,id)
     }
 
-    override suspend fun addMedicine(jsonObject: JsonObject): Response<CommonResponse> {
+    override suspend fun addMedicine(jsonObject: JsonObject,isUpdate:Boolean): Response<CommonResponse> {
+        if(isUpdate){
+           return api.updateMedicine(jsonObject)
+        }else{
         return api.addMedicine(jsonObject)
+        }
+
     }
 
     override suspend fun addLabTest(jsonObject: JsonObject): Response<CommonResponse> {

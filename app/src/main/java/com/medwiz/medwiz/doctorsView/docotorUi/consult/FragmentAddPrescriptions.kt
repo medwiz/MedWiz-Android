@@ -90,7 +90,7 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription),On
                 is Resource.Success->{
                     (activity as PrescriptionMainActivity).hideLoading()
                     if(it.data!!.size>0){
-                    this.searchAdapter = SearchAdapter(requireContext(),it.data,this)
+                    this.searchAdapter = SearchAdapter(requireContext(),it.data,this,false)
                     this.alertBinding!!.rcvSearch.adapter=searchAdapter
                     }
 
@@ -173,7 +173,7 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription),On
 
             override fun afterTextChanged(e: Editable?) {
                 if (e!!.length > 2){
-                    searchViewModel.searchMedicine(e.toString().trim())
+                    searchViewModel.searchMedicine("brand",e.toString().trim())
                 }
                 if(e.isEmpty()&&searchAdapter!=null){
                     searchAdapter!!.searchList.clear()
@@ -247,5 +247,6 @@ class FragmentAddPrescriptions : Fragment(R.layout.fragment_add_prescription),On
 
     override fun onItemClick(obj: MedicineResponse, position: Int) {
        alertBinding!!.etMedicineName.setText(obj.brand)
+        searchAdapter!!.searchList.clear()
     }
 }

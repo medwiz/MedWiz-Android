@@ -92,6 +92,7 @@
         <entry key="app/src/main/res/layout/single_patient_rcv_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/single_profile_item.xml" value="0.14379119873046872" />
         <entry key="app/src/main/res/layout/single_working_time.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/update_medicine_fragment.xml" value="0.32122905027932963" />
         <entry key="app/src/main/res/layout/working_time_dialog.xml" value="0.165" />
         <entry key="app/src/main/res/menu/bottom_doctor_nav_menu.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/menu/bottom_patient_nav_menu.xml" value="0.22870370370370371" />

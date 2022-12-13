@@ -8,5 +8,7 @@ data class MedicineResponse(
     val name:String,
     val brand:String,
     val price:Double,
-    val isActive:Boolean
+    val isActive:Boolean,
+    val dosage:String,
+    val type:String
 )

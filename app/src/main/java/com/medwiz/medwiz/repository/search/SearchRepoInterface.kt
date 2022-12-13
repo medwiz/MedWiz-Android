@@ -9,5 +9,5 @@ import java.util.ArrayList
  * @Date:11/12/22
  */
 interface SearchRepoInterface {
-    suspend fun searchMedicine(keyword:String): Response<ArrayList<MedicineResponse>>
+    suspend fun searchMedicine(type:String,keyword:String): Response<ArrayList<MedicineResponse>>
 }

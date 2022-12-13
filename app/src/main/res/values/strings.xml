@@ -129,4 +129,5 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="add_lab_test">Add Lab tests</string>
+    <string name="update_medicine">Update Medicine</string>
 </resources>

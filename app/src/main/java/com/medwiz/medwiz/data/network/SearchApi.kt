@@ -15,8 +15,9 @@ import java.util.ArrayList
 
 interface SearchApi {
 
-    @GET("medicine/search/{keyword}")
-    suspend fun searchMedicine(@Path("keyword")keyword:String): Response<ArrayList<MedicineResponse>>
+    @GET("medicine/search/{type}/{keyword}")
+    suspend fun searchMedicine(@Path("type")type:String,
+                               @Path("keyword")keyword:String): Response<ArrayList<MedicineResponse>>
 
 
 }

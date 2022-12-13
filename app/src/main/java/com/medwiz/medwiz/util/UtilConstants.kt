@@ -40,6 +40,7 @@ object UtilConstants {
     const val baseurl = "http://52.66.214.145:9090/api/v1/"//"http://10.0.2.2:8080/api/v1/"
 
  const val addMedicine="medicine"
+    const val updateMedicine="medicine/safeupdate"
  const val addLabTest="labtest"
     const val register = "auth/register"
     const val login = "auth/login"

@@ -27,6 +27,10 @@ interface AuthApi {
     @POST(UtilConstants.addMedicine)
     suspend fun addMedicine(@Body jsonObject: JsonObject):Response<CommonResponse>
 
+    @PUT(UtilConstants.updateMedicine)
+    suspend fun updateMedicine(@Body jsonObject: JsonObject):Response<CommonResponse>
+
+
     @POST(UtilConstants.addLabTest)
     suspend fun addLabTest(@Body jsonObject: JsonObject):Response<CommonResponse>
 }

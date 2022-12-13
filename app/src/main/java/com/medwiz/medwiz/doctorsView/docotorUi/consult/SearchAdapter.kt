@@ -11,7 +11,8 @@ import com.medwiz.medwiz.databinding.SearchSingleItemBinding
 import com.medwiz.medwiz.doctorsView.model.Medication
 import java.util.ArrayList
 
-class SearchAdapter(private val context: Context,private val mSearchList:ArrayList<MedicineResponse>,private  val listener:OnSearchItemListener
+class SearchAdapter(private val context: Context,private val mSearchList:ArrayList<MedicineResponse>,private  val listener:OnSearchItemListener,
+                    private val isUpdate:Boolean
 ):RecyclerView.Adapter<SearchAdapter.PrescriptionAdapterViewHolder>(){
 
     var searchList=java.util.ArrayList<MedicineResponse>()
@@ -40,7 +41,11 @@ class SearchAdapter(private val context: Context,private val mSearchList:ArrayLi
 
     inner class PrescriptionAdapterViewHolder(val binding: SearchSingleItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(medicineItem: MedicineResponse, position: Int){
+            if(isUpdate){
+                binding.tvName.text=medicineItem.name
+            }else{
             binding.tvName.text=medicineItem.brand
+            }
             binding.tvName.setOnClickListener {
                 listener.onItemClick(medicineItem,position)
             }

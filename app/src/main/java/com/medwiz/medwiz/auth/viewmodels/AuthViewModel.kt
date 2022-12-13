@@ -246,15 +246,15 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
         return Resource.Error(response.message())
     }
 
-    fun addMedicine(medicineObj: JsonObject) =viewModelScope.launch{
-           callMedicineApi(medicineObj)
+    fun addMedicine(medicineObj: JsonObject,isUpdate:Boolean) =viewModelScope.launch{
+           callMedicineApi(medicineObj,isUpdate)
     }
 
-    private suspend fun callMedicineApi(medicineObj: JsonObject) {
+    private suspend fun callMedicineApi(medicineObj: JsonObject,isUpdate: Boolean) {
         addMedicine.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.addMedicine(medicineObj)
+                val response = repository.addMedicine(medicineObj,isUpdate)
                 addMedicine.postValue(handleAddMedicineResponse(response))
             }
             else

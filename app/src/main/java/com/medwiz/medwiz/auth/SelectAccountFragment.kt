@@ -36,6 +36,12 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
         binding.tvLabTest.setOnClickListener {
             findNavController().navigate(R.id.action_selectAccountFragment_to_addLabTestInfoFragment)
         }
+        binding.tvUpdate.setOnClickListener{
+
+            findNavController().navigate(R.id.action_selectAccountFragment_to_updateMedicineFragment)
+
+
+        }
 
         binding.rlDoctor.setOnClickListener{
             val bundle = Bundle()
@@ -59,6 +65,9 @@ class SelectAccountFragment:Fragment(R.layout.select_account_fragment) {
 
 
         }
+
+
+
 
         if(token.isNotEmpty()&&userId.isNotEmpty()&&userType.isNotEmpty()&&(userType==MedWizConstants.Auth.ACCOUNT_SHOP||
                     userType==MedWizConstants.Auth.ACCOUNT_DOCTOR||userType==MedWizConstants.Auth.ACCOUNT_PATIENT)){

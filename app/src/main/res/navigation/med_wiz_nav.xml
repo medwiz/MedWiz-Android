@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_selectAccountFragment_to_addLabTestInfoFragment"
             app:destination="@id/addLabTestInfoFragment" />
+        <action
+            android:id="@+id/action_selectAccountFragment_to_updateMedicineFragment"
+            app:destination="@id/updateMedicineFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -84,4 +87,8 @@
         android:id="@+id/addLabTestInfoFragment"
         android:name="com.medwiz.medwiz.auth.signUp.AddLabTestInfoFragment"
         android:label="AddLabTestInfoFragment" />
+    <fragment
+        android:id="@+id/updateMedicineFragment"
+        android:name="com.medwiz.medwiz.auth.signUp.UpdateMedicineFragment"
+        android:label="UpdateMedicineFragment" />
 </navigation>

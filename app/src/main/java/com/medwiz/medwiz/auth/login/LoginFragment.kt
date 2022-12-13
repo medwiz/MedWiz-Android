@@ -143,8 +143,8 @@ class LoginFragment :Fragment(R.layout.fragment_login){
 
 
 
-        binding.etEmail.setText("s@gmail.com")
-        binding.etPassword.setText("s12345")
+//        binding.etEmail.setText("s@gmail.com")
+//        binding.etPassword.setText("s12345")
     }
 
     private fun goBack() {

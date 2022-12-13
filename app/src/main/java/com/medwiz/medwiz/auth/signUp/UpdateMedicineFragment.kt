@@ -1,6 +1,8 @@
 package com.medwiz.medwiz.auth.signUp
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -14,27 +16,36 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
+import com.medwiz.medwiz.data.reponse.MedicineResponse
 import com.medwiz.medwiz.databinding.FragmentAddMedicineInfoBinding
+import com.medwiz.medwiz.databinding.UpdateMedicineFragmentBinding
+import com.medwiz.medwiz.doctorsView.docotorUi.consult.OnSearchItemListener
+import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionMainActivity
+import com.medwiz.medwiz.doctorsView.docotorUi.consult.SearchAdapter
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
+import com.medwiz.medwiz.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), AddMedicineListener {
+class UpdateMedicineFragment : Fragment(R.layout.update_medicine_fragment),
+    OnSearchItemListener {
     private var adapter: AddMedicineAdapter? = null
     private val viewModel: AuthViewModel by viewModels()
-    private var viewCount: ArrayList<AddView> = ArrayList()
+    private var searchAdapter: SearchAdapter? = null
+    private val searchViewModel: SearchViewModel by viewModels()
     private var strType = ""
-    private lateinit var binding: FragmentAddMedicineInfoBinding
-    var typeList = arrayOf("Select type","Tablet", "Drops", "Syrup", "Inhalers", "Injections", "others")
+    private var originalName=""
+    private lateinit var binding: UpdateMedicineFragmentBinding
+    var typeList = arrayOf("Select Type","Tablet", "Drops", "Syrup", "Inhalers", "Injections", "others")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAddMedicineInfoBinding.bind(view)
+        binding = UpdateMedicineFragmentBinding.bind(view)
 
-        binding.imgBackAddInfo.setOnClickListener {
+        binding.imgBack.setOnClickListener {
 
             findNavController().navigateUp()
 
@@ -59,49 +70,77 @@ class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), A
                 position: Int,
                 id: Long
             ) {
-                if(position>0){
-                    strType = typeList[position]
-                }
+               if(position>0){
+                strType = typeList[position]
+               }
             }
 
         }
 
-
-        binding.btAdd.setOnClickListener {
+        binding.btUpdate.setOnClickListener {
+            if(originalName.isEmpty()){
+                Toast.makeText(
+                    requireContext(),
+                    "Add medicine name only from suggestion list!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
             if (binding.etMedicineName.text.toString()
                     .isNotEmpty() && binding.etDosage.text.toString()
-                    .isNotEmpty() && strType.isNotEmpty()
+                    .isNotEmpty() && strType.isNotEmpty()&&originalName.isNotEmpty()
             ) {
                 val dosage = binding.etDosage.text.toString();
+                val medicineObj = JsonObject()
+                medicineObj.addProperty("medicine_name", originalName)
+                medicineObj.addProperty("dosage", dosage)
+                medicineObj.addProperty("type", strType)
+                viewModel.addMedicine(medicineObj, true)
+            }
+        }
 
-                val medArray = JsonArray()
-                for (itemObj in viewCount) {
-                    if (itemObj.brandName.isNotEmpty() && itemObj.mrp > 0) {
-                        val jObj = JsonObject()
-                        jObj.addProperty("name", itemObj.brandName)
-                        jObj.addProperty("price", itemObj.mrp)
+        binding.etMedicineName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-                        medArray.add(jObj)
+            }
 
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(e: Editable?) {
+                if (e!!.length > 1) {
+                    searchViewModel.searchMedicine("name",e.toString().trim())
+                }
+                if (e.isEmpty() && searchAdapter != null) {
+                    searchAdapter!!.searchList.clear()
+                    searchAdapter!!.notifyDataSetChanged()
+                    binding.rcvSearch.visibility=View.VISIBLE
+                }
+            }
+
+        })
+
+        searchViewModel.medicine.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success -> {
+                    (activity as MainActivity).hideLoading()
+                    if (it.data!!.size > 0) {
+                        this.searchAdapter = SearchAdapter(requireContext(), it.data, this,true)
+                        this.binding.rcvSearch.adapter = searchAdapter
                     }
 
                 }
-                val medicineObj = JsonObject()
-                medicineObj.addProperty("medicine_name", binding.etMedicineName.text.toString())
-                medicineObj.addProperty("dosage", dosage)
-                medicineObj.addProperty("type", strType)
-                medicineObj.add("brands", medArray)
-                viewModel.addMedicine(medicineObj, false)
+
+                is Resource.Error -> {
+                    (activity as MainActivity).hideLoading()
+                }
             }
-        }
-
-
-        createAdapter()
-
-
-
-
-
+        })
 
         viewModel.addMedicine.observe(viewLifecycleOwner, Observer {
 
@@ -114,7 +153,7 @@ class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), A
                     (activity as MainActivity).hideLoading()
                     Toast.makeText(
                         requireContext(),
-                        "Medicine Added successfully!",
+                        "Medicine updated successfully!",
                         Toast.LENGTH_SHORT
                     ).show()
                     clearAll()
@@ -132,14 +171,6 @@ class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), A
 
     }
 
-    private fun createAdapter() {
-        adapter = AddMedicineAdapter(requireContext(), this)
-        binding.rcvAddMedicine.adapter = adapter
-        binding.rcvAddMedicine.layoutManager = LinearLayoutManager(requireContext())
-        val addView = AddView(0, "", 0.0)
-        viewCount.add(addView)
-        adapter!!.setData(viewCount, 0)
-    }
 
     private fun addViews() {
 //        val parent = LinearLayout(requireContext())
@@ -154,59 +185,23 @@ class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), A
 
     }
 
-    override fun onClickAddView(obj: AddView, position: Int) {
-        if (binding.etMedicineName.text.toString().isNotEmpty()) {
-            for (i in 0 until viewCount.size) {
-                val viewObj = viewCount[i]
-                if (viewObj.brandName.isEmpty() && viewObj.mrp == 0.0) {
-                    viewCount.remove(viewObj)
-                    val addView = AddView(obj.id, obj.brandName, obj.mrp)
-                    viewCount.add(i, addView)
-                }
-            }
-//            for (i in 0 until viewCount.size) {
-//            }
-
-            //create empty view
-            if (viewCount.size < 7) {
-                val newAddView = AddView(position, "", 0.0)
-                viewCount.add(newAddView)
-                adapter!!.setData(viewCount, position)
-            }
-        }
-
-    }
 
     private fun clearAll() {
-        viewCount.clear()
         binding.etMedicineName.setText("")
+        originalName=""
         strType=""
-        createAdapter()
-    }
-
-    override fun onBrandChange(obj: AddView, position: Int) {
-        val i = 0
-    }
-
-    override fun onMrpChange(obj: AddView, position: Int) {
-        val i = 0
-    }
-
-    override fun onItemDelete(obj: AddView, position: Int) {
-        if (viewCount.size > 1) {
-//         for(objDelete in viewCount){
-//             if(objDelete.brandName==obj.brandName&&objDelete.mrp==obj.mrp){
-//                 viewCount.remove(objDelete)
-//                 adapter!!.setRemoveData(viewCount)
-//             }
-//         }
-            viewCount.removeAt(position)
-            adapter!!.setRemoveData(viewCount)
-            val i = 0
-        }
+        binding.rcvSearch.visibility=View.VISIBLE
     }
 
 
+    override fun onItemClick(obj: MedicineResponse, position: Int) {
+        binding.etMedicineName.setText(obj.name)
+        binding.etDosage.setText(obj.dosage)
+        originalName=obj.name
+        searchAdapter!!.searchList.clear()
+        searchAdapter!!.notifyDataSetChanged()
+        binding.rcvSearch.visibility=View.GONE
+    }
 
 
 }
