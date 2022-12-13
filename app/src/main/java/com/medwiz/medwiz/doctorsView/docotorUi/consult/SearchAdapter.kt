@@ -1,5 +1,6 @@
 package com.medwiz.medwiz.doctorsView.docotorUi.consult
 
+import android.bluetooth.BluetoothGatt
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.medwiz.medwiz.doctorsView.model.Medication
 import java.util.ArrayList
 
 class SearchAdapter(private val context: Context,private val mSearchList:ArrayList<MedicineResponse>,private  val listener:OnSearchItemListener,
-                    private val isUpdate:Boolean
+                    private val isUpdate:Boolean,private val isMedicine:Boolean
 ):RecyclerView.Adapter<SearchAdapter.PrescriptionAdapterViewHolder>(){
 
     var searchList=java.util.ArrayList<MedicineResponse>()
@@ -43,8 +44,13 @@ class SearchAdapter(private val context: Context,private val mSearchList:ArrayLi
         fun bind(medicineItem: MedicineResponse, position: Int){
             if(isUpdate){
                 binding.tvName.text=medicineItem.name
-            }else{
-            binding.tvName.text=medicineItem.brand
+            }
+            else{
+                if(!isMedicine){
+                    binding.tvName.text=medicineItem.name
+                }else{
+               binding.tvName.text=medicineItem.brand
+                }
             }
             binding.tvName.setOnClickListener {
                 listener.onItemClick(medicineItem,position)

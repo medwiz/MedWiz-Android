@@ -29,7 +29,8 @@ class AddMedicineInfoFragment : Fragment(R.layout.fragment_add_medicine_info), A
     private var viewCount: ArrayList<AddView> = ArrayList()
     private var strType = ""
     private lateinit var binding: FragmentAddMedicineInfoBinding
-    var typeList = arrayOf("Select type","Tablet", "Drops", "Syrup", "Inhalers", "Injections", "others")
+    var typeList =arrayOf("Select Type","Tablet","Drops","Syrup","Inhalers","Injections","Cream","Ointment","Lotion","Powder","Spray","Nasal Spray",
+        "Nasal Drop","Gel")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAddMedicineInfoBinding.bind(view)

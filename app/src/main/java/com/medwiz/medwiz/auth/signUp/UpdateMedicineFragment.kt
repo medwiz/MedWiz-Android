@@ -40,7 +40,8 @@ class UpdateMedicineFragment : Fragment(R.layout.update_medicine_fragment),
     private var strType = ""
     private var originalName=""
     private lateinit var binding: UpdateMedicineFragmentBinding
-    var typeList = arrayOf("Select Type","Tablet", "Drops", "Syrup", "Inhalers", "Injections", "others")
+    var typeList = arrayOf("Select Type","Tablet", "Drops", "Syrup", "Inhalers", "Injections", "Cream","Ointment","Lotion","Powder","Spray","Nasal Spray",
+        "Nasal Drop","Gel")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = UpdateMedicineFragmentBinding.bind(view)
@@ -110,7 +111,7 @@ class UpdateMedicineFragment : Fragment(R.layout.update_medicine_fragment),
 
             override fun afterTextChanged(e: Editable?) {
                 if (e!!.length > 1) {
-                    searchViewModel.searchMedicine("name",e.toString().trim())
+                    searchViewModel.searchMedicine("name",e.toString().trim(),true)
                 }
                 if (e.isEmpty() && searchAdapter != null) {
                     searchAdapter!!.searchList.clear()
@@ -130,7 +131,7 @@ class UpdateMedicineFragment : Fragment(R.layout.update_medicine_fragment),
                 is Resource.Success -> {
                     (activity as MainActivity).hideLoading()
                     if (it.data!!.size > 0) {
-                        this.searchAdapter = SearchAdapter(requireContext(), it.data, this,true)
+                        this.searchAdapter = SearchAdapter(requireContext(), it.data, this,true,true)
                         this.binding.rcvSearch.adapter = searchAdapter
                     }
 

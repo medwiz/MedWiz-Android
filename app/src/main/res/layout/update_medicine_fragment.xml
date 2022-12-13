@@ -58,9 +58,10 @@
     <EditText
         android:id="@+id/etDosage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:gravity="start"
         android:background="@drawable/layout_rounded_bg"
-        android:inputType="textPostalAddress"
+        android:inputType="textMultiLine"
         android:padding="5dp"
         android:hint="Dosage"
         android:layout_marginTop="10dp"

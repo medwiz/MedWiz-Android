@@ -12,7 +12,11 @@ import javax.inject.Inject
  */
 class SearchRepository @Inject constructor(private val api:SearchApi):SearchRepoInterface {
 
-    override suspend fun searchMedicine(type:String,keyword: String): Response<ArrayList<MedicineResponse>> {
+    override suspend fun searchMedicine(type:String,keyword: String,isMedicine:Boolean): Response<ArrayList<MedicineResponse>> {
+        if(isMedicine){
         return api.searchMedicine(type,keyword)
+        }else{
+            return api.searchLabTest(keyword)
+        }
     }
 }

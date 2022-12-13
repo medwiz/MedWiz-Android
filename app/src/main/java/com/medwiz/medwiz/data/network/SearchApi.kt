@@ -19,5 +19,8 @@ interface SearchApi {
     suspend fun searchMedicine(@Path("type")type:String,
                                @Path("keyword")keyword:String): Response<ArrayList<MedicineResponse>>
 
+    @GET("labtest/search/{keyword}")
+    suspend fun searchLabTest(@Path("keyword")keyword:String): Response<ArrayList<MedicineResponse>>
+
 
 }

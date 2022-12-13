@@ -28,15 +28,15 @@ class SearchViewModel @Inject constructor(private val repository:SearchRepoInter
     val medicine: MutableLiveData<Resource<ArrayList<MedicineResponse>>> = MutableLiveData()
     var medicineResponse:java.util.ArrayList<MedicineResponse>?=null
 
-    public fun searchMedicine(type:String,keywords:String)=viewModelScope.launch {
-            callMedicineSearchApi(type,keywords)
+    public fun searchMedicine(type:String,keywords:String,isMedicine:Boolean)=viewModelScope.launch {
+            callMedicineSearchApi(type,keywords,isMedicine)
     }
 
-    private suspend fun callMedicineSearchApi(type:String,keywords: String){
+    private suspend fun callMedicineSearchApi(type:String,keywords: String,isMedicine:Boolean){
           medicine.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.searchMedicine(type,keywords)
+                val response = repository.searchMedicine(type,keywords,isMedicine)
                 medicine.postValue(handleMedicineResponse(response))
             }
             else
