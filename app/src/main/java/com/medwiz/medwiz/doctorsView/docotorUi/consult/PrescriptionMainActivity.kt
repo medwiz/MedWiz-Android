@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.ActivityPrescriptionMainBinding
-import com.medwiz.medwiz.doctorsView.model.Medication
 import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.model.Medication
 import com.medwiz.medwiz.util.CustomLoaderDialog
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint

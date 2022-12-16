@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPreviewBinding
-import com.medwiz.medwiz.doctorsView.model.Medication
+import com.medwiz.medwiz.model.Medication
+import com.medwiz.medwiz.util.MedWizUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview) {
+class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview),PrescriptionListener {
 
     private lateinit var binding:FragmentPreviewBinding
     private var medicineAdapter: PrescriptionAdapter?=null
@@ -37,7 +38,7 @@ class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview) {
     }
 
     private fun createMedicineAdapter(){
-        medicineAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title))
+        medicineAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title),this)
         binding.rcvMedicine.adapter = medicineAdapter
         binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
         medicineAdapter!!.setData(medicineList)
@@ -45,9 +46,13 @@ class PreviewPrescriptionFragment:Fragment(R.layout.fragment_preview) {
     }
 
     private fun createLabAdapter(){
-        labAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title))
+        labAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title),this)
         binding.rcvTest.adapter = labAdapter
         binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
         labAdapter!!.setData(labTestList)
+    }
+
+    override fun onClickDosage(obj: Medication, position: Int) {
+        MedWizUtils.showErrorPopup(requireContext(),obj.dosage)
     }
 }

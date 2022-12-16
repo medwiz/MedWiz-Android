@@ -50,9 +50,7 @@ class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
                 }
                 is Resource.Error->{
                     (activity as PatientMainActivity).hideLoading()
-                    MedWizUtils.showErrorPopup(
-                        requireActivity(),
-                        it.message.toString())
+                    MedWizUtils.showErrorPopup(requireActivity(), it.message.toString())
                 }
             }
         })

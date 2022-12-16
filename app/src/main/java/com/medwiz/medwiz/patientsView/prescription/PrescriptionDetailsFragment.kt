@@ -1,8 +1,7 @@
-package com.medwiz.medwiz.patientsView.patientsUi.prescription
+package com.medwiz.medwiz.patientsView.prescription
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,7 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentPrescriptionDetailsBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionAdapter
-import com.medwiz.medwiz.doctorsView.model.Medication
+import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionListener
+import com.medwiz.medwiz.model.Medication
 
 import com.medwiz.medwiz.model.Prescription
 
@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
 @AndroidEntryPoint
-class PrescriptionDetailsFragment : Fragment(R.layout.fragment_prescription_details) {
+class PrescriptionDetailsFragment : Fragment(R.layout.fragment_prescription_details),PrescriptionListener {
 
     private lateinit var binding: FragmentPrescriptionDetailsBinding
     private val prescriptionViewModel: PrescriptionViewModel by viewModels()
@@ -79,7 +79,7 @@ class PrescriptionDetailsFragment : Fragment(R.layout.fragment_prescription_deta
         if (prescriptionObj!!.medications.size > 0) {
             binding.rlMedicineTitle.visibility = View.VISIBLE
             medicineAdapter =
-                PrescriptionAdapter(requireContext(), getString(R.string.add_medicine_title))
+                PrescriptionAdapter(requireContext(), getString(R.string.add_medicine_title),this)
             binding.rcvMedicine.adapter = medicineAdapter
             binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
             medicineAdapter!!.setData(prescriptionObj!!.medications)
@@ -89,14 +89,18 @@ class PrescriptionDetailsFragment : Fragment(R.layout.fragment_prescription_deta
             val labList = ArrayList<Medication>()
             for (i in 0 until prescriptionObj!!.medicationLabs.size) {
                 val medicineLab = Medication()
-                medicineLab.labTestName = prescriptionObj!!.medicationLabs[i].name
+                medicineLab.name = prescriptionObj!!.medicationLabs[i].name
                 labList.add(medicineLab)
             }
-            labAdapter = PrescriptionAdapter(requireContext(), getString(R.string.add_test_title))
+            labAdapter = PrescriptionAdapter(requireContext(), getString(R.string.add_test_title),this)
             binding.rcvTest.adapter = labAdapter
             binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
             labAdapter!!.setData(labList)
         }
+    }
+
+    override fun onClickDosage(obj: Medication, position: Int) {
+        MedWizUtils.showErrorPopup(requireContext(),obj.dosage)
     }
 
 

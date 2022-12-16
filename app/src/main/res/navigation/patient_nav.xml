@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/prescriptionDetailsFragment"
-        android:name="com.medwiz.medwiz.patientsView.patientsUi.prescription.PrescriptionDetailsFragment"
+        android:name="com.medwiz.medwiz.patientsView.prescription.PrescriptionDetailsFragment"
         android:label="PrescriptionDetailsFragment" >
         <action
             android:id="@+id/action_prescriptionDetailsFragment_to_selectShopFragment"

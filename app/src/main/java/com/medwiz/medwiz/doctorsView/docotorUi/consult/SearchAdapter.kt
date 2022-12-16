@@ -1,19 +1,14 @@
 package com.medwiz.medwiz.doctorsView.docotorUi.consult
-
-import android.bluetooth.BluetoothGatt
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.MedicineResponse
-import com.medwiz.medwiz.databinding.PrescriptionSingleLayoutBinding
 import com.medwiz.medwiz.databinding.SearchSingleItemBinding
-import com.medwiz.medwiz.doctorsView.model.Medication
 import java.util.ArrayList
 
 class SearchAdapter(private val context: Context,private val mSearchList:ArrayList<MedicineResponse>,private  val listener:OnSearchItemListener,
-                    private val isUpdate:Boolean,private val isMedicine:Boolean
+                    private val isUpdate:Boolean,private val isMedicine:Boolean,private val strSearchBy:String
 ):RecyclerView.Adapter<SearchAdapter.PrescriptionAdapterViewHolder>(){
 
     var searchList=java.util.ArrayList<MedicineResponse>()
@@ -49,7 +44,11 @@ class SearchAdapter(private val context: Context,private val mSearchList:ArrayLi
                 if(!isMedicine){
                     binding.tvName.text=medicineItem.name
                 }else{
-               binding.tvName.text=medicineItem.brand
+                    when(strSearchBy){
+                        "Brand"->{binding.tvName.text=medicineItem.brand}
+                        "Name"->{binding.tvName.text=medicineItem.name}
+                    }
+
                 }
             }
             binding.tvName.setOnClickListener {

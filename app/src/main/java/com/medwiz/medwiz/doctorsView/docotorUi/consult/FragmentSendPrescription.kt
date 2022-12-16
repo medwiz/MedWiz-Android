@@ -14,8 +14,8 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentSendPrescriptionBinding
 import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
-import com.medwiz.medwiz.doctorsView.model.Medication
 import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.model.Medication
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
@@ -25,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
+class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription),PrescriptionListener {
     private lateinit var binding: FragmentSendPrescriptionBinding
     private var medicineAdapter: PrescriptionAdapter?=null
     private var labAdapter: PrescriptionAdapter?=null
@@ -58,13 +58,13 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
             (activity as PrescriptionMainActivity).openPreviewPrescription()
         }
 
-        medicineAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title))
+        medicineAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_medicine_title),this)
         binding.rcvMedicine.adapter = medicineAdapter
         binding.rcvMedicine.layoutManager = LinearLayoutManager(requireContext())
         medicineAdapter!!.setData(medicineList)
 
 
-        labAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title))
+        labAdapter = PrescriptionAdapter(requireContext(),getString(R.string.add_test_title),this)
         binding.rcvTest.adapter = labAdapter
         binding.rcvTest.layoutManager = LinearLayoutManager(requireContext())
         labAdapter!!.setData(labTestList)
@@ -144,17 +144,14 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         val medicationArray= JsonArray()
         for (i in 0 until medicineList.size) {
             val medicineObj=JsonObject()
-            medicineObj.addProperty("noOfDays",medicineList[i].noOfDays)
-            medicineObj.addProperty("morningDose",medicineList[i].morningDose)
-            medicineObj.addProperty("afternoonDose",medicineList[i].afternoonDose)
-            medicineObj.addProperty("nightDose",medicineList[i].nightDose)
+            medicineObj.addProperty("dosage",medicineList[i].dosage)
             medicineObj.addProperty("name",medicineList[i].name)
             medicationArray.add(medicineObj)
         }
         val medicationLabArray= JsonArray()
         for (i in 0 until labTestList.size) {
             val medicineLabObj=JsonObject()
-            medicineLabObj.addProperty("name",labTestList[i].labTestName)
+            medicineLabObj.addProperty("name",labTestList[i].name)
             medicationLabArray.add(medicineLabObj)
         }
         jsonObject.add("medicationLabs",medicationLabArray)
@@ -202,6 +199,10 @@ class FragmentSendPrescription :Fragment(R.layout.fragment_send_prescription) {
         val fm=requireActivity().supportFragmentManager
         fm.popBackStack()
         (activity as PrescriptionMainActivity).openAddPrescriptionFragment()
+    }
+
+    override fun onClickDosage(obj: Medication, position: Int) {
+        MedWizUtils.showErrorPopup(requireContext(),obj.dosage)
     }
 
 

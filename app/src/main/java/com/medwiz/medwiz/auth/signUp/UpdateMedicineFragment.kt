@@ -131,7 +131,7 @@ class UpdateMedicineFragment : Fragment(R.layout.update_medicine_fragment),
                 is Resource.Success -> {
                     (activity as MainActivity).hideLoading()
                     if (it.data!!.size > 0) {
-                        this.searchAdapter = SearchAdapter(requireContext(), it.data, this,true,true)
+                        this.searchAdapter = SearchAdapter(requireContext(), it.data, this,true,true,"Name")
                         this.binding.rcvSearch.adapter = searchAdapter
                     }
 

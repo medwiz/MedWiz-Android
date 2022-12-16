@@ -17,23 +17,28 @@
         <activity
             android:name=".doctorsView.docotorUi.consult.PrescriptionMainActivity"
             android:exported="false"
+             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
         <activity
             android:name=".shopView.ShopActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".patientsView.main.PatientMainActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".doctorsView.docotorUi.DoctorsActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
