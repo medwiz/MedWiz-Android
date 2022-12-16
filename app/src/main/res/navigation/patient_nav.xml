@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorDetails"
-        android:name="com.medwiz.medwiz.patientsView.booking.doctorDetails.DoctorDetails"
+        android:name="com.medwiz.medwiz.patientsView.doctorDetails.DoctorDetails"
         android:label="DoctorDetails" >
         <action
             android:id="@+id/action_doctorDetails_to_bookAppointmentFragment"

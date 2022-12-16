@@ -17,7 +17,6 @@ import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.data.reponse.LoginResponse
 import com.medwiz.medwiz.databinding.FragmentLoginBinding
-import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.*
@@ -178,14 +177,8 @@ class LoginFragment :Fragment(R.layout.fragment_login){
         MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.email,it.email,true)
         MedWizUtils.storeValueInPreference(requireContext(),UtilConstants.userType,it.userType,true)
         when(accountType){
-            MedWizConstants.Auth.ACCOUNT_DOCTOR->{
-                val intent = Intent (requireActivity(), DoctorsActivity::class.java)
-                requireActivity().startActivity(intent)
-                requireActivity().finish()
-            }
             MedWizConstants.Auth.ACCOUNT_PATIENT->{
                 val intent = Intent (requireActivity(), PatientMainActivity::class.java)
-               // intent.putExtra(UtilConstants.userDetails,it)
                 requireActivity().startActivity(intent)
                 requireActivity().finish()
             }

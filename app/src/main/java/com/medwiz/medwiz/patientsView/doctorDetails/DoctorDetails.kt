@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.booking.doctorDetails
+package com.medwiz.medwiz.patientsView.doctorDetails
 
 import android.os.Bundle
 import android.view.View
@@ -16,14 +16,13 @@ import com.medwiz.medwiz.util.Resource
 import com.medwiz.medwiz.util.UtilConstants
 import com.medwiz.medwiz.viewmodels.ReviewViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class DoctorDetails : Fragment(R.layout.fragment_doctor_details) {
     private lateinit var binding: FragmentDoctorDetailsBinding
     private var reviewAdapter: ReviewAdapter?=null
     private val reviewViewModel: ReviewViewModel by viewModels()
-    private var workingTimeAdapter:WorkingTimeAdapter?=null
+    private var workingTimeAdapter: WorkingTimeAdapter?=null
     private var selectedDoctor:DoctorResponse?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

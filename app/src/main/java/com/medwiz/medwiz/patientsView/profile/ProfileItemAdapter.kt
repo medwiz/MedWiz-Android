@@ -1,17 +1,16 @@
-package com.medwiz.medwiz.patientsView.patientsUi.profile
+package com.medwiz.medwiz.patientsView.profile
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medwiz.medwiz.databinding.SingleProfileItemBinding
-import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
 import com.medwiz.medwiz.model.ProfileItemModel
 
 
 class ProfileItemAdapter (private val context: Context,
                           private val itemList:MutableList<ProfileItemModel>,
-                          private val listener:ProfileItemListener
+                          private val listener: ProfileItemListener
 ): RecyclerView.Adapter<ProfileItemAdapter.ProfileItemViewHolder>(){
 
 

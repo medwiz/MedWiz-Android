@@ -8,8 +8,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.data.reponse.ShopResponse
 import com.medwiz.medwiz.databinding.FragmentShopHomeBinding
-import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
-import com.medwiz.medwiz.doctorsView.docotorUi.home.ViewPagerAdapter
 import com.medwiz.medwiz.shopView.ShopActivity
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.Resource

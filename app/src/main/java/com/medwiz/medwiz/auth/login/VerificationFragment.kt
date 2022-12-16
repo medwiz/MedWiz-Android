@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentVerificationBinding
-import com.medwiz.medwiz.doctorsView.docotorUi.DoctorsActivity
 import com.medwiz.medwiz.shopView.ShopActivity
 import com.medwiz.medwiz.patientsView.main.PatientMainActivity
 import com.medwiz.medwiz.util.MedWizConstants
@@ -33,11 +32,6 @@ class VerificationFragment:Fragment(R.layout.fragment_verification) {
 
         binding.btVerify.setOnClickListener{
             when(accountType){
-                MedWizConstants.Auth.ACCOUNT_DOCTOR->{
-                    val intent = Intent (requireActivity(), DoctorsActivity::class.java)
-                    requireActivity().startActivity(intent)
-                    requireActivity().finish()
-                }
                 MedWizConstants.Auth.ACCOUNT_PATIENT->{
                     val intent = Intent (requireActivity(), PatientMainActivity::class.java)
                     requireActivity().startActivity(intent)

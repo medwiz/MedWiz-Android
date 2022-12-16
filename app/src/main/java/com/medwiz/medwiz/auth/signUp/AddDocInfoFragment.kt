@@ -1,33 +1,24 @@
 package com.medwiz.medwiz.auth.signUp
-import android.app.Activity
 import android.app.Dialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.PackageManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
-import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.databinding.FragmentAddDocInfoBinding
 import com.medwiz.medwiz.databinding.WorkingTimeDialogBinding
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.model.*
-import com.medwiz.medwiz.patientsView.booking.doctorDetails.WorkingTimeAdapter
+import com.medwiz.medwiz.patientsView.doctorDetails.WorkingTimeAdapter
 import com.medwiz.medwiz.util.*
 import com.medwiz.medwiz.viewmodels.FileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-import java.io.FileDescriptor
 
 
 @AndroidEntryPoint

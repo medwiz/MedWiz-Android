@@ -13,20 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imgLogo"
-        android:src="@drawable/ic_doctor_blue"
+        android:src="@drawable/ic_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <RelativeLayout
-        android:id="@+id/rlDoctor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/ic_doctor_bg"
-        android:layout_marginTop="134dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
-        />
 
     <RelativeLayout
         android:id="@+id/rlPatient"
@@ -35,9 +25,9 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/ic_patient_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/h5_dp_14"
+        android:layout_marginTop="104dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rlDoctor"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
         />
 
     <RelativeLayout

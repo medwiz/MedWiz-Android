@@ -6,16 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentProfileBinding
-import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
 import com.medwiz.medwiz.model.ProfileItemModel
-import com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileItemAdapter
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
 @AndroidEntryPoint
-class ProfileFragments:Fragment(R.layout.fragment_profile),ProfileItemListener {
+class ProfileFragments:Fragment(R.layout.fragment_profile), ProfileItemListener {
     private var adapter: ProfileItemAdapter?=null
     private lateinit var binding: FragmentProfileBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

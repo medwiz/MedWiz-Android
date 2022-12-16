@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.doctorsView.docotorUi.consult
+package com.medwiz.medwiz.auth.signUp
 
 import com.medwiz.medwiz.data.reponse.MedicineResponse
 
@@ -8,5 +8,5 @@ import com.medwiz.medwiz.data.reponse.MedicineResponse
  */
 interface OnSearchItemListener {
 
-    fun onItemClick(obj:MedicineResponse,position:Int)
+    fun onItemClick(obj: MedicineResponse, position:Int)
 }

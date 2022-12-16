@@ -11,16 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.auth.viewmodels.AuthViewModel
 import com.medwiz.medwiz.data.reponse.MedicineResponse
-import com.medwiz.medwiz.databinding.FragmentAddMedicineInfoBinding
 import com.medwiz.medwiz.databinding.UpdateMedicineFragmentBinding
-import com.medwiz.medwiz.doctorsView.docotorUi.consult.OnSearchItemListener
-import com.medwiz.medwiz.doctorsView.docotorUi.consult.PrescriptionMainActivity
 import com.medwiz.medwiz.doctorsView.docotorUi.consult.SearchAdapter
 import com.medwiz.medwiz.main.MainActivity
 import com.medwiz.medwiz.util.MedWizUtils

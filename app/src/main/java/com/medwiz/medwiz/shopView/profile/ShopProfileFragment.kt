@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.medwiz.medwiz.R
 import com.medwiz.medwiz.databinding.FragmentShopProfileBinding
 import com.medwiz.medwiz.model.ProfileItemModel
-import com.medwiz.medwiz.patientsView.booking.ProfileItemListener
-import com.medwiz.medwiz.patientsView.patientsUi.profile.ProfileItemAdapter
+import com.medwiz.medwiz.patientsView.profile.ProfileItemListener
+import com.medwiz.medwiz.patientsView.profile.ProfileItemAdapter
 import com.medwiz.medwiz.util.MedWizUtils
 import com.medwiz.medwiz.util.UtilConstants
 

@@ -1,4 +1,4 @@
-package com.medwiz.medwiz.patientsView.booking.doctorDetails
+package com.medwiz.medwiz.patientsView.doctorDetails
 
 import android.content.Context
 import android.view.LayoutInflater
