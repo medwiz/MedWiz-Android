@@ -1,7 +1,8 @@
 package com.medwiz.medwiz.util
 
 object UtilConstants {
- const val shop:String="shop"
+    const val USERPHONENUMBER: String="userPhoneNumber"
+    const val shop:String="shop"
    const val prescription: String="prescription"
     const val userDetails: String="userDetails"
     const val consultation: String="consultation"
@@ -41,9 +42,9 @@ object UtilConstants {
 
  const val addMedicine="medicine"
     const val updateMedicine="medicine/safeupdate"
- const val addLabTest="labtest"
-    const val register = "auth/register"
-    const val login = "auth/login"
+    const val addLabTest="labtest"
+    const val register = "user/register"
+    const val login = "user/authenticate"
     const val uploadFileApi="file/upload"
     const val getUserById="user"
     const val doctor="doctor"

@@ -43,7 +43,7 @@
     <string name="upload_your_highest_qualification_certificate">Upload your highest Qualification Certificate</string>
     <string name="upload_license">Upload license</string>
     <string name="sample_text">An ophthalmologist is a physician who specializes in the diagnosis and treatment of diseases of the eye. Ophthalmologists may prescribe and fit eyeglasses and contact lenses and also treat eye diseases with drugs and surgery. An optometrist is not a physician.</string>
-    <string name="welcome_to_med_wiz">Welcome to Medwiz</string>
+    <string name="welcome_back">Welcome Back</string>
     <string name="phone_number">Phone Number</string>
     <string name="cont">Continue</string>
     <string name="verification">Verification</string>
@@ -60,7 +60,7 @@
     <string name="long_text_ex">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
     <string name="working_time">Working Time</string>
     <string name="review">Review</string>
-    <string name="book_appoinment">Book an appointment</string>
+    <string name="book_appoinment">Book An Appointment</string>
     <string name="awesome">Awesome</string>
     <string name="_4_8">4.8</string>
     <string name="select_date">Select Date</string>
@@ -131,4 +131,8 @@
     <string name="add_lab_test">Add Lab tests</string>
     <string name="update_medicine">Update Medicine</string>
     <string name="search_by">Search by:</string>
+    <string name="app_quotes">Your Health is an investment,\nnot an Expense</string>
+    <string name="find_your_doctor">Find Your Doctor</string>
+    <string name="hi_patient">Hi Patient</string>
+    <string name="see_all">See all</string>
 </resources>

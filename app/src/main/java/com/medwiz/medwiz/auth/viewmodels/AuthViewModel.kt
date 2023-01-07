@@ -107,7 +107,7 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
             return@launch
         }
 
-        requestObj.addProperty(UtilConstants.USERNAME, username)
+        requestObj.addProperty(UtilConstants.USERPHONENUMBER, username)
         requestObj.addProperty(UtilConstants.PASSWORD, password)
         callLoginApi(requestObj)
     }
