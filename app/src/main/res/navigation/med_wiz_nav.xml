@@ -1,94 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/med_wiz.xml"
-    app:startDestination="@id/selectAccountFragment">
+    app:startDestination="@id/loginFragment">
+
 
     <fragment
-        android:id="@+id/selectAccountFragment"
-        android:name="com.medwiz.medwiz.auth.SelectAccountFragment"
-        android:label="SelectAccountFragment" >
-        <action
-            android:id="@+id/action_selectAccountFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_selectAccountFragment_to_addMedicineInfoFragment"
-            app:destination="@id/addMedicineInfoFragment" />
-        <action
-            android:id="@+id/action_selectAccountFragment_to_addLabTestInfoFragment"
-            app:destination="@id/addLabTestInfoFragment" />
-        <action
-            android:id="@+id/action_selectAccountFragment_to_updateMedicineFragment"
-            app:destination="@id/updateMedicineFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/loginFragment"
-        android:name="com.medwiz.medwiz.auth.login.LoginFragment"
+        android:name="com.medwiz.medwiz.ui.auth.login.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment_to_selectAccountFragment"
-            app:destination="@id/selectAccountFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_verificationFragment"
-            app:destination="@id/verificationFragment" />
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_addLabInfoFragment"
-            app:destination="@id/addLabInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.medwiz.medwiz.ui.home.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.SignUpFragment"
-        android:label="SignUpFragment" >
-        <action
-            android:id="@+id/action_signUpFragment_to_createPassword"
-            app:destination="@id/createPassword" />
-        <action
-            android:id="@+id/action_signUpFragment_to_addDocInfoFragment"
-            app:destination="@id/addDocInfoFragment" />
-    </fragment>
+        android:name="com.medwiz.medwiz.ui.auth.signUp.SignUpFragment"
+        android:label="SignUpFragment" />
     <fragment
-        android:id="@+id/createPassword"
-        android:name="com.medwiz.medwiz.auth.signUp.CreatePassword"
-        android:label="CreatePassword" >
-        <action
-            android:id="@+id/action_createPassword_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_createPassword_to_selectAccountFragment"
-            app:destination="@id/selectAccountFragment" />
-    </fragment>
+        android:id="@+id/profileFragment"
+        android:name="com.medwiz.medwiz.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
     <fragment
-        android:id="@+id/verificationFragment"
-        android:name="com.medwiz.medwiz.auth.login.VerificationFragment"
-        android:label="VerificationFragment" />
+        android:id="@+id/appointmentFragment"
+        android:name="com.medwiz.medwiz.ui.appointment.AppointmentFragment"
+        android:label="AppointmentFragment" />
     <fragment
-        android:id="@+id/addDocInfoFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.AddDocInfoFragment"
-        android:label="AddDocInfoFragment" >
-        <action
-            android:id="@+id/action_addDocInfoFragment_to_createPassword"
-            app:destination="@id/createPassword" />
-    </fragment>
-    <fragment
-        android:id="@+id/addLabInfoFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.AddShopInfoFragment"
-        android:label="AddLabInfoFragment" >
-        <action
-            android:id="@+id/action_addLabInfoFragment_to_createPassword"
-            app:destination="@id/createPassword" />
-    </fragment>
-    <fragment
-        android:id="@+id/addMedicineInfoFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.AddMedicineInfoFragment"
-        android:label="AddMedicineInfoFragment" />
-    <fragment
-        android:id="@+id/addLabTestInfoFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.AddLabTestInfoFragment"
-        android:label="AddLabTestInfoFragment" />
-    <fragment
-        android:id="@+id/updateMedicineFragment"
-        android:name="com.medwiz.medwiz.auth.signUp.UpdateMedicineFragment"
-        android:label="UpdateMedicineFragment" />
+        android:id="@+id/prescriptionFragment"
+        android:name="com.medwiz.medwiz.ui.prescription.PrescriptionFragment"
+        android:label="PrescriptionFragment" />
 </navigation>

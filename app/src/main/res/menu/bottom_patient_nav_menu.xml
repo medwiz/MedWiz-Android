@@ -3,20 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/patientHomeFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:iconTint="@color/black"
         app:showAsAction="withText"
         android:title="@string/home"
 
-        tools:targetApi="o" />
-
-    <item
-        android:id="@+id/labFragments"
-        android:icon="@drawable/ic_booking"
-        android:iconTint="@color/black"
-        app:showAsAction="withText"
-        android:title="@string/booking"
         tools:targetApi="o" />
 
     <item
@@ -28,7 +20,17 @@
         tools:targetApi="o" />
 
     <item
-        android:id="@+id/profileFragments"
+        android:id="@+id/appointmentFragment"
+        android:icon="@drawable/ic_appointment"
+        android:iconTint="@color/black"
+        app:showAsAction="withText"
+        android:title="@string/appointments"
+        tools:targetApi="o" />
+
+
+
+    <item
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:iconTint="@color/black"
         android:title="@string/profile"

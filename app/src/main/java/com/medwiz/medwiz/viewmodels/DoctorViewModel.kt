@@ -55,7 +55,7 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
     private fun handleGetUserResponse(response: Response<LoginResponse>): Resource<LoginResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.id>0) {
+                if(resultResponse.userId>0) {
                     getDoctorResponse = resultResponse
                     return Resource.Success(getDoctorResponse ?: resultResponse)
                 }

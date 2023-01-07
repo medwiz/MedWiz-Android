@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwiz.data.reponse.LoginResponse
+import com.medwiz.medwiz.data.reponse.PatientResponse
 import com.medwiz.medwiz.model.DoctorResponse
 import com.medwiz.medwiz.repository.patient.PatientRepoInterface
 import com.medwiz.medwiz.util.NetworkUtils
@@ -22,8 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PatientViewModel @Inject constructor(private val repository: PatientRepoInterface, @ApplicationContext private val context: Context):ViewModel() {
 
-    val getPatient: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    var getPatientResponse: LoginResponse? = null
+    val getPatient: MutableLiveData<Resource<PatientResponse>> = MutableLiveData()
+    var getPatientResponse: PatientResponse? = null
 
     val getDoctor:MutableLiveData<Resource<java.util.ArrayList<DoctorResponse>>> = MutableLiveData()
     var getDoctorResponse:java.util.ArrayList<DoctorResponse>?=null
@@ -33,14 +34,14 @@ class PatientViewModel @Inject constructor(private val repository: PatientRepoIn
 
 
 
-    public fun getPatientByEmail(token:String,email:String)=viewModelScope.launch {
-        callGetPatientApi(token,email)
+    public fun getPatientById(token:String,id:String)=viewModelScope.launch {
+        callGetPatientApi(token,id)
     }
-    private suspend fun callGetPatientApi(token:String,email:String){
+    private suspend fun callGetPatientApi(token:String,id:String){
         getPatient.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.getPatientByEmail(token,email)
+                val response = repository.getPatientById(token,id)
                 getPatient.postValue(handleGetUserResponse(response))
             }
             else
@@ -54,7 +55,7 @@ class PatientViewModel @Inject constructor(private val repository: PatientRepoIn
         }
     }
 
-    private fun handleGetUserResponse(response: Response<LoginResponse>): Resource<LoginResponse> {
+    private fun handleGetUserResponse(response: Response<PatientResponse>): Resource<PatientResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 if(resultResponse.id>0) {

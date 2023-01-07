@@ -14,7 +14,7 @@ data class LoginResponse(
     var lastname:String,
     var pinCode: String,
     var token: String,
-    var id: Long,
+    var userId: Long,
     var userType: String,
     var gender:String,
     var age:Int
